@@ -202,7 +202,8 @@ const audio_applause_first = new Audio("./assets/sounds/applause_first.mp3");
 const audio_applause_second = new Audio("./assets/sounds/applause_second.mp3");
 const audio_applause_third = new Audio("./assets/sounds/applause_third.mp3");
 const audio_applause = new Audio("./assets/sounds/applause.mp3");
-var audio_petard = new Audio("./assets/sounds/petards.mp3");
+var audio_petard = new Audio("./assets/sounds/bang.mp3");
+var audio_firecrackers = new Audio("./assets/sounds/firecrackers_third.mp3");
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
 audio_correct.preload = "auto";
 
@@ -423,15 +424,6 @@ const startQuiz = () => {
 };
 
 //animation
-
-function launchConfetti() {
-  confetti({
-    particleCount: 100,
-    spread: 70,
-    origin: { y: 0.6 },
-  });
-}
-
 // Fonction pour lancer les confettis à la fin du quiz
 function loadConfettiScript() {
   const script = document.createElement("script");
@@ -453,8 +445,13 @@ function launchConfetti() {
   });
 }
 
+/* -------animation tests -------------- */
+
 // Appelle la fonction pour charger le script et lancer les confettis
 loadConfettiScript();
+
+/* -------animation tests -------------- */
+
 //CHARGEMENT DE LA PAGE
 //Mettre à jour le score
 
