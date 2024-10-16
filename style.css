@@ -1,0 +1,232 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+@font-face {
+  font-family: quizFont;
+  src: url("./assets/fonts/Roboto-Regular.ttf");
+}
+* {
+  font-family: quizFont;
+  letter-spacing: 1px;
+}
+img {
+  /* au cas ou je la remettrais */
+  height: 200px;
+  width: 250px;
+}
+
+.record {
+  font-size: 1.5rem;
+}
+.score {
+  font-size: 2rem;
+}
+.questions-lefts {
+  font-size: 1rem;
+}
+
+.card {
+  height: 400px;
+  width: 700px;
+  margin: 50px 0 100px 0;
+  background: #ffc97b;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+}
+
+.card > .hint {
+  height: 50px;
+  font-style: italic;
+  transform: rotate(180deg);
+}
+
+.card-question {
+  font-size: 2rem;
+  height: 300px;
+  text-align: center;
+}
+
+.card-responses-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.correct {
+  animation: correct 1.2s forwards;
+}
+.wrong {
+  animation: wrong 0.5s forwards;
+}
+
+@keyframes correct {
+  0% {
+    background: #ffc97b;
+  }
+  20% {
+    background: green;
+  }
+  100% {
+    background: #ffc97b;
+  }
+}
+
+@keyframes wrong {
+  0% {
+    background: red;
+    transform: translateX(-50px);
+  }
+  20% {
+    transform: translateX(50px);
+  }
+  40% {
+    transform: translateX(-50px);
+  }
+  60% {
+    transform: translateX(50px);
+  }
+  80% {
+    transform: translateX(-50px);
+  }
+  100% {
+    background: #ffc97b;
+    transform: translateX(0px);
+  }
+}
+
+.card-responses-container > .responses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.card-responses-container > .responses > .response {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer; /* Changer le curseur quand on survole une réponse */
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Ajoute un léger effet d'ombre */
+  font-size: 1.5rem;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-responses-container > .responses > .response:hover {
+  transform: scale(1.1);
+  background: #13b1f1;
+  transition: 0.2s;
+}
+
+.final {
+  font-size: 3rem;
+  font-style: none;
+  display: flex;
+  align-items: center;
+  color: rgb(156, 133, 0);
+}
+.appreciation {
+  font-size: 1.5rem;
+}
+
+.retry-button {
+  transition: 0.2s;
+  position: relative;
+  background: none;
+  color: black;
+  border-radius: 35px;
+  height: 70px;
+  width: 300px;
+  transform: translateY(50px);
+  cursor: pointer;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.retry-button:hover {
+  transition: 0.2s;
+  transform: translateY(50px);
+  box-shadow: 0 0 rgb(16, 16, 97);
+  border: 3px solid white;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.retry-button:active {
+  transition: 0.2s;
+  box-shadow: 0 0;
+  font-size: 0.8rem;
+  transform: scale(0.8) translateY(50px);
+
+  transition: 0.2s;
+  box-shadow: 0 0;
+}
+
+.retry-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.664),
+    transparent
+  );
+  transition: ease-in-out 500ms;
+}
+
+.retry-button:hover:before {
+  left: 200%;
+}
+
+.timer {
+  margin: 10px 0;
+  border-radius: 10px;
+  min-height: 15px;
+  width: 100%;
+  background: rgb(77, 77, 255);
+}
+
+.imgFinal {
+  width: 100px;
+  height: 100px;
+  /* animation: finish 3s; */
+}
+
+@keyframes finish {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.imgFinal:hover {
+  transition: 0.2s;
+  transform: scale(7);
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
