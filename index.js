@@ -204,6 +204,8 @@ const audio_applause_third = new Audio("./assets/sounds/applause_third.mp3");
 const audio_applause = new Audio("./assets/sounds/applause.mp3");
 var audio_petard = new Audio("./assets/sounds/bang.mp3");
 var audio_firecrackers = new Audio("./assets/sounds/firecrackers_third.mp3");
+var audio_chrono = new Audio("./assets/sounds/chrono.mp3");
+audio_chrono.preload = "auto";
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
 audio_correct.preload = "auto";
 
@@ -404,7 +406,7 @@ const relaunchTimer = () => {
   }, 50);
 };
 
-//Gère l'affichage du timer
+//Gère l'affichage du timer & du son chrono
 const displayTimer = () => {
   timerContainer.style.width = (timer * 100) / questionTime + "%";
   if (timer > 12000) {
@@ -423,7 +425,17 @@ const startQuiz = () => {
   relaunchTimer();
 };
 
-//animation
+const handleChronoSound = () => {
+  if (timer > 12000) {
+    audio_chrono.play();
+  } else if (timer > 5000) {
+    audio_chrono.currentTime = 0;
+    // audio_chrono.pitch = 1.1;
+    audio_chrono.play();
+  }
+};
+
+/* ------ PARTIE ANIMATION DE FIN --------- */
 // Fonction pour lancer les confettis à la fin du quiz
 function loadConfettiScript() {
   const script = document.createElement("script");
@@ -458,7 +470,6 @@ loadConfettiScript();
 //rempli le questionnaire de questions
 questionnaireInfo = fillQuestionnaire(questionsList, responses, goodResponse);
 questionnaireInfo.shuffleQuestions();
-console.log(questionnaireInfo.shuffleQuestions());
 
 // Lance la première question quand la page est chargée
 cardQuestion.innerHTML =
@@ -467,5 +478,9 @@ document.addEventListener("click", () => {
   if (!firstClick) {
     firstClick = true;
     startQuiz();
+
+    audio_chrono.play();
+    audio_chrono.currentTime = 0;
+    audio_chrono.playbackRate = 1;
   }
 });
