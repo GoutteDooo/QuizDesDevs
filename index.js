@@ -5,6 +5,7 @@ let record = score;
 let timer = 20000;
 let firstClick = false; //levier permettant de démarrer le quiz
 let startConfetti = false;
+let audioChronoPreviousState = null; //Variable pour garder l'état précédent du chrono audio
 const questionTime = 20000; //temps en ms pour chaque question
 
 class Question {
@@ -12,6 +13,10 @@ class Question {
     this.questionText = questionText;
     this.answers = answers;
     this.correctAnswer = correctAnswer;
+  }
+
+  shuffleAnswers() {
+    this.answers.sort(() => Math.random() - 0.5);
   }
 }
 
@@ -27,6 +32,7 @@ class Questionnaire {
 
   shuffleQuestions() {
     this.questions.sort(() => Math.random() - 0.5);
+    this.questions.forEach((question) => question.shuffleAnswers());
   }
 
   getCurrentQuestion() {
@@ -81,7 +87,6 @@ const audio_applause_second = new Audio("./assets/sounds/applause_second.mp3");
 const audio_applause_third = new Audio("./assets/sounds/applause_third.mp3");
 const audio_applause = new Audio("./assets/sounds/applause.mp3");
 var audio_bang = new Audio("./assets/sounds/bang.mp3");
-var audio_firecrackers = new Audio("./assets/sounds/firecrackers_third.mp3");
 var audio_chrono = new Audio("./assets/sounds/chrono.mp3");
 audio_chrono.preload = "auto";
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
@@ -112,6 +117,9 @@ const changeCard = () => {
   });
   //put the time on the timer
   timer = questionTime;
+
+  //launch sound
+  audio_chrono.play();
 };
 
 // Fonction pour vérifier la réponse et passer à la question suivante
@@ -188,6 +196,7 @@ const endQuiz = () => {
   }</div>
     <br />
     <div class="appreciation">${appreciation}</div>`;
+  audio_chrono.pause();
   finishQuizSound.currentTime = 1;
   finishQuizSound(ratioScore).play();
   createButtonRetry();
@@ -282,6 +291,7 @@ const relaunchTimer = () => {
         timer = timer - 50;
         displayTimer();
         relaunchTimer();
+        handleChronoSound(); //gère le son du chronomètre
       } else {
         console.log("fin quiz");
       }
@@ -309,13 +319,25 @@ const startQuiz = () => {
 };
 
 const handleChronoSound = () => {
+  let currentState;
   if (timer > 12000) {
-    audio_chrono.play();
+    currentState = "normal";
+    audio_chrono.playbackRate = 1;
   } else if (timer > 5000) {
-    audio_chrono.currentTime = 0;
-    // audio_chrono.pitch = 1.1;
-    audio_chrono.play();
+    currentState = "fast";
+    audio_chrono.playbackRate = 2;
+  } else {
+    currentState = "veryfast";
+    audio_chrono.playbackRate = 4;
   }
+
+  //Check if state changed, and then, reput sound time to 0
+  if (audioChronoPreviousState !== currentState) {
+    audio_chrono.currentTime = 0;
+  }
+
+  //Update last state
+  audioChronoPreviousState = currentState;
 };
 
 /* ------ PARTIE ANIMATION DE FIN --------- */
@@ -360,9 +382,10 @@ const confettiLoop = () => {
     }, rngTimer);
   }
 };
-/* -------animation tests -------------- */
 
-/* -------animation tests -------------- */
+/* -------chrono sound tests -------------- */
+
+/* -------chrono sound tests -------------- */
 
 //CHARGEMENT DE LA PAGE
 
@@ -381,9 +404,5 @@ document.addEventListener("click", () => {
   if (!firstClick) {
     firstClick = true;
     startQuiz();
-
-    audio_chrono.play();
-    audio_chrono.currentTime = 0;
-    audio_chrono.playbackRate = 1;
   }
 });

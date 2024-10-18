@@ -3,6 +3,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background: var(--bg-color);
 }
 @font-face {
   font-family: quizFont;
@@ -11,6 +12,17 @@ body {
 * {
   font-family: quizFont;
   letter-spacing: 1px;
+}
+
+:root  {
+  --bg-color: rgb(54, 60, 105);
+  --card-color: DarkKhaki;
+  --bg-text-color : white;
+}
+
+.bg-text {
+  color: var(--bg-text-color);
+  text-align: center;
 }
 img {
   /* au cas ou je la remettrais */
@@ -32,7 +44,7 @@ img {
   height: 500px;
   width: 800px;
   margin: 50px 0 100px 0;
-  background: #ffc97b;
+  background: var(--card-color);
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px;
   display: flex;
@@ -49,8 +61,10 @@ img {
 }
 
 .card-question {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem); /* Ajuste la taille du texte en fonction de la longueur */
+
   height: 300px;
+  /* overflow: hidden; */
   text-align: center;
 }
 
@@ -70,35 +84,36 @@ img {
 
 @keyframes correct {
   0% {
-    background: #ffc97b;
+    background: var(--card-color);
   }
   20% {
     background: green;
   }
   100% {
-    background: #ffc97b;
+    background: var(--card-color);
   }
 }
 
 @keyframes wrong {
   0% {
-    background: red;
     transform: translateX(-50px);
   }
   20% {
+    background: red;
     transform: translateX(50px);
   }
   40% {
     transform: translateX(-50px);
   }
   60% {
+    background: red;
     transform: translateX(50px);
   }
   80% {
     transform: translateX(-50px);
   }
   100% {
-    background: #ffc97b;
+    background: var(--card-color);
     transform: translateX(0px);
   }
 }
@@ -129,7 +144,8 @@ img {
 
 .card-responses-container > .responses > .response:hover {
   transform: scale(1.1);
-  background: #13b1f1;
+  background: var(--bg-color);
+  color: white;
   transition: 0.2s;
 }
 
@@ -207,6 +223,7 @@ img {
 }
 
 .imgFinal {
+  position: relative;
   width: 100px;
   height: 100px;
   /* animation: finish 3s; */
@@ -217,15 +234,16 @@ img {
     transform: scale(1);
   }
   50% {
-    transform: scale(8);
+    transform: scale(5);
   }
   100% {
     transform: scale(1);
   }
 }
+
 .imgFinal:hover {
   transition: 0.2s;
-  transform: scale(7);
+  transform: scale(5);
   border-radius: 10px;
   cursor: pointer;
   z-index: 10;
