@@ -4,6 +4,7 @@ let currentQuestionIndex = 0;
 let record = score;
 let timer = 20000;
 let firstClick = false; //levier permettant de démarrer le quiz
+let startConfetti = false;
 const questionTime = 20000; //temps en ms pour chaque question
 
 class Question {
@@ -79,12 +80,13 @@ const audio_applause_first = new Audio("./assets/sounds/applause_first.mp3");
 const audio_applause_second = new Audio("./assets/sounds/applause_second.mp3");
 const audio_applause_third = new Audio("./assets/sounds/applause_third.mp3");
 const audio_applause = new Audio("./assets/sounds/applause.mp3");
-var audio_petard = new Audio("./assets/sounds/bang.mp3");
+var audio_bang = new Audio("./assets/sounds/bang.mp3");
 var audio_firecrackers = new Audio("./assets/sounds/firecrackers_third.mp3");
 var audio_chrono = new Audio("./assets/sounds/chrono.mp3");
 audio_chrono.preload = "auto";
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
 audio_correct.preload = "auto";
+audio_bang.preload = "auto";
 
 /* ----------------------------------------------------- FIN INIT ------------------------------------------------------------------*/
 
@@ -171,7 +173,10 @@ const endQuiz = () => {
   }
 
   //animation fin quiz
-  if (ratioScore >= 1);
+  if (ratioScore >= 1) {
+    startConfetti = true;
+    confettiLoop();
+  }
 
   cardQuestion.innerText = "Quiz terminé !";
   responsesContainer.innerHTML = "";
@@ -211,6 +216,7 @@ const createButtonRetry = () => {
   //Permet de relancer le quiz
   retryButton.addEventListener("click", () => {
     //réinit les variables
+    startConfetti = false;
     score = 0;
     questionnaireInfo.currentQuestionIndex = 0;
     timer = questionTime;
@@ -320,32 +326,53 @@ function loadConfettiScript() {
     "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"; // URL du CDN
   script.onload = function () {
     console.log("Canvas Confetti loaded");
-    launchConfetti(); // Appelle ta fonction une fois le script chargé
   };
   document.head.appendChild(script); // Ajoute le script dans le document
 }
 
 // Fonction pour lancer les confettis après le chargement du script
 function launchConfetti() {
+  let rngParticleCount = Math.random() * 200 + 200; //Entre 700 et 1200 confettis
   confetti({
-    particleCount: 1000,
-    spread: 200,
-    origin: { y: 0.5 },
+    particleCount: rngParticleCount,
+    spread: 360,
+    shapes: ["square", "circle"], // Utilisation de formes circulaires
+    gravity: 0.2,
+    origin: {
+      x: Math.random(), // Position aléatoire sur l'axe horizontal
+      y: Math.random() * 0.5 + 0.5, // Position aléatoire entre 50% et 100% de l'écran
+    },
+    scalar: Math.random() * 0.4 + 0.8,
+    angle: Math.random() * 60 + 60,
   });
 }
 
+const confettiLoop = () => {
+  if (startConfetti) {
+    //tant que l'user n'a pas cliqué sur restartQuiz
+    let rngTimer = Math.random() * 500 + 200; // entre 200 et 700ms
+    const bang_sound = new Audio("./assets/sounds/bang.mp3");
+    setTimeout(() => {
+      launchConfetti();
+      confettiLoop();
+      bang_sound.currentTime = 0;
+      bang_sound.play();
+    }, rngTimer);
+  }
+};
 /* -------animation tests -------------- */
-
-// Appelle la fonction pour charger le script et lancer les confettis
-loadConfettiScript();
 
 /* -------animation tests -------------- */
 
 //CHARGEMENT DE LA PAGE
+
 //Mettre à jour le score
 //rempli le questionnaire de questions
 questionnaireInfo = fillQuestionnaire(questionsList, responses, goodResponse);
 questionnaireInfo.shuffleQuestions();
+
+// Appelle la fonction pour charger le script des confettis
+loadConfettiScript();
 
 // Lance la première question quand la page est chargée
 cardQuestion.innerHTML =
