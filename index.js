@@ -115,6 +115,9 @@ const changeCard = () => {
   questionsLeftContainer.innerText =
     "Il reste " + questionnaireInfo.questionsLeft() + " questions.";
 
+  // Met à jour l'affichage du score
+  scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
+
   // Réinitialise le conteneur des réponses
   responsesContainer.innerHTML = "";
 
@@ -155,9 +158,6 @@ const checkAnswer = (selectedAnswer) => {
       "La bonne réponse était : " +
       questionnaireInfo.getCurrentQuestion().correctAnswer;
   }
-
-  // Met à jour l'affichage du score
-  scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
 
   // Passe à la question suivante
   questionnaireInfo.nextQuestion();

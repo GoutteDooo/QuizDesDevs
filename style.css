@@ -14,10 +14,10 @@ body {
   letter-spacing: 1px;
 }
 
-:root  {
+:root {
   --bg-color: rgb(54, 60, 105);
   --card-color: DarkKhaki;
-  --bg-text-color : white;
+  --bg-text-color: white;
 }
 
 .bg-text {
@@ -61,7 +61,11 @@ img {
 }
 
 .card-question {
-  font-size: clamp(1.5rem, 2vw, 2rem); /* Ajuste la taille du texte en fonction de la longueur */
+  font-size: clamp(
+    1.5rem,
+    2vw,
+    2rem
+  ); /* Ajuste la taille du texte en fonction de la longueur */
 
   height: 300px;
   /* overflow: hidden; */

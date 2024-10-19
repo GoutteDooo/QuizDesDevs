@@ -213,6 +213,7 @@ export const qlGit = [
   "Quelle commande affiche l’historique des commits ?",
   "Comment revenir temporairement à un commit précédent ?",
   "Quelle commande permet de cloner un dépôt distant ?",
+  "A quoi sert une Pull Request ? (PR)",
 ];
 
 export const ansGit = [
@@ -226,6 +227,12 @@ export const ansGit = [
   ["git log", "git history", "git commits", "git ct mieux avant"],
   ["git checkout", "git revert", "git reset", "git back_to_the_futur"],
   ["git clone", "git copy", "git download", "git terminator"],
+  [
+    "Permettre de proposer des changements à un dépôt distant",
+    "Permettre de récupérer des changements d'un dépôt distant",
+    "Permettre de récupérer un dépôt distant en y indiquant qu'on va y effectuer des modifs",
+    "A signaler qu'il est temps de prendre une pause café",
+  ],
 ];
 
 export const cAnsGit = [
@@ -239,4 +246,5 @@ export const cAnsGit = [
   "git log",
   "git checkout",
   "git clone",
+  "Permettre de proposer des changements à un dépôt distant",
 ];
