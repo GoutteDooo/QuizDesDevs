@@ -247,8 +247,55 @@ img {
 
 .imgFinal:hover {
   transition: 0.2s;
-  transform: scale(5);
+  transform: scale(2.5);
   border-radius: 10px;
   cursor: pointer;
   z-index: 10;
+}
+
+.settings-btn {
+  position: absolute;
+  transform: translate(370px,-220px);
+  background-color: var(--bg-color);
+  mask-image: url("./assets/img/svg/gear-solid.svg");
+  height: 70px;
+  width: 70px;  
+  background-size: contain; /* Pour ajuster l'image à la taille du bouton */
+  background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+  background-position: center; /* Centrer l'image dans le bouton */
+  fill: red;
+  stroke: red;
+}
+
+.settings-btn:hover {
+  position: absolute;
+  transition: 0.2s;
+  background: var(--bg-text-color);
+  cursor: pointer;
+}
+
+.settings {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  background: var(--card-color);
+  height: 500px;
+  width: 800px;
+  border-radius: 50px;
+  border: 10px solid white;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blur-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Une légère opacité pour obscurcir l'arrière-plan */
+  backdrop-filter: blur(5px); /* Effet de flou */
+  z-index: 99; /* Derrière la div settings */
+  display: none;
 }

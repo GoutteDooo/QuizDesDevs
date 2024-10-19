@@ -14,6 +14,9 @@ import {
   qlMD,
   ansMD,
   cAnsMD,
+  qlJS,
+  ansJS,
+  cAnsJS,
 } from "./data.js";
 let score = 0;
 let record = score;
@@ -182,7 +185,7 @@ const endQuiz = () => {
   } else if (ratioScore < 0.7) {
     appreciation = "C'est moyen ! Tu peux faire bien mieux que ça !";
   } else if (ratioScore < 1) {
-    appreciation = "Félicitations !";
+    appreciation = "Joli !!!";
   } else {
     appreciation = "TU ES UN DIEU DE L'INFORMATIQUE !!";
   }
@@ -313,11 +316,11 @@ const relaunchTimer = () => {
 //Gère l'affichage du timer & du son chrono
 const displayTimer = () => {
   timerContainer.style.width = (timer * 100) / questionTime + "%";
-  if (timer > 12000) {
+  if (timer > 0.6 * questionTime) {
     timerContainer.style.background = "rgb(77, 77, 255)";
-  } else if (timer < 12000 && timer > 5000) {
+  } else if (timer > 0.25 * questionTime) {
     timerContainer.style.background = "yellow";
-  } else if (timer < 5000) {
+  } else {
     timerContainer.style.background = "red";
   }
 };
@@ -331,10 +334,10 @@ const startQuiz = () => {
 
 const handleChronoSound = () => {
   let currentState;
-  if (timer > 12000) {
+  if (timer > 0.6 * questionTime) {
     currentState = "normal";
     audio_chrono.playbackRate = 1;
-  } else if (timer > 5000) {
+  } else if (timer > 0.25 * questionTime) {
     currentState = "fast";
     audio_chrono.playbackRate = 2;
   } else {
@@ -409,6 +412,7 @@ questionnaireInfo.fillQuestionnaire(qlCSS, ansCSS, cAnsCSS);
 questionnaireInfo.fillQuestionnaire(qlLinux, ansLinux, cAnsLinux);
 questionnaireInfo.fillQuestionnaire(qlGit, ansGit, cAnsGit);
 questionnaireInfo.fillQuestionnaire(qlMD, ansMD, cAnsMD);
+questionnaireInfo.fillQuestionnaire(qlJS, ansJS, cAnsJS);
 
 questionnaireInfo.shuffleQuestions();
 
@@ -417,8 +421,8 @@ loadConfettiScript();
 
 // Lance la première question quand la page est chargée
 cardQuestion.innerHTML =
-  "Démarrer le quiz <br /> <em style='font-size : 0.8rem'>Cliquez pour démarrer</em>";
-document.addEventListener("click", () => {
+  "Paramétrez le quiz ou <br><em style='font-size : 2rem'>Cliquez sur une case pour le démarrer</em>";
+responsesContainer.addEventListener("click", () => {
   if (!firstClick) {
     firstClick = true;
     startQuiz();

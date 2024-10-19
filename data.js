@@ -115,6 +115,66 @@ export const cAnsCSS = [
   "padding",
 ];
 
+/*----- JavaScript ----- */
+export const qlJS = [
+  "Comment afficher un message dans la console en JavaScript ?",
+  "Quelle méthode est utilisée pour interagir avec un élément par son ID ?",
+  "Quelle syntaxe permet de déclarer une fonction en JavaScript ?",
+  "Quelle méthode est utilisée pour ajouter un élément à la fin d’un tableau ?",
+  "Comment créer un objet en JavaScript ?",
+  "Quelle est la valeur par défaut d’une variable non initialisée en JavaScript ?",
+  "Quelle méthode est utilisée pour convertir une chaîne de caractères en nombre ?",
+  "Quelle structure permet de boucler tant qu’une condition est vraie ?",
+  "Quelle méthode est utilisée pour ajouter un événement à un élément HTML ?",
+  "Quelle méthode permet de vérifier si un tableau contient un élément spécifique ?",
+];
+
+export const ansJS = [
+  ["console.log()", "print()", "message()", "miroir-miroir()"],
+  [
+    "document.getElementById()",
+    "document.querySelectorId()",
+    "document.selectElementId()",
+    "document.whatsYourName()",
+  ],
+  [
+    "function maFonction() {}",
+    "let maFonction() {}",
+    "const maFonction() {}",
+    "abracadabra() {}",
+  ],
+  ["push()", "append()", "add()", "ramèneTaFraise()"],
+  [
+    "let objet = {}",
+    "let objet = []",
+    "let objet = newObject()",
+    "let objet = pouf()",
+  ],
+  ["undefined", "null", "NaN", "pas_encore_la"],
+  ["parseInt()", "parseFloat()", "Number()", "transformation()"],
+  ["while", "for", "if", "twister()"],
+  [
+    "addEventListener()",
+    "document.appendChild()",
+    "onClick()",
+    "add_to_calendar()",
+  ],
+  ["includes()", "filter()", "forEach()", "detection_en_cours()"],
+];
+
+export const cAnsJS = [
+  "console.log()",
+  "document.getElementById()",
+  "function maFonction() {}",
+  "push()",
+  "let objet = {}",
+  "undefined",
+  "parseInt()",
+  "while",
+  "addEventListener()",
+  "includes()",
+];
+
 /* ----- LINUX ----- */
 export const qlLinux = [
   "Quelle commande permet de lister les fichiers dans un répertoire ?",
