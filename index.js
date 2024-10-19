@@ -1,6 +1,21 @@
-import { questionsList, responses, goodResponse } from "./data.js";
+import {
+  cAnsLinux,
+  ansLinux,
+  qlLinux,
+  qlHTML,
+  ansHTML,
+  cAnsHTML,
+  qlCSS,
+  ansCSS,
+  cAnsCSS,
+  qlGit,
+  ansGit,
+  cAnsGit,
+  qlMD,
+  ansMD,
+  cAnsMD,
+} from "./data.js";
 let score = 0;
-let currentQuestionIndex = 0;
 let record = score;
 let timer = 20000;
 let firstClick = false; //levier permettant de démarrer le quiz
@@ -50,19 +65,15 @@ class Questionnaire {
   questionsLeft() {
     return this.questions.length - this.currentQuestionIndex;
   }
-}
-//générer un questionnaire vide, et le remplir avant de charger la page
-var questionnaireInfo = new Questionnaire();
 
-const fillQuestionnaire = (questionList, answersList, correctAnswerList) => {
-  var questionnaire = new Questionnaire();
-  for (let i = 0; i < questionList.length; i++) {
-    questionnaire.addQuestion(
-      new Question(questionList[i], answersList[i], correctAnswerList[i])
-    );
+  fillQuestionnaire(questionList, answersList, correctAnswerList) {
+    for (let i = 0; i < questionList.length; i++) {
+      this.addQuestion(
+        new Question(questionList[i], answersList[i], correctAnswerList[i])
+      );
+    }
   }
-  return questionnaire;
-};
+}
 
 // Sélecteurs d'élément HTML
 const card = document.querySelector(".card");
@@ -171,9 +182,9 @@ const endQuiz = () => {
   } else if (ratioScore < 0.7) {
     appreciation = "C'est moyen ! Tu peux faire bien mieux que ça !";
   } else if (ratioScore < 1) {
-    appreciation = "Oh ! GG !";
+    appreciation = "Félicitations !";
   } else {
-    appreciation = "UN DIEU EST LA !!";
+    appreciation = "TU ES UN DIEU DE L'INFORMATIQUE !!";
   }
   if (record < score) {
     record = score;
@@ -305,7 +316,7 @@ const displayTimer = () => {
   if (timer > 12000) {
     timerContainer.style.background = "rgb(77, 77, 255)";
   } else if (timer < 12000 && timer > 5000) {
-    timerContainer.style.background = "orange";
+    timerContainer.style.background = "yellow";
   } else if (timer < 5000) {
     timerContainer.style.background = "red";
   }
@@ -387,11 +398,18 @@ const confettiLoop = () => {
 
 /* -------chrono sound tests -------------- */
 
-//CHARGEMENT DE LA PAGE
+//générer un questionnaire vide, et le remplir avant de charger la page
+let questionnaireInfo = new Questionnaire();
 
+//CHARGEMENT DE LA PAGE
 //Mettre à jour le score
 //rempli le questionnaire de questions
-questionnaireInfo = fillQuestionnaire(questionsList, responses, goodResponse);
+questionnaireInfo.fillQuestionnaire(qlHTML, ansHTML, cAnsHTML);
+questionnaireInfo.fillQuestionnaire(qlCSS, ansCSS, cAnsCSS);
+questionnaireInfo.fillQuestionnaire(qlLinux, ansLinux, cAnsLinux);
+questionnaireInfo.fillQuestionnaire(qlGit, ansGit, cAnsGit);
+questionnaireInfo.fillQuestionnaire(qlMD, ansMD, cAnsMD);
+
 questionnaireInfo.shuffleQuestions();
 
 // Appelle la fonction pour charger le script des confettis

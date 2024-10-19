@@ -1,18 +1,35 @@
-export const questionsListCapitales = [
-  "Quelle est la capitale de la France ?",
-  "Quelle est la capitale de l'Allemagne ?",
-  "Quelle est la capitale de l'Italie ?",
-  "Quelle est la capitale des Etats-Unis ?",
-  "Quelle est la capitale de l'Angleterre ?",
-];
-
-export const questionsList = [
+export const qlHTML = [
   "En HTML, quelle est la balise utilisée pour écrire le titre principal ?",
   "En HTML, quelle est la balise utilisée pour faire une liste ? <em style='font-size : 0.7rem'>(et pour les plus pointilleux, oui il y en a plusieurs...)</em>",
   "Trouver l'intrus dans cette liste",
   "Quelle balise est utilisée pour les images ?",
   "Citez un attribut HTML lié aux images",
   "Que signifie HTML ? ",
+];
+export const ansHTML = [
+  ["<title></title>", "<h1></h1>", "<p></p>", '<input type="title" />'],
+  ["<list></list>", "<order></order>", "<ul></ul>", '<input type="list" />'],
+  ["<ol></ol>", "<h5></h5>", "<th></th>", "<img></img>"],
+  ["<picture />", "<pic />", "<img />", "<link img />"],
+  ["class", "src", "href", "img"],
+  [
+    "Hyperlink Text Management Language",
+    "HyperText Markup Language",
+    "Hierarchical Tagging Markup Language",
+    "How To Meet Ladies",
+  ],
+];
+export const cAnsHTML = [
+  "<h1></h1>",
+  "<ul></ul>",
+  "<img></img>",
+  "<img />",
+  "src",
+  "HyperText Markup Language",
+];
+
+/* ----- CSS ----- */
+export const qlCSS = [
   "Que signifie CSS  ? ",
   "En CSS, quelle propriété est utilisé pour gérer la scale d'un élément ? ",
   "Quelle propriété est utilisée pour changer la couleur de fond d'un élément ?",
@@ -29,26 +46,7 @@ export const questionsList = [
   "Quelle propriété CSS est utilisée pour créer des espaces à l'intérieur des bordures d'un élément ?",
 ];
 
-export const responsesCapitales = [
-  ["Marseille", "Valenciennes", "Paris", "La Fistinière"],
-  ["Munich", "Köln", "Berlin", "Le Chateau de Frankenstein"],
-  ["Milan", "Rome", "Venise", "Le parc des monstres de Bomarzo"],
-  ["Los Angeles", "New York", "Washington", "La Zone 51"],
-  ["Londres", "Canterbury", "Manchester", "Cockermouth"],
-];
-
-export const responses = [
-  ["<title></title>", "<h1></h1>", "<p></p>", '<input type="title" />'],
-  ["<list></list>", "<order></order>", "<ul></ul>", '<input type="list" />'],
-  ["<ol></ol>", "<h5></h5>", "<th></th>", "<img></img>"],
-  ["<picture />", "<pic />", "<img />", "<link img />"],
-  ["class", "src", "href", "img"],
-  [
-    "Hyperlink Text Management Language",
-    "HyperText Markup Language",
-    "Hierarchical Tagging Markup Language",
-    "How To Meet Ladies",
-  ],
+export const ansCSS = [
   [
     "Central Script System",
     "Code Structure Simplifier",
@@ -100,13 +98,7 @@ export const responses = [
   ["border-spacing", "margin", "padding", "inner-bubble"],
 ];
 
-export const goodResponse = [
-  "<h1></h1>",
-  "<ul></ul>",
-  "<img></img>",
-  "<img />",
-  "src",
-  "HyperText Markup Language",
+export const cAnsCSS = [
   "Cascading Style Sheets",
   "transform",
   "background-color",
@@ -118,7 +110,133 @@ export const goodResponse = [
   "border-radius",
   "box-shadow",
   "opacity",
-  "rem",
+  "em",
   "Placer l'élément par rapport à son conteneur le plus proche avec position: relative;",
   "padding",
+];
+
+/* ----- LINUX ----- */
+export const qlLinux = [
+  "Quelle commande permet de lister les fichiers dans un répertoire ?",
+  "Quelle commande est utilisée pour changer de répertoire ?",
+  "Comment créer un nouveau fichier dans le terminal ?",
+  "Quelle commande est utilisée pour afficher le chemin actuel ?",
+  "Comment supprimer un fichier avec le terminal Linux ?",
+  "Quelle commande permet de copier un fichier ?",
+  "Quelle commande est utilisée pour afficher le contenu d’un fichier texte ?",
+  "Quelle commande permet de déplacer un fichier ?",
+  "Comment exécuter un script bash ?",
+  "Quelle commande est utilisée pour redémarrer le système ?",
+];
+
+export const ansLinux = [
+  ["ls", "list", "dir", "regarde_moi_tout_ca"],
+  ["cd", "mv", "path", "téléportation()"],
+  ["touch", "create", "makefile", "creer_qqch"],
+  ["pwd", "ls", "cat", "ousuisje"],
+  ["rm", "delete", "dl", "goodbyemyfriend"],
+  ["cp", "copy", "duplicate", "clone_moi_ca"],
+  ["cat", "show", "read", "ouvrir_parchemin"],
+  ["mv", "move", "go", "taxi"],
+  ["./script.sh", "run script.sh", "exec script.sh", "en_avant_le_show"],
+  ["reboot", "restart", "shutdown -r", "en_voiture_simone"],
+];
+
+export const cAnsLinux = [
+  "ls",
+  "cd",
+  "touch",
+  "pwd",
+  "rm",
+  "cp",
+  "cat",
+  "mv",
+  "./script.sh",
+  "reboot",
+];
+
+/* ------ Markdown ----- */
+export const qlMD = [
+  "Comment créer un titre de premier niveau en Markdown ?",
+  "Comment ajouter un lien hypertexte en Markdown ?",
+  "Comment créer une liste non ordonnée en Markdown ?",
+  "Comment formater du texte en gras en Markdown ?",
+  "Comment créer un bloc de code en Markdown ?",
+  "Comment ajouter une image en Markdown ?",
+  "Comment ajouter une citation en Markdown ?",
+  "Comment faire une liste ordonnée en Markdown ?",
+  "Comment souligner du texte en Markdown ?",
+  "Comment créer une ligne horizontale en Markdown ?",
+];
+
+export const ansMD = [
+  ["# Titre", "- Titre", "= Titre", "💥 SuperTitre"],
+  ["[Texte](URL)", '<a href="URL">Texte</a>', "[Texte]: URL", "[clic_magic]"],
+  ["* élément", "1. élément", "- élément", "[liste de courses]"],
+  ["**texte**", "*texte*", "_texte_", "💪 strong_text"],
+  ["`code`", "<code>", "{code}", "💻 balise_magique"],
+  [
+    "![alt](URL)",
+    '<img src="URL" alt="alt">',
+    "[alt](URL)",
+    "🖼️_picto_fantaisie",
+  ],
+  ["> citation", "- citation", '" citation "', "💭un_sage_a_dit_un_jour"],
+  ["1. élément", "- élément", "* élément", "📜 belle_liste"],
+  ["--- texte", "__texte__", "<u>texte</u>", "texte_souligne_toi"],
+  ["--- (dashes)", "___ (underscores)", "***", "-draw_line-"],
+];
+
+export const cAnsMD = [
+  "# Titre",
+  "[Texte](URL)",
+  "* élément",
+  "**texte**",
+  "`code`",
+  "![alt](URL)",
+  "> citation",
+  "1. élément",
+  "--- texte",
+  "--- (dashes)",
+];
+
+/* ------ Git ----- */
+
+export const qlGit = [
+  "Quelle commande initialise un nouveau dépôt Git ?",
+  "Quelle commande permet d’ajouter des fichiers au staging area ?",
+  "Comment confirmer des changements dans Git ?",
+  "Quelle commande permet de créer une nouvelle branche ?",
+  "Quelle commande fusionne deux branches dans Git ?",
+  "Comment récupérer les changements d’un dépôt distant ?",
+  "Quelle commande permet d’envoyer des changements vers un dépôt distant ?",
+  "Quelle commande affiche l’historique des commits ?",
+  "Comment revenir temporairement à un commit précédent ?",
+  "Quelle commande permet de cloner un dépôt distant ?",
+];
+
+export const ansGit = [
+  ["git init", "git start", "git new", "git fabrique_un_gite"],
+  ["git add", "git stage", "git prepare", "git mettre_dans_le_panier"],
+  ["git commit", "git save", "git push", "git fais_le_taf"],
+  ["git branch", "git new branch", "git checkout", "git fais_du_bois"],
+  ["git merge", "git join", "git combine", "git fuuuuuusion HA !"],
+  ["git pull", "git fetch", "git clone", "git oh hisse"],
+  ["git push", "git send", "git upload", "git le_facteur_est_passé"],
+  ["git log", "git history", "git commits", "git ct mieux avant"],
+  ["git checkout", "git revert", "git reset", "git back_to_the_futur"],
+  ["git clone", "git copy", "git download", "git terminator"],
+];
+
+export const cAnsGit = [
+  "git init",
+  "git add",
+  "git commit",
+  "git branch",
+  "git merge",
+  "git pull",
+  "git push",
+  "git log",
+  "git checkout",
+  "git clone",
 ];
