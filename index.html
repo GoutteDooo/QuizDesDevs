@@ -35,19 +35,64 @@
     </div>
 
     <div class="blur-background"></div>
+    <!-- SETTINGS NON VISIBLES DE BASE -->
     <div class="settings">
-      <h1>Paramètres du Quiz</h1>
-      <div class="settings-time">Temps par question</div>
-      <div class="settings-ques-per-theme">Nombre de questions par thème</div>
-      <div class="settings-themes-container">
-        <h2>Thèmes abordés</h2>
-        <div class="settings-theme">HTML</div>
-        <div class="settings-theme">CSS</div>
-        <div class="settings-theme">JavaScript</div>
-        <div class="settings-theme">Markdown</div>
-        <div class="settings-theme">Git</div>
-        <div class="settings-theme">Terminal Linux</div>
+      <div class="settings-title">Paramètres du Quiz</div>
+      <div class="settings-time">
+        Temps par question
+        <input
+          type="range"
+          name="settings-time"
+          id="settings-time"
+          min="5"
+          max="120"
+        />
       </div>
+      <div class="settings-ques-per-theme">
+        Nombre de questions par thème
+
+        <input
+          type="range"
+          name="settings-qpt"
+          id="settings-qpt"
+          min="1"
+          max="10"
+        />
+      </div>
+      <div class="settings-themes-container">
+        <div class="settings-themes-title">Thèmes abordés</div>
+        <div class="settings-themes-list">
+          <div class="settings-theme">
+            <label for="theme-all">Tout les thèmes</label>
+            <input type="checkbox" name="theme-html" id="theme-all" />
+          </div>
+          <div class="settings-theme">
+            <label for="theme-html">HTML</label>
+            <input type="checkbox" name="theme-html" id="theme-html" />
+          </div>
+          <div class="settings-theme">
+            <label for="theme-css">CSS</label
+            ><input type="checkbox" name="theme-css" id="theme-css" />
+          </div>
+          <div class="settings-theme">
+            <label for="theme-js">JavaScript</label>
+            <input type="checkbox" name="theme-js" id="theme-js" />
+          </div>
+          <div class="settings-theme">
+            <label for="theme-md">Markdown</label>
+            <input type="checkbox" name="theme-md" id="theme-md" />
+          </div>
+          <div class="settings-theme">
+            <label for="theme-git">Git</label>
+            <input type="checkbox" name="theme-git" id="theme-git" />
+          </div>
+          <div class="settings-theme">
+            <label for="theme-linux">Terminal Linux</label>
+            <input type="checkbox" name="theme-linux" id="theme-linux" />
+          </div>
+        </div>
+      </div>
+      <button class="settings-validate">Valider</button>
     </div>
 
     <a href="https://X.com" target="_blank">Partage tes résultats sur X</a>

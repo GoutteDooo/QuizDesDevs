@@ -18,6 +18,10 @@ import {
   ansJS,
   cAnsJS,
 } from "./data.js";
+import openSetting from "./settings.js";
+
+import settings from "./settings.js";
+
 let score = 0;
 let record = score;
 let timer = 20000;
@@ -82,6 +86,7 @@ class Questionnaire {
 const card = document.querySelector(".card");
 const scoreDisplay = document.querySelector(".score strong");
 const recordDisplay = document.querySelector(".record");
+const settingsBtn = document.querySelector(".settings-btn");
 
 //éléments modifiés dynamiquement à la fin du quiz
 var questionsLeftContainer = document.querySelector(".questions-lefts");
@@ -427,4 +432,8 @@ responsesContainer.addEventListener("click", () => {
     firstClick = true;
     startQuiz();
   }
+});
+
+settingsBtn.addEventListener("click", () => {
+  openSetting();
 });
