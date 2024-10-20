@@ -18,17 +18,17 @@ import {
   ansJS,
   cAnsJS,
 } from "./data.js";
-import openSetting from "./settings.js";
-
-import settings from "./settings.js";
+import openSettings from "./settings.js";
+import { selectedOptions } from "./settings.js";
 
 let score = 0;
 let record = score;
-let timer = 20000;
+let timer = selectedOptions.questionTime; //Gére dynamiquement le displayed timer
 let firstClick = false; //levier permettant de démarrer le quiz
 let startConfetti = false;
 let audioChronoPreviousState = null; //Variable pour garder l'état précédent du chrono audio
-const questionTime = 20000; //temps en ms pour chaque question
+let questionTime = timer; //temps en ms pour chaque question
+let numbQuestionPerTheme = selectedOptions.numbQuestionPerTheme;
 
 class Question {
   constructor(questionText, answers, correctAnswer) {
@@ -73,8 +73,16 @@ class Questionnaire {
     return this.questions.length - this.currentQuestionIndex;
   }
 
-  fillQuestionnaire(questionList, answersList, correctAnswerList) {
-    for (let i = 0; i < questionList.length; i++) {
+  fillQuestionnaire(
+    questionList,
+    answersList,
+    correctAnswerList,
+    numberQuestions
+  ) {
+    for (let i = 0; i < numberQuestions; i++) {
+      //test
+      console.log("question ajoutée n°", i, ": ", questionList[i]);
+
       this.addQuestion(
         new Question(questionList[i], answersList[i], correctAnswerList[i])
       );
@@ -365,9 +373,7 @@ function loadConfettiScript() {
   const script = document.createElement("script");
   script.src =
     "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"; // URL du CDN
-  script.onload = function () {
-    console.log("Canvas Confetti loaded");
-  };
+  script.onload = function () {};
   document.head.appendChild(script); // Ajoute le script dans le document
 }
 
@@ -412,14 +418,6 @@ let questionnaireInfo = new Questionnaire();
 //CHARGEMENT DE LA PAGE
 //Mettre à jour le score
 //rempli le questionnaire de questions
-questionnaireInfo.fillQuestionnaire(qlHTML, ansHTML, cAnsHTML);
-questionnaireInfo.fillQuestionnaire(qlCSS, ansCSS, cAnsCSS);
-questionnaireInfo.fillQuestionnaire(qlLinux, ansLinux, cAnsLinux);
-questionnaireInfo.fillQuestionnaire(qlGit, ansGit, cAnsGit);
-questionnaireInfo.fillQuestionnaire(qlMD, ansMD, cAnsMD);
-questionnaireInfo.fillQuestionnaire(qlJS, ansJS, cAnsJS);
-
-questionnaireInfo.shuffleQuestions();
 
 // Appelle la fonction pour charger le script des confettis
 loadConfettiScript();
@@ -428,6 +426,23 @@ loadConfettiScript();
 cardQuestion.innerHTML =
   "Paramétrez le quiz ou <br><em style='font-size : 2rem'>Cliquez sur une case pour le démarrer</em>";
 responsesContainer.addEventListener("click", () => {
+  /* --- remplir le quiz des settings attribuées ---*/
+  questionTime = selectedOptions.questionTime * 1000;
+  timer = questionTime;
+  numbQuestionPerTheme = selectedOptions.numbQuestionPerTheme;
+
+  //Remplir le quiz des themes sélectionnés
+  selectedOptions.themesSelected.forEach((questionnaire) => {
+    questionnaireInfo.fillQuestionnaire(
+      qlHTML,
+      ansHTML,
+      cAnsHTML,
+      numbQuestionPerTheme
+    );
+    console.log("etape de filling : ", questionnaire);
+  });
+  console.log("filling quuiz :", questionnaireInfo);
+
   if (!firstClick) {
     firstClick = true;
     startQuiz();
@@ -435,5 +450,5 @@ responsesContainer.addEventListener("click", () => {
 });
 
 settingsBtn.addEventListener("click", () => {
-  openSetting();
+  openSettings();
 });

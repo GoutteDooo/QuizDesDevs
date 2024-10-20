@@ -46,18 +46,23 @@
           id="settings-time"
           min="5"
           max="120"
+          step="5"
+          value="20"
         />
+        <output id="settings-time-value"></output>
       </div>
       <div class="settings-ques-per-theme">
         Nombre de questions par thème
-
         <input
           type="range"
           name="settings-qpt"
           id="settings-qpt"
           min="1"
           max="10"
+          step="1"
+          value="5"
         />
+        <output id="settings-qpt-value"></output>
       </div>
       <div class="settings-themes-container">
         <div class="settings-themes-title">Thèmes abordés</div>
@@ -92,7 +97,7 @@
           </div>
         </div>
       </div>
-      <button class="settings-validate">Valider</button>
+      <input type="button" class="settings-validate" id="settings-validate" value="Valider"></input>
     </div>
 
     <a href="https://X.com" target="_blank">Partage tes résultats sur X</a>

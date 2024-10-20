@@ -5,6 +5,10 @@ export const qlHTML = [
   "Quelle balise est utilisée pour les images ?",
   "Citez un attribut HTML lié aux images",
   "Que signifie HTML ? ",
+  "question 7 HTML",
+  "question 8 HTML",
+  "question 9 HTML",
+  "question 10 HTML",
 ];
 export const ansHTML = [
   ["<title></title>", "<h1></h1>", "<p></p>", '<input type="title" />'],
@@ -18,6 +22,10 @@ export const ansHTML = [
     "Hierarchical Tagging Markup Language",
     "How To Meet Ladies",
   ],
+  ["r q7", "r q7", "r q7", "r q7"],
+  ["r q8", "r q8", "r q8", "r q8"],
+  ["r q9", "r q9", "r q9", "r q9"],
+  ["r q10", "r q10", "r q10", "r q10"],
 ];
 export const cAnsHTML = [
   "<h1></h1>",
@@ -26,6 +34,10 @@ export const cAnsHTML = [
   "<img />",
   "src",
   "HyperText Markup Language",
+  "r q7",
+  "r q8",
+  "r q9",
+  "r q10",
 ];
 
 /* ----- CSS ----- */
