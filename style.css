@@ -144,6 +144,7 @@ img {
   font-size: 1.5rem;
   padding: 10px;
   text-align: center;
+  user-select: none;
 }
 
 .card-responses-container > .responses > .response:hover {

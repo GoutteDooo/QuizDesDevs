@@ -158,9 +158,9 @@ export const ansJS = [
   ["push()", "append()", "add()", "ramèneTaFraise()"],
   [
     "let objet = {}",
-    "let objet = []",
     "let objet = newObject()",
-    "let objet = pouf()",
+    "let objet = new Object",
+    "et_paf_ca_fait_des_chocapics",
   ],
   ["undefined", "null", "NaN", "pas_encore_la"],
   ["parseInt()", "parseFloat()", "Number()", "transformation()"],
