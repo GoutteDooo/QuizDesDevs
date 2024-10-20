@@ -74,7 +74,7 @@ class Questionnaire {
       // Réinjecter les questions mélangées dans la position originale
       for (let j = 0; j < questionsRange.length; j++) {
         this.questions[start + j] = questionsRange[j];
-        // this.questions[start + j].shuffleAnswers();
+        this.questions[start + j].shuffleAnswers();
       }
     }
   }
@@ -122,6 +122,7 @@ const card = document.querySelector(".card");
 const scoreDisplay = document.querySelector(".score strong");
 const recordDisplay = document.querySelector(".record");
 const settingsBtn = document.querySelector(".settings-btn");
+const blurBackground = document.querySelector(".blur-background");
 
 //éléments modifiés dynamiquement à la fin du quiz
 var questionsLeftContainer = document.querySelector(".questions-lefts");
@@ -209,7 +210,15 @@ const checkAnswer = (selectedAnswer) => {
   if (
     questionnaireInfo.currentQuestionIndex < questionnaireInfo.questions.length
   ) {
-    changeCard(); // Charge la prochaine question
+    //si on arrive au thème suivant
+    if (questionnaireInfo.currentQuestionIndex % numbQuestionPerTheme === 0) {
+      //avant de faire changeCard, on affiche le nouveau thème
+      displayChangeTheme().then(() => {
+        changeCard(); // Charge la prochaine question après l'affichage du thème
+      });
+    } else {
+      changeCard(); // Charge la prochaine question
+    }
   } else {
     endQuiz(); // Termine le quiz
   }
@@ -441,9 +450,37 @@ settingsBtn.addEventListener("click", () => {
   openSettings();
 });
 
-/* -------chrono sound tests -------------- */
+const displayChangeTheme = async () => {
+  //Repérer quel est le thème suivant
+  const questionIndex = questionnaireInfo.currentQuestionIndex;
+  const themes = selectedOptions.themesSelected;
+  const qpr = numbQuestionPerTheme;
+  const indexActualTheme = Math.floor(questionIndex / qpr); //Formule permettant de trouver l'index du theme
+  const actualTheme = themes[indexActualTheme];
+  console.log("nouveau thème : ", actualTheme);
+  timer = questionTime; //Car le joueur peut perdre un point s'il répond trop tard avant le changement de thème
 
-/* -------chrono sound tests -------------- */
+  //AFFICHAGE
+  blurBackground.style.display = "block";
+  blurBackground.style.animation = "fadeInOut 3s forwards";
+  const changingThemeCard = document.createElement("div");
+  changingThemeCard.innerText = "Nouveau thème : " + actualTheme;
+
+  // Ajouter la carte dans le DOM
+  blurBackground.appendChild(changingThemeCard);
+  changingThemeCard.classList.add("changing-theme-card");
+
+  // Attendre avant de changer le texte de la carte
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      // Retirer la carte et désactiver le flou après 3 secondes
+      blurBackground.style.display = "none";
+      blurBackground.style.removeProperty("animation");
+      changingThemeCard.remove(); // Supprime la carte après l'affichage
+      resolve();
+    }, 2500);
+  });
+};
 
 //générer un questionnaire vide, et le remplir avant de charger la page
 let questionnaireInfo = new Questionnaire();
@@ -525,9 +562,9 @@ responsesContainer.addEventListener("click", () => {
         questionnaireInfo
       );
     });
-    console.log("quiz filled :", questionnaireInfo);
+    // console.log("quiz filled :", questionnaireInfo);
     questionnaireInfo.shuffleQuestionsByTheme();
-    console.log("shuffling par theme : ", questionnaireInfo);
+    // console.log("shuffling par theme : ", questionnaireInfo);
 
     firstClick = true;
     startQuiz();

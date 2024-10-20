@@ -286,6 +286,7 @@ img {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: 0.5s;
 }
 
 .blur-background {
@@ -298,4 +299,47 @@ img {
   backdrop-filter: blur(5px); /* Effet de flou */
   z-index: 99; /* Derrière la div settings */
   display: none;
+  transition: 0.5s;
+}
+
+.changing-theme-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--bg-text-color);
+  font-size: 3rem;
+  animation: change-theme 2s forwards;
+  user-select: none;
+
+}
+
+@keyframes change-theme {
+  0% {
+    transform: translate(-50%, -1000px);
+  }
+  20% {
+    transform: translate(-50%, 0px);
+  }
+  80% {
+    transform: translate(-50%, 0px);
+  }
+  100% {
+    transform: translate(-50%, 1000px);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
