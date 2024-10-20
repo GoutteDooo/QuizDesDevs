@@ -52,9 +52,34 @@ class Questionnaire {
     this.questions.push(question);
   }
 
-  shuffleQuestions() {
+  //Fonction pour mixer tout les thèmes
+  shuffleAllQuestions() {
     this.questions.sort(() => Math.random() - 0.5);
     this.questions.forEach((question) => question.shuffleAnswers());
+  }
+
+  shuffleQuestionsByTheme() {
+    const numberOfThemes = selectedOptions.themesSelected.length;
+    const questionsPerTheme = numbQuestionPerTheme;
+    console.log("nombre de theme :", numberOfThemes);
+    console.log("questions par theme :", questionsPerTheme);
+
+    for (let i = 0; i < numberOfThemes; i++) {
+      // Définir les bornes de chaque plage
+      const start = i * questionsPerTheme; // Index de début de la plage
+      const end = start + questionsPerTheme; // Index de fin de la plage (non inclus)
+
+      // Extraire les questions de la plage et les mélanger
+      const questionsRange = this.questions.slice(start, end);
+      questionsRange.sort(() => Math.random() - 0.5);
+      console.log("questions Range :", questionsRange);
+
+      // Réinjecter les questions mélangées dans la position originale
+      for (let j = 0; j < questionsRange.length; j++) {
+        this.questions[start + j] = questionsRange[j];
+        // this.questions[start + j].shuffleAnswers();
+      }
+    }
   }
 
   getCurrentQuestion() {
@@ -81,7 +106,12 @@ class Questionnaire {
   ) {
     for (let i = 0; i < numberQuestions; i++) {
       //test
-      console.log("question ajoutée n°", i, ": ", questionList[i]);
+      console.log(
+        "question ajoutée n°",
+        this.questions.length,
+        ": ",
+        questionList[i]
+      );
 
       this.addQuestion(
         new Question(questionList[i], answersList[i], correctAnswerList[i])
@@ -212,7 +242,8 @@ const endQuiz = () => {
     startConfetti = true;
     confettiLoop();
   }
-
+  //Display
+  scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
   cardQuestion.innerText = "Quiz terminé !";
   responsesContainer.innerHTML = "";
   card.innerHTML = `<img class="imgFinal" style="animation : finish ${
@@ -258,7 +289,6 @@ const createButtonRetry = () => {
     timer = questionTime;
 
     card.removeChild(retryButton);
-    questionnaireInfo.shuffleQuestions();
     initializeCard();
     changeCard();
     relaunchTimer();
@@ -323,7 +353,8 @@ const relaunchTimer = () => {
         console.log("fin quiz");
       }
     }
-  }, 50);
+    // console.log("timer : ", timer);
+  }, 40);
 };
 
 //Gère l'affichage du timer & du son chrono
@@ -408,6 +439,11 @@ const confettiLoop = () => {
   }
 };
 
+//Bouton Settings
+settingsBtn.addEventListener("click", () => {
+  openSettings();
+});
+
 /* -------chrono sound tests -------------- */
 
 /* -------chrono sound tests -------------- */
@@ -416,39 +452,143 @@ const confettiLoop = () => {
 let questionnaireInfo = new Questionnaire();
 
 //CHARGEMENT DE LA PAGE
-//Mettre à jour le score
-//rempli le questionnaire de questions
-
 // Appelle la fonction pour charger le script des confettis
 loadConfettiScript();
 
-// Lance la première question quand la page est chargée
 cardQuestion.innerHTML =
   "Paramétrez le quiz ou <br><em style='font-size : 2rem'>Cliquez sur une case pour le démarrer</em>";
 responsesContainer.addEventListener("click", () => {
-  /* --- remplir le quiz des settings attribuées ---*/
-  questionTime = selectedOptions.questionTime * 1000;
-  timer = questionTime;
-  numbQuestionPerTheme = selectedOptions.numbQuestionPerTheme;
-
-  //Remplir le quiz des themes sélectionnés
-  selectedOptions.themesSelected.forEach((questionnaire) => {
-    questionnaireInfo.fillQuestionnaire(
-      qlHTML,
-      ansHTML,
-      cAnsHTML,
-      numbQuestionPerTheme
-    );
-    console.log("etape de filling : ", questionnaire);
-  });
-  console.log("filling quuiz :", questionnaireInfo);
-
   if (!firstClick) {
+    //enlever le button settings
+    settingsBtn.style.display = "none";
+
+    /* --- remplir le quiz des settings attribuées ---*/
+    questionTime = selectedOptions.questionTime;
+    timer = questionTime;
+    numbQuestionPerTheme = selectedOptions.numbQuestionPerTheme;
+
+    //Remplir le quiz des themes sélectionnés
+    const themes = selectedOptions.themesSelected.length;
+    for (let i = 0; i < themes; i++) {
+      switch (selectedOptions.themesSelected[i]) {
+        case "HTML":
+          questionnaireInfo.fillQuestionnaire(
+            qlHTML,
+            ansHTML,
+            cAnsHTML,
+            numbQuestionPerTheme
+          );
+          break;
+        case "CSS":
+          questionnaireInfo.fillQuestionnaire(
+            qlCSS,
+            ansCSS,
+            cAnsCSS,
+            numbQuestionPerTheme
+          );
+          break;
+        case "JS":
+          questionnaireInfo.fillQuestionnaire(
+            qlJS,
+            ansJS,
+            cAnsJS,
+            numbQuestionPerTheme
+          );
+          break;
+        case "MD":
+          questionnaireInfo.fillQuestionnaire(
+            qlMD,
+            ansMD,
+            cAnsMD,
+            numbQuestionPerTheme
+          );
+          break;
+        case "GIT":
+          questionnaireInfo.fillQuestionnaire(
+            qlGit,
+            ansGit,
+            cAnsGit,
+            numbQuestionPerTheme
+          );
+          break;
+        case "LINUX":
+          questionnaireInfo.fillQuestionnaire(
+            qlLinux,
+            ansLinux,
+            cAnsLinux,
+            numbQuestionPerTheme
+          );
+          break;
+        default:
+          break;
+      }
+    }
+
+    // selectedOptions.themesSelected.forEach((questionnaire) => {
+    //   switch (questionnaire) {
+    //     case "HTML":
+    //       questionnaireInfo.fillQuestionnaire(
+    //         qlHTML,
+    //         ansHTML,
+    //         cAnsHTML,
+    //         numbQuestionPerTheme
+    //       );
+    //       break;
+    //     case "CSS":
+    //       questionnaireInfo.fillQuestionnaire(
+    //         qlCSS,
+    //         ansCSS,
+    //         cAnsCSS,
+    //         numbQuestionPerTheme
+    //       );
+    //       break;
+    //     case "JS":
+    //       questionnaireInfo.fillQuestionnaire(
+    //         qlJS,
+    //         ansJS,
+    //         cAnsJS,
+    //         numbQuestionPerTheme
+    //       );
+    //       break;
+    //     case "MD":
+    //       questionnaireInfo.fillQuestionnaire(
+    //         qlMD,
+    //         ansMD,
+    //         cAnsMD,
+    //         numbQuestionPerTheme
+    //       );
+    //       break;
+    //     case "GIT":
+    //       questionnaireInfo.fillQuestionnaire(
+    //         qlGit,
+    //         ansGit,
+    //         cAnsGit,
+    //         numbQuestionPerTheme
+    //       );
+    //       break;
+    //     case "LINUX":
+    //       questionnaireInfo.fillQuestionnaire(
+    //         qlLinux,
+    //         ansLinux,
+    //         cAnsLinux,
+    //         numbQuestionPerTheme
+    //       );
+    //       break;
+    //     default:
+    //       break;
+    //   }
+    //   console.log(
+    //     "etape de filling : ",
+    //     questionnaire,
+    //     ", questionnaire actuel :",
+    //     questionnaireInfo
+    //   );
+    // });
+    console.log("quiz filled :", questionnaireInfo);
+    questionnaireInfo.shuffleQuestionsByTheme();
+    console.log("shuffling par theme : ", questionnaireInfo);
+
     firstClick = true;
     startQuiz();
   }
-});
-
-settingsBtn.addEventListener("click", () => {
-  openSettings();
 });

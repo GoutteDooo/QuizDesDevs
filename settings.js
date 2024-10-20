@@ -1,7 +1,7 @@
 //variables settings avec valeur par défaut
 let questionTime = 20000;
 let numbQuestionPerTheme = 5;
-let themesSelected = ["HTML", "CSS", "JS"];
+let themesSelected = ["HTML", "CSS", "JS", "MD", "GIT", "LINUX"];
 let selectedOptions = {
   questionTime,
   numbQuestionPerTheme,
@@ -18,6 +18,7 @@ const settingsQptValue = document.getElementById("settings-qpt-value");
 settingsQptValue.value = numbQuestionPerTheme;
 //checkboxes
 const allThemes = document.getElementById("theme-all");
+allThemes.checked = true;
 const htmlTheme = document.getElementById("theme-html");
 htmlTheme.checked = true;
 const cssTheme = document.getElementById("theme-css");
@@ -25,8 +26,11 @@ cssTheme.checked = true;
 const jsTheme = document.getElementById("theme-js");
 jsTheme.checked = true;
 const mdTheme = document.getElementById("theme-md");
+mdTheme.checked = true;
 const gitTheme = document.getElementById("theme-git");
+gitTheme.checked = true;
 const linuxTheme = document.getElementById("theme-linux");
+linuxTheme.checked = true;
 
 //button
 const buttonValidate = document.getElementById("settings-validate");
@@ -52,7 +56,7 @@ settingsTime.addEventListener("input", (e) => {
   //affichage dynamique
   settingsTimeValue.value = e.target.value;
   //affecter la valeur dans la variable option
-  questionTime = e.target.value;
+  questionTime = e.target.value * 1000;
 });
 
 settingsQpt.addEventListener("input", (e) => {
