@@ -56,6 +56,7 @@ export const qlCSS = [
   "Quelle unité de mesure est relative à la taille de la police parente ?",
   "À quoi sert la propriété position: absolute; ?",
   "Quelle propriété CSS est utilisée pour créer des espaces à l'intérieur des bordures d'un élément ?",
+  "Quel est le bon ordre de priorité des styles ?",
 ];
 
 export const ansCSS = [
@@ -108,6 +109,12 @@ export const ansCSS = [
     "Permettre à l'élément d'exister dans une autre dimension",
   ],
   ["border-spacing", "margin", "padding", "inner-bubble"],
+  [
+    "en ligne > interne > externe > user",
+    "interne > externe > en ligne > user",
+    "en ligne > user > interne > externe",
+    "y'en a certainement un.",
+  ],
 ];
 
 export const cAnsCSS = [
@@ -125,6 +132,7 @@ export const cAnsCSS = [
   "em",
   "Placer l'élément par rapport à son conteneur le plus proche avec position: relative;",
   "padding",
+  "en ligne > interne > externe > user",
 ];
 
 /*----- JavaScript ----- */
@@ -286,6 +294,7 @@ export const qlGit = [
   "Comment revenir temporairement à un commit précédent ?",
   "Quelle commande permet de cloner un dépôt distant ?",
   "A quoi sert une Pull Request ? (PR)",
+  "A quoi sert le rebase ?",
 ];
 
 export const ansGit = [

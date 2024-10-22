@@ -256,11 +256,11 @@ img {
 
 .settings-btn {
   position: absolute;
-  transform: translate(370px,-220px);
+  transform: translate(370px, -220px);
   background-color: var(--bg-color);
   mask-image: url("./assets/img/svg/gear-solid.svg");
   height: 70px;
-  width: 70px;  
+  width: 70px;
   background-size: contain; /* Pour ajuster l'image à la taille du bouton */
   background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
   background-position: center; /* Centrer l'image dans le bouton */
@@ -288,6 +288,49 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: 0.5s;
+  padding: 20px;
+}
+
+.settings-title {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 2rem;
+}
+
+.set {
+  margin: 10px;
+}
+
+.settings-themes-list {
+  display: flex;
+}
+.settings-themes-title {
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+#theme-all-input {
+  font-weight: bold;
+}
+
+.settings-validate {
+  display: block;
+  height: 70px;
+  width: 200px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 2px solid black;
+  font-size: 1.2rem;
+  margin: 170px auto 0 auto;
+  background: none;
+  box-shadow: 0 10px black;
+}
+
+.settings-validate:hover {
+  transition: 0.2s;
+  background: var(--bg-text-color);
+  box-shadow: 0 0 black;
+  transform: translateY(10px);
 }
 
 .blur-background {
@@ -296,7 +339,12 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2); /* Une légère opacité pour obscurcir l'arrière-plan */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Une légère opacité pour obscurcir l'arrière-plan */
   backdrop-filter: blur(5px); /* Effet de flou */
   z-index: 99; /* Derrière la div settings */
   display: none;
@@ -312,7 +360,6 @@ img {
   font-size: 3rem;
   animation: change-theme 2s forwards;
   user-select: none;
-
 }
 
 @keyframes change-theme {
