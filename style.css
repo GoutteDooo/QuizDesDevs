@@ -270,9 +270,10 @@ img {
 
 .settings-btn:hover {
   position: absolute;
-  transition: 0.2s;
+  transition: 0.4s;
   background: var(--bg-text-color);
   cursor: pointer;
+  transform : translate(370px, -220px) rotate(60deg) scale(1.1)
 }
 
 .settings {

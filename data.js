@@ -5,10 +5,15 @@ export const qlHTML = [
   "Quelle balise est utilisée pour les images ?",
   "Citez un attribut HTML lié aux images",
   "Que signifie HTML ? ",
-  "question 7 HTML",
-  "question 8 HTML",
-  "question 9 HTML",
-  "question 10 HTML",
+  "Quelle est la balise HTML correcte pour insérer une ligne horizontale ?",
+  "Quelle balise est utilisée pour définir les en-têtes dans un tableau ?",
+  "Quelle balise HTML est utilisée pour créer une liste de définitions ?",
+  "Quelle balise HTML est utilisée pour créer un formulaire ?",
+  "Comment spécifier un champ obligatoire dans un formulaire HTML ?",
+  "Quel attribut est utilisé pour lier un label à un champ de formulaire ?",
+  "Quelle balise HTML est utilisée pour définir une citation longue ?",
+  "Quel attribut permet d’ouvrir un lien dans un nouvel onglet ?",
+  "Quelle est la structure correcte d'une table HTML ?",
 ];
 export const ansHTML = [
   ["<title></title>", "<h1></h1>", "<p></p>", '<input type="title" />'],
@@ -22,10 +27,20 @@ export const ansHTML = [
     "Hierarchical Tagging Markup Language",
     "How To Meet Ladies",
   ],
-  ["r q7", "r q7", "r q7", "r q7"],
-  ["r q8", "r q8", "r q8", "r q8"],
-  ["r q9", "r q9", "r q9", "r q9"],
-  ["r q10", "r q10", "r q10", "r q10"],
+  ["<br />", "<nbsp />", "<hr />", "<passage-a-la-ligne />"],
+  ["<th>", "<td>", "<theader>", "<tete-du-tableau>"],
+  ["<dl>", "<dlist>", "<del>", "<définissions>"],
+  ["<form>", "<fieldset>", "<input>", "<boite_a_questions>"],
+  ["required", "mandatory", "haveto", "c_obligatoire"],
+  ["for", "name", "id", "hello_c_moi"],
+  ["<blockquote>", "<quote>", "<q>", "<parole_de_sage>"],
+  ['target="_blank"', 'newtab="true"', 'rel="noopener"', "sesame_ouvre_toi"],
+  [
+    "<table><tr><td></td></tr></table>",
+    "<table><td><tr></tr></td></table>",
+    "<table><tr><tc><td></td></tc></tr></table>",
+    "<table><diner_presque_parfait /></table>",
+  ],
 ];
 export const cAnsHTML = [
   "<h1></h1>",
@@ -34,10 +49,15 @@ export const cAnsHTML = [
   "<img />",
   "src",
   "HyperText Markup Language",
-  "r q7",
-  "r q8",
-  "r q9",
-  "r q10",
+  "<br />",
+  "<th>",
+  "<dl>",
+  "<form>",
+  "required",
+  "for",
+  "<blockquote>",
+  'target="_blank"',
+  "<table><tr><td></td></tr></table>",
 ];
 
 /* ----- CSS ----- */
@@ -57,6 +77,12 @@ export const qlCSS = [
   "À quoi sert la propriété position: absolute; ?",
   "Quelle propriété CSS est utilisée pour créer des espaces à l'intérieur des bordures d'un élément ?",
   "Quel est le bon ordre de priorité des styles ?",
+  "Quel est le bon ordre de spécificité des sélecteurs ?",
+  "Que se passe-t-il si deux règles sont de même niveau ?",
+  "Laquelle de ces propriétés n'est pas héritable ?",
+  "Laquelle de ces propriétés est héritable ?",
+  "Quelle propriété force l'héritage de son parent ?",
+  "Quelle propriété annule l'héritage de son parent ?",
 ];
 
 export const ansCSS = [
@@ -115,6 +141,22 @@ export const ansCSS = [
     "en ligne > user > interne > externe",
     "y'en a certainement un.",
   ],
+  [
+    "!important > id > classe > type (p, h1, etc)",
+    "id > !important > classe > type (p, h1, etc)",
+    "type (p, h1, etc) > classe > id > !important",
+    "La réponse D.",
+  ],
+  [
+    "La dernière s'applique ",
+    "Les deux s'appliquent mutuellement",
+    "La première s'applique",
+    "Elles tirent à la courte paille",
+  ],
+  ["background", "color", "font-family", "La maison de ma belle-mère"],
+  ["text-align", "margin", "width", "La calvitie de mon père"],
+  ["inherit", "herit", "initial", "Un passage au tribunal"],
+  ["initial", "inherit", "unset", "cut-the-cord"],
 ];
 
 export const cAnsCSS = [
@@ -133,6 +175,12 @@ export const cAnsCSS = [
   "Placer l'élément par rapport à son conteneur le plus proche avec position: relative;",
   "padding",
   "en ligne > interne > externe > user",
+  "!important > id > classe > type (p, h1, etc)",
+  "La dernière s'applique ",
+  "background",
+  "text-align",
+  "inherit",
+  "initial",
 ];
 
 /*----- JavaScript ----- */
