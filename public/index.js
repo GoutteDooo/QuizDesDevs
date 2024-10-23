@@ -38,6 +38,8 @@ class Question {
   }
 
   shuffleAnswers() {
+    console.log(this.answers);
+
     this.answers.sort(() => Math.random() - 0.5);
   }
 }
@@ -101,17 +103,32 @@ class Questionnaire {
     correctAnswerList,
     numberQuestions
   ) {
+    // Création d'une liste d'indices allant de 0 à la taille du tableau de questions
+    const indices = [...Array(questionList.length).keys()];
+
+    // Mélange aléatoire des indices avec la méthode Fisher-Yates
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    // Sélection des questions aléatoires selon le nombre demandé
     for (let i = 0; i < numberQuestions; i++) {
-      //test
+      const randomIndex = indices[i];
+
       console.log(
-        "question ajoutée n°",
+        "Question ajoutée n°",
         this.questions.length,
         ": ",
-        questionList[i]
+        questionList[randomIndex]
       );
 
       this.addQuestion(
-        new Question(questionList[i], answersList[i], correctAnswerList[i])
+        new Question(
+          questionList[randomIndex],
+          answersList[randomIndex],
+          correctAnswerList[randomIndex]
+        )
       );
     }
   }

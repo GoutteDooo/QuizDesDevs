@@ -83,6 +83,14 @@ export const qlCSS = [
   "Laquelle de ces propriétés est héritable ?",
   "Quelle propriété force l'héritage de son parent ?",
   "Quelle propriété annule l'héritage de son parent ?",
+  "Quelle propriété permet de définir la hauteur minimale d’un élément en CSS ?",
+  "Quelle valeur de position permet à un élément de rester fixe lors du défilement ?",
+  "Comment définir une bordure en CSS ?",
+  "Quelle propriété permet de changer la police d’un texte en CSS ?",
+  "Quelle propriété contrôle l’espace entre les lignes de texte ?",
+  "Quelle unité CSS est relative à la largeur de la fenêtre ?",
+  "Comment transformer le texte en majuscules en CSS ?",
+  "Quelle propriété permet de centrer un élément avec margin en CSS ?",
 ];
 
 export const ansCSS = [
@@ -126,7 +134,7 @@ export const ansCSS = [
     "box-shadow",
     "dire 'ombre' et espérer que ça marche",
   ],
-  ["visibility", "transparency", "opacity", "see-through-mode"],
+  ["visibility", "transparency", "opacity", "incognito-mode"],
   ["em", "px", "rem", "banana"],
   [
     "Placer l'élément par rapport à son conteneur le plus proche avec position: relative;",
@@ -157,6 +165,19 @@ export const ansCSS = [
   ["text-align", "margin", "width", "La calvitie de mon père"],
   ["inherit", "herit", "initial", "Un passage au tribunal"],
   ["initial", "inherit", "unset", "cut-the-cord"],
+  ["min-height", "height-limit", "minimum-height", "petit_bonhomme_debout"],
+  ["fixed", "absolute", "sticky", "collé_au_sol"],
+  ["border", "line-border", "outline", "a_sauter"],
+  ["font-family", "text-font", "font-style", "changer_de_stylo"],
+  ["line-height", "height", "text-spacing", "spacing-moon"],
+  ["vw", "vh", "px", "prendre_son_metre"],
+  [
+    "text-transform: uppercase",
+    "font-case: capital",
+    "text-decoration: caps",
+    "THIS_IS_SPARTA",
+  ],
+  ["margin: 0 auto", "align: center", "auto-margin", "met_tout_au_centre"],
 ];
 
 export const cAnsCSS = [
@@ -181,6 +202,14 @@ export const cAnsCSS = [
   "text-align",
   "inherit",
   "initial",
+  "min-height",
+  "fixed",
+  "border",
+  "font-family",
+  "line-height",
+  "vw",
+  "text-transform: uppercase",
+  "margin: 0 auto",
 ];
 
 /*----- JavaScript ----- */
@@ -362,6 +391,12 @@ export const ansGit = [
     "Permettre de récupérer un dépôt distant en y indiquant qu'on va y effectuer des modifs",
     "A signaler qu'il est temps de prendre une pause café",
   ],
+  [
+    "A réécrire l'historique des commits d'une branche",
+    "A incorporer l'historique des commits d'une branche à une autre",
+    "A préserver l'historique de chaque branche, y compris les parallèles",
+    "À remonter le temps et corriger les erreurs avec style, mais sans DeLorean.",
+  ],
 ];
 
 export const cAnsGit = [
@@ -376,4 +411,5 @@ export const cAnsGit = [
   "git checkout",
   "git clone",
   "Permettre de proposer des changements à un dépôt distant",
+  "A réécrire l'historique des commits d'une branche",
 ];
