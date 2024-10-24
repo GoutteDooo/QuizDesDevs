@@ -144,9 +144,9 @@ export const ansCSS = [
   ],
   ["border-spacing", "margin", "padding", "inner-bubble"],
   [
-    "en ligne > interne > externe > user",
-    "interne > externe > en ligne > user",
-    "en ligne > user > interne > externe",
+    "inline > interne > externe > user",
+    "interne > externe > inline > user",
+    "inline > user > interne > externe",
     "y'en a certainement un.",
   ],
   [
