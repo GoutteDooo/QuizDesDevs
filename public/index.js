@@ -285,8 +285,8 @@ const endQuiz = () => {
 
 const trophyImg = (ratioS) => {
   if (ratioS >= 1) return "first.png";
-  if (ratioS > 0.9) return "second.png";
-  if (ratioS > 0.6) return "third.png";
+  if (ratioS >= 0.9) return "second.png";
+  if (ratioS >= 0.6) return "third.png";
   return "clap.webp";
 };
 
