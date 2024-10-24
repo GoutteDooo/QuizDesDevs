@@ -14,6 +14,7 @@ export const qlHTML = [
   "Quelle balise HTML est utilisée pour définir une citation longue ?",
   "Quel attribut permet d’ouvrir un lien dans un nouvel onglet ?",
   "Quelle est la structure correcte d'une table HTML ?",
+  "Comment définir un bouton en HTML ?",
 ];
 export const ansHTML = [
   ["<title></title>", "<h1></h1>", "<p></p>", '<input type="title" />'],
@@ -41,6 +42,7 @@ export const ansHTML = [
     "<table><tr><tc><td></td></tc></tr></table>",
     "<table><diner_presque_parfait /></table>",
   ],
+  ["<button>", '<input type="button">', "<btn>", "<appuie_sur_moi>"],
 ];
 export const cAnsHTML = [
   "<h1></h1>",
@@ -58,6 +60,7 @@ export const cAnsHTML = [
   "<blockquote>",
   'target="_blank"',
   "<table><tr><td></td></tr></table>",
+  "<button>",
 ];
 
 /* ----- CSS ----- */
@@ -224,6 +227,14 @@ export const qlJS = [
   "Quelle structure permet de boucler tant qu’une condition est vraie ?",
   "Quelle méthode est utilisée pour ajouter un événement à un élément HTML ?",
   "Quelle méthode permet de vérifier si un tableau contient un élément spécifique ?",
+  "Quelle méthode permet de parcourir les éléments d’un tableau en JavaScript ?",
+  "Quelle est la sortie de typeof null en JavaScript ?",
+  "Comment déclarer une variable en JavaScript ?",
+  "Quelle méthode retourne l’index d’un élément dans un tableau ?",
+  "Que renvoie NaN en JavaScript ?",
+  "Quelle méthode permet de convertir un objet en chaîne JSON ?",
+  "Comment vérifier si une variable est undefined ?",
+  'Quelle est la sortie de 1 + "2" en JavaScript ?',
 ];
 
 export const ansJS = [
@@ -257,6 +268,24 @@ export const ansJS = [
     "add_to_calendar()",
   ],
   ["includes()", "filter()", "forEach()", "detection_en_cours()"],
+  ["forEach()", "map()", "filter()", "tournicoti()"],
+  ["object", "null", "undefined", "black_hole"],
+  ["let", "variable", "constant", "je_declare"],
+  ["indexOf()", "findIndex()", "find()", "index_hunter()"],
+  [
+    "Not a Number",
+    "Null and None",
+    "New and Nested",
+    "La réponse quand JavaScript n'a vraiment plus aucune idée.",
+  ],
+  ["JSON.stringify()", "JSON.parse()", "Object.toJSON()", "conversion_JSON()"],
+  [
+    'typeof(variable) === "undefined"',
+    'variable === "undefined"',
+    "variable == null",
+    "est_ce_que_cette_variable_est_undefined?()",
+  ],
+  ['"12"', '"1b"', "NaN", "ca_ne_va_pas"],
 ];
 
 export const cAnsJS = [
@@ -270,6 +299,14 @@ export const cAnsJS = [
   "while",
   "addEventListener()",
   "includes()",
+  "forEach()",
+  "object",
+  "let",
+  "indexOf()",
+  "Not a Number",
+  "JSON.stringify()",
+  'typeof(variable) === "undefined"',
+  '"12"',
 ];
 
 /* ----- LINUX ----- */
