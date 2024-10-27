@@ -597,15 +597,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const topScores = await getTop100Scores();
 
-    const scoreList = document.querySelector(".leaderboard");
+    const scoreList = document.querySelector(".leaderboard-container");
     // scoreList.innerHTML = ""; // Nettoyer la liste
-    console.log(topScores);
 
     topScores.forEach((score, index) => {
-      const listItem = document.createElement("li");
-      listItem.classList.add("top100-li");
-      listItem.textContent = `${index + 1}. ${score.pseudo}: ${score.score}`;
-      scoreList.appendChild(listItem);
+      const player = document.createElement("div");
+      const indexPlayer = document.createElement("div");
+      const namePlayer = document.createElement("div");
+      const scorePlayer = document.createElement("div");
+      player.classList.add("top100-li");
+      indexPlayer.classList.add("top100-index");
+      namePlayer.classList.add("top100-name");
+      scorePlayer.classList.add("top100-score");
+      indexPlayer.textContent = `${index + 1}`;
+      namePlayer.textContent = `${score.pseudo}`;
+      scorePlayer.textContent = `${score.score}`;
+      player.appendChild(indexPlayer);
+      player.appendChild(namePlayer);
+      player.appendChild(scorePlayer);
+      scoreList.appendChild(player);
     });
   } catch (error) {
     console.error("Erreur lors de l'affichage des scores", error);
