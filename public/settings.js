@@ -35,9 +35,23 @@ linuxTheme.checked = true;
 //button
 const buttonValidate = document.getElementById("settings-validate");
 
-//Sélecteurs
+//Main page
 let settings = document.querySelector(".settings");
 let blur = document.querySelector(".blur-background");
+const settingsBtn = document.querySelector(".settings-btn");
+
+//sfx
+const audio_cric = new Audio("./assets/sounds/cric.mp3");
+
+//Lorsque l'user hover les settings, déclenche le petit cric
+settingsBtn.addEventListener("mouseover", () => {
+  audio_cric.currentTime = 0.2;
+  audio_cric.volume = 0.5;
+  audio_cric.play();
+  setTimeout(() => {
+    audio_cric.pause();
+  }, 200);
+});
 
 //Quand l'user a cliqué sur la roue crantée au début du quiz, ouvre les settings
 const openSettings = () => {

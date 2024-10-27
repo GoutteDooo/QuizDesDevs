@@ -158,12 +158,10 @@ const audio_applause_first = new Audio("./assets/sounds/applause_first.mp3");
 const audio_applause_second = new Audio("./assets/sounds/applause_second.mp3");
 const audio_applause_third = new Audio("./assets/sounds/applause_third.mp3");
 const audio_applause = new Audio("./assets/sounds/applause.mp3");
-var audio_bang = new Audio("./assets/sounds/bang.mp3");
 var audio_chrono = new Audio("./assets/sounds/chrono.mp3");
 audio_chrono.preload = "auto";
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
 audio_correct.preload = "auto";
-audio_bang.preload = "auto";
 
 /* ----------------------------------------------------- FIN INIT ------------------------------------------------------------------*/
 
