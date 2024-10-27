@@ -235,6 +235,7 @@ export const qlJS = [
   "Quelle méthode permet de convertir un objet en chaîne JSON ?",
   "Comment vérifier si une variable est undefined ?",
   'Quelle est la sortie de 1 + "2" en JavaScript ?',
+  "Quelle fonction est utilisée pour temporiser l’exécution d’un code ?",
 ];
 
 export const ansJS = [
@@ -276,7 +277,7 @@ export const ansJS = [
     "Not a Number",
     "Null and None",
     "New and Nested",
-    "La réponse quand JavaScript n'a vraiment plus aucune idée.",
+    "Un acronyme pour 'N'importe quoi, Absolument N'importe quoi.'",
   ],
   ["JSON.stringify()", "JSON.parse()", "Object.toJSON()", "conversion_JSON()"],
   [
@@ -286,6 +287,7 @@ export const ansJS = [
     "variable_undefined?()",
   ],
   ['"12"', '"1b"', "NaN", "ca_ne_va_pas"],
+  ["setTimeout()", "delay()", "wait()", "have-a-kitkat()"],
 ];
 
 export const cAnsJS = [
@@ -307,6 +309,7 @@ export const cAnsJS = [
   "JSON.stringify()",
   'typeof(variable) === "undefined"',
   '"12"',
+  "setTimeout()",
 ];
 
 /* ----- LINUX ----- */
@@ -321,6 +324,7 @@ export const qlLinux = [
   "Quelle commande permet de déplacer un fichier ?",
   "Comment exécuter un script bash ?",
   "Quelle commande est utilisée pour redémarrer le système ?",
+  "Quelle commande est utilisée pour afficher les processus actifs ?",
 ];
 
 export const ansLinux = [
@@ -334,6 +338,7 @@ export const ansLinux = [
   ["mv", "move", "go", "taxi"],
   ["./script.sh", "run script.sh", "exec script.sh", "en_avant_le_show"],
   ["reboot", "restart", "shutdown -r", "en_voiture_simone"],
+  ["top", "ps", "htop", "espionnage_du_CPU"],
 ];
 
 export const cAnsLinux = [
@@ -347,6 +352,7 @@ export const cAnsLinux = [
   "mv",
   "./script.sh",
   "reboot",
+  "top",
 ];
 
 /* ------ Markdown ----- */
@@ -361,6 +367,7 @@ export const qlMD = [
   "Comment faire une liste ordonnée en Markdown ?",
   "Comment souligner du texte en Markdown ?",
   "Comment créer une ligne horizontale en Markdown ?",
+  "Comment formater du texte en italique en Markdown ?",
 ];
 
 export const ansMD = [
@@ -377,8 +384,9 @@ export const ansMD = [
   ],
   ["> citation", "- citation", '" citation "', "💭un_sage_a_dit_un_jour"],
   ["1. élément", "- élément", "* élément", "📜 belle_liste"],
-  ["--- texte", "__texte__", "<u>texte</u>", "texte_souligne_toi"],
+  ["Ce n'est pas possible", "__texte__", "<u>texte</u>", "--- texte"],
   ["--- (dashes)", "___ (underscores)", "***", "-draw_line-"],
+  ["*texte*", "**texte**", "_texte_", "🎩_texte_🎩"],
 ];
 
 export const cAnsMD = [
@@ -390,8 +398,9 @@ export const cAnsMD = [
   "![alt](URL)",
   "> citation",
   "1. élément",
-  "--- texte",
+  "Ce n'est pas possible",
   "--- (dashes)",
+  "*texte*",
 ];
 
 /* ------ Git ----- */
@@ -409,6 +418,9 @@ export const qlGit = [
   "Quelle commande permet de cloner un dépôt distant ?",
   "A quoi sert une Pull Request ? (PR)",
   "A quoi sert le rebase ?",
+  "Comment vérifier l’état actuel du dépôt en Git ?",
+  "Comment configurer le nom d’utilisateur dans Git ?",
+  "Quelle commande permet de visualiser les différences entre deux commits ?",
 ];
 
 export const ansGit = [
@@ -417,7 +429,7 @@ export const ansGit = [
   ["git commit", "git save", "git push", "git fais_le_taf"],
   ["git branch", "git new branch", "git checkout", "git fais_du_bois"],
   ["git merge", "git join", "git combine", "git fuuuuuusion HA !"],
-  ["git pull", "git fetch", "git clone", "git oh hisse"],
+  ["git pull", "git push", "git clone", "git oh hisse"],
   ["git push", "git send", "git upload", "git le_facteur_est_passé"],
   ["git log", "git history", "git commits", "git ct mieux avant"],
   ["git checkout", "git revert", "git reset", "git back_to_the_futur"],
@@ -434,6 +446,14 @@ export const ansGit = [
     "A préserver l'historique de chaque branche, y compris les parallèles",
     "À remonter le temps et corriger les erreurs avec style, mais sans DeLorean.",
   ],
+  ["git status", "git check", "git show", "git_comment_va_ton_code"],
+  [
+    "git config --global user.name",
+    "git set-username",
+    "git init-user",
+    "git_identité_secrète",
+  ],
+  ["git diff", "git show", "git compare", "git_keléladiff"],
 ];
 
 export const cAnsGit = [
@@ -449,4 +469,7 @@ export const cAnsGit = [
   "git clone",
   "Permettre de proposer des changements à un dépôt distant",
   "A réécrire l'historique des commits d'une branche",
+  "git status",
+  "git config --global user.name",
+  "git diff",
 ];
