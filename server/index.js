@@ -3,6 +3,9 @@ const app = express();
 const PORT = 3000;
 const sqlite3 = require("sqlite3").verbose();
 
+//Middleware pour parser les requêtes JSON
+app.use(express.json());
+
 // Connexion à la base de données (ou création si elle n'existe pas)
 const db = new sqlite3.Database("./quiz.db", (err) => {
   if (err) {
@@ -140,19 +143,16 @@ app.get("/visits", (req, res) => {
 });
 
 app.get("/visit-count", (req, res) => {
-  db.all("SELECT COUNT(*) AS total FROM frequentation", (err, row) => {
+  db.all("SELECT COUNT(*) AS total FROM frequentation", (err, rows) => {
     if (err) {
       res.status(500).json({
         message: "Erreur lors de la récupération du comptage des visites.",
       });
     } else {
-      res.json({ total_visits: row.total }); //Renvoie le nombre total de visites
+      res.json({ total_visits: rows[0].total }); //Renvoie le nombre total de visites
     }
   });
 });
-
-//Middleware pour parser les requêtes JSON
-app.use(express.json());
 
 //Route par défaut
 app.get("/", (req, res) => {

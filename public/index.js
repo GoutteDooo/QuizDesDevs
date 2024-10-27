@@ -193,6 +193,7 @@ const changeCard = () => {
   timer = questionTime;
 
   //launch sound
+  audio_chrono.volume = 1;
   audio_chrono.play();
 };
 
@@ -291,8 +292,8 @@ const trophyImg = (ratioS) => {
 
 const finishQuizSound = (ratioS) => {
   if (ratioS >= 1) return audio_applause_first;
-  if (ratioS > 0.9) return audio_applause_second;
-  if (ratioS > 0.6) return audio_applause_third;
+  if (ratioS >= 0.9) return audio_applause_second;
+  if (ratioS >= 0.6) return audio_applause_third;
   return audio_applause;
 };
 

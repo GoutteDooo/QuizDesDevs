@@ -283,7 +283,7 @@ export const ansJS = [
     'typeof(variable) === "undefined"',
     'variable === "undefined"',
     "variable == null",
-    "est_ce_que_cette_variable_est_undefined?()",
+    "variable_undefined?()",
   ],
   ['"12"', '"1b"', "NaN", "ca_ne_va_pas"],
 ];

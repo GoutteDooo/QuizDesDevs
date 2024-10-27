@@ -126,7 +126,7 @@ img {
 
 .card-responses-container > .responses {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   gap: 10px;
   list-style: none;
   padding: 0;
@@ -141,12 +141,12 @@ img {
   align-items: center;
   background: #f0f0f0;
   border-radius: 8px;
-  cursor: pointer; /* Changer le curseur quand on survole une réponse */
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Ajoute un léger effet d'ombre */
-  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   padding: 10px;
   text-align: center;
   user-select: none;
+  font-size: 1.5rem;
 }
 
 .card-responses-container > .responses > .response:hover {
@@ -411,7 +411,7 @@ img {
 
 .top-100 {
   background: var(--card-color);
-  /* border: 3px solid var(--bg-text-color); */
+  border: 1px solid black;
   width: 250px;
   height: 80px;
   border-radius: 15px;
@@ -420,6 +420,7 @@ img {
   align-items: center;
   font-size: 1.5rem;
   font-style: normal;
+  
 }
 
 .top-100:hover {
@@ -429,7 +430,7 @@ img {
 }
 
 .top-100:active {
-  transition: 0.1s;
+  transition: 0s;
   transform: scale(0.9);
 }
 
