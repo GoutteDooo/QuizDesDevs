@@ -4,6 +4,7 @@ body {
   justify-content: center;
   flex-direction: column;
   background: var(--bg-color);
+  overflow: hidden;
 }
 @font-face {
   font-family: quizFont;
@@ -16,8 +17,9 @@ body {
 
 :root {
   --bg-color: rgb(54, 60, 105);
-  --card-color: DarkKhaki;
+  --card-color: rgb(189, 183, 107);
   --bg-text-color: white;
+  --select-color: rgb(126, 122, 72);
 }
 
 .bg-text {
@@ -43,7 +45,7 @@ img {
 .card {
   height: 500px;
   width: 800px;
-  margin: 50px 0 100px 0;
+  margin: 50px 0 50px 0;
   background: var(--card-color);
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px;
@@ -273,7 +275,7 @@ img {
   transition: 0.2s;
   /* background: var(--bg-text-color); */
   cursor: pointer;
-  transform : translate(370px, -220px) rotate(60deg) scale(1.1)
+  transform: translate(370px, -220px) rotate(60deg) scale(1.1);
 }
 
 .settings {
@@ -287,9 +289,23 @@ img {
   border: 10px solid white;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
   transition: 0.5s;
   padding: 20px;
+}
+
+@keyframes active {
+  0% {
+    transform: translate(100%, -50%);
+  }
+  70% {
+    transform: translate(-70%, -50%);
+  }
+  90% {
+    transform: translate(-40%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
 }
 
 .settings-title {
@@ -391,4 +407,36 @@ img {
   100% {
     opacity: 0;
   }
+}
+
+.top-100 {
+  background: var(--card-color);
+  /* border: 3px solid var(--bg-text-color); */
+  width: 250px;
+  height: 80px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-style: normal;
+}
+
+.top-100:hover {
+  transition: 0.2s;
+  cursor: pointer;
+  background: var(--select-color);
+}
+
+.top-100:active {
+  transition: 0.1s;
+  transform: scale(0.9);
+}
+
+.leaderboard {
+  display: none;
+  background: red;
+  width: 500px;
+  height: 500px;
+  position: absolute;
 }
