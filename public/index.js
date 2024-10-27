@@ -17,9 +17,10 @@ import {
   qlJS,
   ansJS,
   cAnsJS,
-} from "./data.js";
-import openSettings from "./settings.js";
-import { selectedOptions } from "./settings.js";
+} from "./js/data.js";
+import openSettings from "./js/settings.js";
+import { selectedOptions } from "./js/settings.js";
+import { top100Button } from "./js/top100.js";
 
 let score = 0;
 let record = score;

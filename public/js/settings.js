@@ -56,6 +56,7 @@ settingsBtn.addEventListener("mouseover", () => {
 //Quand l'user a cliqué sur la roue crantée au début du quiz, ouvre les settings
 const openSettings = () => {
   settings.style.display = "block";
+  settings.style.animation = "active 0.4s forwards";
   blur.style.display = "block";
 };
 
