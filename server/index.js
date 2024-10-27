@@ -36,7 +36,7 @@ db.serialize(() => {
 app.post("/submit-score", (req, res) => {
   const { pseudo, score } = req.body;
 
-  //Vérifier si le score est dans le top 100
+  // Étape 1 : Récupérer les scores existants triés par ordre décroissant (du plus élevé au plus faible)
   db.all("SELECT * FROM scores ORDER BY score DESC LIMIT 100", (err, rows) => {
     if (err) {
       res
@@ -45,9 +45,9 @@ app.post("/submit-score", (req, res) => {
       return;
     }
 
-    //Si le tableau des scores a moins de 100 entrées ou si le score est supérieur au dernier score
+    // Étape 2 : Vérifier si le score est assez élevé pour entrer dans le Top 100
     if (rows.length < 100 || score > rows[rows.length - 1].score) {
-      //add nouveau score
+      // Ajouter le nouveau score
       db.run(
         `INSERT INTO scores (pseudo, score) VALUES (?, ?)`,
         [pseudo, score],
@@ -56,13 +56,47 @@ app.post("/submit-score", (req, res) => {
             res
               .status(500)
               .json({ message: "Erreur lors de l'enregistrement du score" });
-          } else {
-            res.json({ message: "Score enregistré avec succès" });
+            return;
           }
+
+          // Étape 3 : Supprimer le score le plus bas si le tableau dépasse 100 entrées
+          db.run(
+            "DELETE FROM scores WHERE id NOT IN (SELECT id FROM scores ORDER BY score DESC LIMIT 100)",
+            (err) => {
+              if (err) {
+                res
+                  .status(500)
+                  .json({ message: "Erreur lors du nettoyage des scores" });
+                return;
+              }
+
+              // Réponse de succès
+              res.json({
+                message: "Félicitations, votre score est dans le Top 100 !",
+              });
+            }
+          );
         }
       );
     } else {
-      res.json({ message: "Score non suffisant pour entrer dans le top 100" });
+      // Si le score n'est pas assez élevé, on renvoie un message de non-admissibilité
+      res.json({
+        message:
+          "Désolé, votre score n'est pas suffisant pour entrer dans le Top 100",
+      });
+    }
+  });
+});
+
+//récupére les 100 meilleurs scores
+app.get("/top-100", (req, res) => {
+  db.all("SELECT * FROM scores ORDER BY score DESC LIMIT 100", (err, rows) => {
+    if (err) {
+      res
+        .status(500)
+        .json({ message: "Erreur lors de la récupération des scores" });
+    } else {
+      res.json(rows); //Renvoie les 100 meilleurs scores
     }
   });
 });
@@ -71,22 +105,50 @@ app.post("/submit-score", (req, res) => {
 
 /* FREQUENTATION */
 app.get("/track-visit", (req, res) => {
-  const currentDate = new Date().toISOString();
+  const currentDate = new Date().toISOString(); // Obtenir la date actuelle sous format ISO (UTC)
 
-  //Enregistrer la visite dans la bdd
+  // Enregistrer la visite dans la base de données
   db.run(
-    `INSERT INTO frequentation (date_connexion) VALUE (?)`,
+    `INSERT INTO frequentation (date_connexion) VALUES (?)`,
     [currentDate],
     (err) => {
       if (err) {
         res
           .status(500)
           .json({ message: "Erreur lors de l'enregistrement de la visite" });
+        console.error(err);
       } else {
-        res.json({ message: "Visite enregistrée" });
+        res.json({ message: "Visite enregistrée", date: currentDate });
       }
     }
   );
+});
+
+app.get("/visits", (req, res) => {
+  db.all(
+    "SELECT * FROM frequentation ORDER BY date_connexion DESC",
+    (err, rows) => {
+      if (err) {
+        res
+          .status(500)
+          .json({ message: "Erreur lors de la récupération des visites." });
+      } else {
+        res.json(rows); //renvoie les visites
+      }
+    }
+  );
+});
+
+app.get("/visit-count", (req, res) => {
+  db.all("SELECT COUNT(*) AS total FROM frequentation", (err, row) => {
+    if (err) {
+      res.status(500).json({
+        message: "Erreur lors de la récupération du comptage des visites.",
+      });
+    } else {
+      res.json({ total_visits: row.total }); //Renvoie le nombre total de visites
+    }
+  });
 });
 
 //Middleware pour parser les requêtes JSON
