@@ -1,21 +1,15 @@
-// Fonction pour récupérer le Top 100 depuis l'API
-function getTop100Scores() {
-  fetch("/top-100")
-    .then((res) => res.json())
-    .then((data) => {
-      // Afficher les scores dans l'interface utilisateur
-      const scoreList = document.getElementById("score-list");
-      scoreList.innerHTML = ""; // Nettoyer la liste
-      data.forEach((score, index) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${index + 1}. ${score.pseudo}: ${score.score}`;
-        scoreList.appendChild(listItem);
-      });
+export function getTop100Scores() {
+  return fetch("/top-100")
+    .then(async (res) => {
+      const text = await res.text(); // Lis la réponse brute
+      console.log("Réponse brute :", text); // Journalise la réponse
+
+      // Si la réponse est un JSON valide, la parse
+      try {
+        return JSON.parse(text);
+      } catch (error) {
+        throw new Error("La réponse n'est pas un JSON valide : " + text);
+      }
     })
-    .catch((error) => console.error("Erreur:", error));
+    .catch((err) => console.error("Erreur : ", err));
 }
-
-// Appeler la fonction pour afficher les scores dès que la page est chargée
-document.addEventListener("DOMContentLoaded", getTop100Scores);
-
-module.exports = { getTop100Scores };

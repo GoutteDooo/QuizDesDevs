@@ -436,8 +436,19 @@ img {
 
 .leaderboard {
   display: none;
-  background: red;
+  background: var(--card-color);
+  border: 5px solid var(--bg-text-color);
+  border-radius: 20px;
   width: 500px;
-  height: 500px;
+  height: 700px;
   position: absolute;
+  text-align: center;
+}
+.leaderboard h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: wheat;
+  height: 50px;
+  margin-bottom: 50px;
 }

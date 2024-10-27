@@ -587,3 +587,28 @@ responsesContainer.addEventListener("click", () => {
     startQuiz();
   }
 });
+
+/* FEATURE */
+// index.js
+
+// Importer la fonction getTop100Scores depuis app.js
+import { getTop100Scores } from "./app.js";
+
+// Exemple d'utilisation pour afficher les scores dans l'interface du quiz
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const topScores = await getTop100Scores();
+
+    const scoreList = document.querySelector(".leaderboard");
+    scoreList.innerHTML = ""; // Nettoyer la liste
+    console.log(topScores);
+
+    topScores.forEach((score, index) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${index + 1}. ${score.pseudo}: ${score.score}`;
+      scoreList.appendChild(listItem);
+    });
+  } catch (error) {
+    console.error("Erreur lors de l'affichage des scores", error);
+  }
+});
