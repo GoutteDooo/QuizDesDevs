@@ -588,23 +588,22 @@ responsesContainer.addEventListener("click", () => {
   }
 });
 
-/* FEATURE */
-// index.js
+/* CORRESPONDANCE BACK ET FRONT */
 
-// Importer la fonction getTop100Scores depuis app.js
 import { getTop100Scores } from "./app.js";
 
-// Exemple d'utilisation pour afficher les scores dans l'interface du quiz
+//Lorsque la page se charge, va chercher directement le top 100 et l'affiche dans le bouton top 100
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const topScores = await getTop100Scores();
 
     const scoreList = document.querySelector(".leaderboard");
-    scoreList.innerHTML = ""; // Nettoyer la liste
+    // scoreList.innerHTML = ""; // Nettoyer la liste
     console.log(topScores);
 
     topScores.forEach((score, index) => {
       const listItem = document.createElement("li");
+      listItem.classList.add("top100-li");
       listItem.textContent = `${index + 1}. ${score.pseudo}: ${score.score}`;
       scoreList.appendChild(listItem);
     });
