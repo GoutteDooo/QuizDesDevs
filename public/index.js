@@ -266,6 +266,7 @@ const endQuiz = () => {
     confettiLoop();
   }
   //Display
+  createSubmitScoreForm();
   scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
   cardQuestion.innerText = "Quiz terminé !";
   responsesContainer.innerHTML = "";
@@ -590,15 +591,33 @@ responsesContainer.addEventListener("click", () => {
 
 /* CORRESPONDANCE BACK ET FRONT */
 
-import { getTop100Scores } from "./app.js";
+import {
+  getTop100Scores,
+  submitScore,
+  getTotalVisits,
+  trackVisit,
+} from "./app.js";
 
 //Lorsque la page se charge, va chercher directement le top 100 et l'affiche dans le bouton top 100
+// + Affiche le nombre total de visites
 document.addEventListener("DOMContentLoaded", async () => {
+  //Tracker la visite
+  await trackVisit();
+  //Afficher nombre de visites
+  const visites = document.querySelector(".visites");
+  const nbVisites = await getTotalVisits();
+  if (nbVisites && nbVisites.total_visits !== undefined) {
+    visites.textContent = `Ce quiz a déjà été joué plus de ${nbVisites.total_visits} fois.`;
+  } else {
+    visites.textContent = "Nombre total de visites non récupéré.";
+  }
+
+  //Partie Leaderboard
   try {
     const topScores = await getTop100Scores();
 
     const scoreList = document.querySelector(".leaderboard-container");
-    // scoreList.innerHTML = ""; // Nettoyer la liste
+    scoreList.innerHTML = ""; // Nettoyer la liste
 
     topScores.forEach((score, index) => {
       const player = document.createElement("div");
@@ -622,13 +641,88 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+//test
+
 //Fonction pour créer le formulaire de submit pseudo en cas de challenge
-function createSubmitScoreForm() {
+export default function createSubmitScoreForm() {
+  //Créer le formContainer
   const formContainer = document.createElement("div");
   formContainer.classList.add("submit-score-container");
   blurBackground.style.display = "block";
 
+  //texte pour le joueur
+  const sscText = document.createElement("div");
+  sscText.classList.add("ssc-title");
+  sscText.innerHTML = `Veuillez entrer votre pseudo <br /> <em style="font-size:0.9rem">(12 caractères max)</em>`;
+  formContainer.appendChild(sscText);
+
+  //input entrer le pseudo
+  const sscInput = document.createElement("input");
+  sscInput.type = "text";
+  sscInput.maxLength = 12;
+  formContainer.appendChild(sscInput);
+
+  //button submit
+  const sscSubmit = document.createElement("input");
+  sscSubmit.type = "submit";
+  formContainer.appendChild(sscSubmit);
+
+  //button cancel (si joueur ne veut pas enregistrer son score)
+  const cancelBtn = document.createElement("div");
+  cancelBtn.classList.add("cancel-cross");
+  cancelBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"/></svg>`;
+  formContainer.appendChild(cancelBtn);
+
+  //faire apparaître le formContainer, une fois celui-ci prêt
   document.body.appendChild(formContainer);
+
+  //ajouter l'écouteur d'event pour cancel
+  cancelBtn.addEventListener("click", () => {
+    const confirm = window.confirm(
+      "Cette action est irréversible, souhaitez-vous continuer ?"
+    );
+    if (confirm) {
+      formContainer.style.display = "none";
+      blurBackground.style.display = "none";
+    }
+  });
+
+  //écouteur d'event pour submit
+  sscSubmit.addEventListener("click", () => {
+    const pseudo = sscInput.value;
+    //Il faudra configurer les types de pseudo pas accepté (comme des espaces, des pseudo vides, etc)
+    if (pseudo) {
+      submitScore(pseudo, score);
+      formContainer.style.display = "none";
+      blurBackground.style.display = "none";
+    } else {
+      window.alert("Veuillez entrer un pseudo valide.");
+    }
+  });
 }
 
-createSubmitScoreForm();
+//fonction qui update le leaderboard (utile lorsque l'user entre son pseudo)
+export const updateLeaderboard = () => {
+  getTop100Scores().then((scores) => {
+    const scoreList = document.querySelector(".leaderboard-container");
+    scoreList.innerHTML = "";
+
+    scores.forEach((score, index) => {
+      const player = document.createElement("div");
+      const indexPlayer = document.createElement("div");
+      const namePlayer = document.createElement("div");
+      const scorePlayer = document.createElement("div");
+      player.classList.add("top100-li");
+      indexPlayer.classList.add("top100-index");
+      namePlayer.classList.add("top100-name");
+      scorePlayer.classList.add("top100-score");
+      indexPlayer.textContent = `${index + 1}`;
+      namePlayer.textContent = `${score.pseudo}`;
+      scorePlayer.textContent = `${score.score}`;
+      player.appendChild(indexPlayer);
+      player.appendChild(namePlayer);
+      player.appendChild(scorePlayer);
+      scoreList.appendChild(player);
+    });
+  });
+};
