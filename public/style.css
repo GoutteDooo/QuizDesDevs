@@ -422,7 +422,6 @@ img {
   align-items: center;
   font-size: 1.5rem;
   font-style: normal;
-  
 }
 
 .top-100:hover {
@@ -472,4 +471,12 @@ img {
 }
 .top100-li:nth-child(odd) {
   background: var(--bg-text-color);
+}
+
+.submit-score-container {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  background: red;
+  z-index: 100;
 }

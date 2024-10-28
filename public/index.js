@@ -621,3 +621,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Erreur lors de l'affichage des scores", error);
   }
 });
+
+//Fonction pour créer le formulaire de submit pseudo en cas de challenge
+function createSubmitScoreForm() {
+  const formContainer = document.createElement("div");
+  formContainer.classList.add("submit-score-container");
+  blurBackground.style.display = "block";
+
+  document.body.appendChild(formContainer);
+}
+
+createSubmitScoreForm();

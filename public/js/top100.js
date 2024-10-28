@@ -23,7 +23,3 @@ const playLBSound = () => {
     delete audio_lb.audio;
   }, 2000);
 };
-
-function createSubmitScoreForm() {
-  const formContainer = 
-}
