@@ -1,12 +1,16 @@
 {
-  "devDependencies": {
-    "gh-pages": "^6.2.0"
-  },
+  "name": "quiz-des-devs",
+  "version": "1.0.0",
+  "homepage": "https://gouttedooo.github.io/QuizDesDevs/",
   "scripts": {
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "express": "^4.21.1",
     "http-proxy-middleware": "^3.0.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }
