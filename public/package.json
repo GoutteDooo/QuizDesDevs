@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "canvas-confetti": "^1.9.3",
-    "http-proxy-middleware": "^3.0.3"
-  }
-}
