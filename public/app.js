@@ -1,7 +1,7 @@
 import { updateLeaderboard } from "./index.js";
 
 export function getTop100Scores() {
-  return fetch("https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/top-100")
+  return fetch("https://quiz-des-devs-back-d387ee9cb497.herokuapp.com/top-100")
     .then((res) => {
       // Si la réponse est un JSON valide, la parse
       try {
@@ -15,7 +15,7 @@ export function getTop100Scores() {
 
 export function submitScore(pseudo, score) {
   return fetch(
-    "https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/submit-score",
+    "https://quiz-des-devs-back-d387ee9cb497.herokuapp.com/submit-score",
     {
       method: "POST",
       headers: {
@@ -40,7 +40,7 @@ export function submitScore(pseudo, score) {
 
 export function getTotalVisits() {
   return fetch(
-    "https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/visit-count"
+    "https://quiz-des-devs-back-d387ee9cb497.herokuapp.com/visit-count"
   )
     .then((res) => {
       if (!res.ok) {
@@ -56,7 +56,7 @@ export function getTotalVisits() {
 
 export function trackVisit() {
   return fetch(
-    "https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/track-visit"
+    "https://quiz-des-devs-back-d387ee9cb497.herokuapp.com/track-visit"
   )
     .then((res) => {
       if (!res.ok) {
