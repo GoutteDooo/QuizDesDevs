@@ -7,7 +7,8 @@ const cors = require("cors");
 //Autoriser uniquement GitHub Pages
 app.use(
   cors({
-    origin: "https://gouttedooo.github.io/QuizDesDevs/",
+    origin: "https://gouttedooo.github.io/QuizDesDevs",
+    methods: ["GET", "POST"],
   })
 );
 
