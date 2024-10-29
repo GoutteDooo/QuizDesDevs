@@ -6,9 +6,8 @@
     "node": "20.16.0"
   },
   "scripts": {
-    "predeploy": "cp public/index.html .",
-    "deploy": "gh-pages -d public",
-    "postdeploy": "rm ./index.html"
+    "predeploy": "",
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.3",
