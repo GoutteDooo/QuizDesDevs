@@ -24,6 +24,22 @@ app.use(
   })
 );
 
+app.use(
+  "/visit-count",
+  createProxyMiddleware({
+    target: "http://localhost:3000/visit-count",
+    changeOrigin: true,
+  })
+);
+
+app.use(
+  "/track-visit",
+  createProxyMiddleware({
+    target: "http://localhost:3000/track-visit",
+    changeOrigin: true,
+  })
+);
+
 // Lancer le serveur front-end avec le proxy
 app.listen(PORT, () => {
   console.log(

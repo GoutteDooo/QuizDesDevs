@@ -5,6 +5,7 @@ body {
   flex-direction: column;
   background: var(--bg-color);
   overflow: hidden;
+  height: 100vh;
 }
 @font-face {
   font-family: quizFont;
@@ -45,7 +46,7 @@ img {
 .card {
   height: 500px;
   width: 800px;
-  margin: 50px 0 50px 0;
+  margin: 50px 0 30px 0;
   background: var(--card-color);
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px;
@@ -414,8 +415,8 @@ img {
 .top-100 {
   background: var(--card-color);
   border: 1px solid black;
-  width: 250px;
-  height: 80px;
+  width: 220px;
+  height: 60px;
   border-radius: 15px;
   display: flex;
   justify-content: center;
@@ -473,10 +474,88 @@ img {
   background: var(--bg-text-color);
 }
 
+/* PARTIE SUBMIT SCORE */
+
 .submit-score-container {
   position: absolute;
   width: 500px;
   height: 300px;
-  background: red;
+  background: var(--card-color);
+  border: 10px solid var(--bg-text-color);
+  border-radius: 25px;
   z-index: 100;
+}
+
+.ssc-title {
+  font-size: 1.5rem;
+  text-align: center;
+  background: var(--bg-text-color);
+  color: var(--bg-color);
+  margin-top: 50px;
+  padding: 10px 0;
+  user-select: none;
+}
+
+.submit-score-container input[type="text"] {
+  display: block;
+  margin: 20px auto;
+  height: 50px;
+  width: 250px;
+  border-radius: 15px;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  outline: none;
+  color: white;
+  background: var(--card-color);
+}
+.submit-score-container input[type="text"]:focus {
+  box-shadow: 0 0 0px 2px black;
+  background: var(--bg-text-color);
+  color: black;
+}
+
+.submit-score-container input[type="submit"] {
+  display: block;
+  margin: 20px auto 0 auto;
+  width: 150px;
+  height:50px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 10px 0 0 black;
+  background: var(--card-color);
+  font-size: 1.2rem;
+}
+.submit-score-container input[type="submit"]:hover {
+  background: var(--select-color);
+}
+
+.submit-score-container input[type="submit"]:active {
+  transform: translateY(10px);
+  box-shadow: 0 0px 0 0 black;
+}
+
+.cancel-cross {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 40px;
+  width: 40px;
+  fill: red;
+}
+.cancel-cross:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.cancel-cross:active {
+  transform: scale(0.9);
+}
+
+/* FIN SUBMIT FORM */
+
+.visites {
+  position: absolute;
+  color: var(--bg-text-color);
+  font-size: 0.7rem;
+  top: 97%;
+  right: 1%;
 }

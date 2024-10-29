@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "homepage": "https://gouttedooo.github.io/QuizDesDevs/",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "",
     "deploy": "gh-pages -d public"
   },
   "dependencies": {

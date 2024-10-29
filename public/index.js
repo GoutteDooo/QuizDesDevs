@@ -17,10 +17,10 @@ import {
   qlJS,
   ansJS,
   cAnsJS,
-} from "../js/data.js";
-import openSettings from "../js/settings.js";
-import { selectedOptions } from "../js/settings.js";
-import { top100Button } from "../js/top100.js";
+} from "./js/data.js";
+import openSettings from "./js/settings.js";
+import { selectedOptions } from "./js/settings.js";
+import { top100Button } from "./js/top100.js";
 
 let score = 0;
 let record = score;
@@ -596,7 +596,7 @@ import {
   submitScore,
   getTotalVisits,
   trackVisit,
-} from "../app.js";
+} from "./app.js";
 
 //Lorsque la page se charge, va chercher directement le top 100 et l'affiche dans le bouton top 100
 // + Affiche le nombre total de visites

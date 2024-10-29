@@ -1,4 +1,4 @@
-import { updateLeaderboard } from "../index.js";
+import { updateLeaderboard } from "./index.js";
 
 export function getTop100Scores() {
   return fetch("https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/top-100")
