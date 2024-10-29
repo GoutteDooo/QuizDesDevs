@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const sqlite3 = require("sqlite3").verbose();
 const cors = require("cors");
 
@@ -168,6 +168,6 @@ app.get("/", (req, res) => {
 });
 
 //Démarre le serveur
-app.listen(PORT, () => {
-  console.log(`serveur lancé sur le port ${PORT}`);
+app.listen(port, () => {
+  console.log(`serveur lancé sur le port ${port}`);
 });
