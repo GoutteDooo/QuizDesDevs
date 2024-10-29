@@ -23,7 +23,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public # Remplace par le dossier contenant les fichiers à déployer
+          publish_dir: /public
           exclude: |
             **/node_modules
             **/.cache
