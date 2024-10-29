@@ -1,19 +1,19 @@
 {
   "name": "quiz-des-devs-back",
   "version": "1.0.0",
-  "homepage": "https://gouttedooo.github.io/QuizDesDevs/",
+  "homepage": "https://gouttedooo.github.io/QuizDesDevs",
   "engines": {
-    "node":"20.16.0"
+    "node": "20.16.0"
   },
   "scripts": {
     "predeploy": "",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d ."
   },
   "dependencies": {
     "canvas-confetti": "^1.9.3",
-    "http-proxy-middleware": "^3.0.3",
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "http-proxy-middleware": "^3.0.3",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
