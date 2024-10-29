@@ -312,7 +312,7 @@ const createButtonRetry = () => {
     questionnaireInfo.currentQuestionIndex = 0;
     timer = questionTime;
 
-    card.removeChild(retryButton);
+    retryButton.remove();
     initializeCard();
     changeCard();
     relaunchTimer();
@@ -682,7 +682,7 @@ export default function createSubmitScoreForm() {
       "Cette action est irréversible, souhaitez-vous continuer ?"
     );
     if (confirm) {
-      formContainer.style.display = "none";
+      formContainer.remove();
       blurBackground.style.display = "none";
     }
   });
@@ -693,7 +693,7 @@ export default function createSubmitScoreForm() {
     //Il faudra configurer les types de pseudo pas accepté (comme des espaces, des pseudo vides, etc)
     if (pseudo) {
       submitScore(pseudo, score);
-      formContainer.style.display = "none";
+      formContainer.remove();
       blurBackground.style.display = "none";
     } else {
       window.alert("Veuillez entrer un pseudo valide.");
