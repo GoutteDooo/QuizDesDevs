@@ -7,7 +7,7 @@
   },
   "scripts": {
     "predeploy": "",
-    "deploy": "gh-pages -d ."
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.3",
