@@ -1,7 +1,7 @@
 import { updateLeaderboard } from "./index.js";
 
 export function getTop100Scores() {
-  return fetch("/top-100")
+  return fetch("https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/top-100")
     .then((res) => {
       // Si la réponse est un JSON valide, la parse
       try {
@@ -14,13 +14,16 @@ export function getTop100Scores() {
 }
 
 export function submitScore(pseudo, score) {
-  return fetch("/submit-score", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ pseudo, score }),
-  })
+  return fetch(
+    "https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/submit-score",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ pseudo, score }),
+    }
+  )
     .then((res) => {
       if (!res.ok) {
         throw new Error("Erreur lors de la soumission du score");
@@ -36,7 +39,9 @@ export function submitScore(pseudo, score) {
 }
 
 export function getTotalVisits() {
-  return fetch("/visit-count")
+  return fetch(
+    "https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/visit-count"
+  )
     .then((res) => {
       if (!res.ok) {
         throw new Error("Erreur lors de la récupération du nombre de visites.");
@@ -50,7 +55,9 @@ export function getTotalVisits() {
 }
 
 export function trackVisit() {
-  return fetch("/track-visit")
+  return fetch(
+    "https://quiz-des-devs-back-a29dbff38d40.herokuapp.com/track-visit"
+  )
     .then((res) => {
       if (!res.ok) {
         throw new Error("Erreur lors de la récupération de la visite track.");

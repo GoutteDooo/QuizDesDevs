@@ -2,6 +2,14 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 const sqlite3 = require("sqlite3").verbose();
+const cors = require("cors");
+
+//Autoriser uniquement GitHub Pages
+app.use(
+  cors({
+    origin: "https://gouttedooo.github.io/QuizDesDevs/",
+  })
+);
 
 //Middleware pour parser les requêtes JSON
 app.use(express.json());
