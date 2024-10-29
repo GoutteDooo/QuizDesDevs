@@ -7,7 +7,7 @@
     "deploy": "gh-pages -d public"
   },
   "dependencies": {
-    "express": "^4.21.1",
+    "canvas-confetti": "^1.9.3",
     "http-proxy-middleware": "^3.0.3"
   },
   "devDependencies": {
