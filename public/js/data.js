@@ -15,6 +15,13 @@ export const qlHTML = [
   "Quel attribut permet d’ouvrir un lien dans un nouvel onglet ?",
   "Quelle est la structure correcte d'une table HTML ?",
   "Comment définir un bouton en HTML ?",
+  "Quel attribut permet de spécifier le lien d’une page dans une balise <a> ?",
+  "À quoi sert la balise <title> ?",
+  "Quelle balise HTML définit une liste non ordonnée ?",
+  "Quel attribut permet d’ajouter un texte alternatif à une image ?",
+  "Quelle balise HTML représente du texte important en gras ?",
+  "Quelle balise permet d’insérer un champ de texte pour l’utilisateur ?",
+  "Comment commenter une ligne de code HTML ?",
 ];
 export const ansHTML = [
   ["<title></title>", "<h1></h1>", "<p></p>", '<input type="title" />'],
@@ -43,6 +50,28 @@ export const ansHTML = [
     "<table><diner_presque_parfait /></table>",
   ],
   ["<button>", '<input type="button">', "<btn>", "<appuie_sur_moi>"],
+  ["src", "href", "link", "redirection_dans_3_2_1"],
+  [
+    "À ajouter le nom de la page dans l'onglet du navigateur",
+    "À ajouter un titre à l'article",
+    "À insérer un titre à une image",
+    "À afficher des blagues toto",
+  ],
+  ["<ul>", "<li>", "<ol>", "<unordered>"],
+  ["alt", "title", "description", "<alternatif-texte-image>"],
+  ["<strong>", "<bold>", "<em>", "<heavystuff>"],
+  [
+    '<input type="text">',
+    "<textzone>",
+    '<input type="textarea">',
+    "<champdetexte>",
+  ],
+  [
+    "<!-- Commentaire -->",
+    "// Commentaire",
+    "/* Commentaire */",
+    "J'm'en fou. J'ai un raccourci VS Code.",
+  ],
 ];
 export const cAnsHTML = [
   "<h1></h1>",
@@ -61,6 +90,13 @@ export const cAnsHTML = [
   'target="_blank"',
   "<table><tr><td></td></tr></table>",
   "<button>",
+  "src",
+  "À ajouter le nom de la page dans l'onglet du navigateur",
+  "<ul>",
+  "alt",
+  "<strong>",
+  '<input type="text">',
+  "<!-- Commentaire -->",
 ];
 
 /* ----- CSS ----- */
@@ -94,6 +130,13 @@ export const qlCSS = [
   "Quelle unité CSS est relative à la largeur de la fenêtre ?",
   "Comment transformer le texte en majuscules en CSS ?",
   "Quelle propriété permet de centrer un élément avec margin en CSS ?",
+  "Quel est le code CSS pour centrer du texte ?",
+  "Comment appliquer un style sur un élément possédant un id ?",
+  "À quoi sert la propriété margin ?",
+  "Comment appliquer un style uniquement aux liens non visités ?",
+  "Quel mot-clé CSS permet de mettre en page un site en grille ?",
+  "Comment rendre un texte en italique en CSS ?",
+  "Quel sélecteur permet de styliser un élément en fonction de son statut d’enfant dans son parent ?",
 ];
 
 export const ansCSS = [
@@ -181,6 +224,28 @@ export const ansCSS = [
     "THIS_IS_SPARTA",
   ],
   ["margin: 0 auto", "align: center", "auto-margin", "met_tout_au_centre"],
+  [
+    "text-align: center;",
+    "align: middle;",
+    "center: true;",
+    "faites-que-ce-soit-beau",
+  ],
+  ["#id-element", ".id-element", "id-element", "papiers-svp"],
+  [
+    "Créer un espace autour d’un élément",
+    "Changer la couleur du texte",
+    "Redimensionner l’élément",
+    "Augmenter la marge entre l'utilisateur et l'écran",
+  ],
+  ["a:link", "a:visited", "a:hover", "a:jesaispas"],
+  ["display: grid;", "layout: grid;", "flex: true;", "ultra-mosaïque;"],
+  [
+    "font-style: italic;",
+    "text-type: italic;",
+    "style-italic: true;",
+    "nationality:italic",
+  ],
+  ["nth-child", "child-of", "sub-item", "theChosenOne"],
 ];
 
 export const cAnsCSS = [
@@ -213,6 +278,13 @@ export const cAnsCSS = [
   "vw",
   "text-transform: uppercase",
   "margin: 0 auto",
+  "text-align: center;",
+  "#id-element",
+  "Créer un espace autour d’un élément",
+  "a:link",
+  "display: grid;",
+  "font-style: italic;",
+  "nth-child",
 ];
 
 /*----- JavaScript ----- */
@@ -236,6 +308,13 @@ export const qlJS = [
   "Comment vérifier si une variable est undefined ?",
   'Quelle est la sortie de 1 + "2" en JavaScript ?',
   "Quelle fonction est utilisée pour temporiser l’exécution d’un code ?",
+  "Quel symbole termine une ligne de code en JavaScript ?",
+  "À quoi sert console.log ?",
+  "Comment ajouter un commentaire sur une ligne en JavaScript ?",
+  "Que signifie === en JavaScript ?",
+  "Quel opérateur permet d’ajouter 1 à une variable ?",
+  "Quelle méthode convertit une chaîne de caractères en majuscules ?",
+  "Comment arrondir un nombre à l'entier supérieur en JavaScript ?",
 ];
 
 export const ansJS = [
@@ -288,6 +367,28 @@ export const ansJS = [
   ],
   ['"12"', '"1b"', "NaN", "ca_ne_va_pas"],
   ["setTimeout()", "delay()", "wait()", "have-a-kitkat()"],
+  [";", ".", ":", "!#?%*$:P"],
+  [
+    "Afficher des informations dans la console",
+    "Ajouter une ligne",
+    "Stocker des données",
+    "A allumer la Playstation",
+  ],
+  [
+    "// Commentaire",
+    "# Commentaire",
+    "-- Commentaire",
+    "Je préfère commenter sur Youtube",
+  ],
+  [
+    "Comparaison stricte",
+    "Comparaison souple",
+    "Comparaison égalitaire",
+    "Que je dois aller réviser mon JS",
+  ],
+  ["++", "+", "add(1)", "devient_plus_fort()"],
+  ["toUpperCase()", "toCaps()", "makeUpper()", "shoutLoud"],
+  ["Math.ceil()", "Math.floor()", "Math.roundUp()", "WhyRoundWhenYouCanFly"],
 ];
 
 export const cAnsJS = [
@@ -310,6 +411,13 @@ export const cAnsJS = [
   'typeof(variable) === "undefined"',
   '"12"',
   "setTimeout()",
+  ";",
+  "Afficher des informations dans la console",
+  "// Commentaire",
+  "Comparaison stricte",
+  "++",
+  "toUpperCase()",
+  "Math.ceil()",
 ];
 
 /* ----- LINUX ----- */
