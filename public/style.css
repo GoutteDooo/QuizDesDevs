@@ -598,3 +598,8 @@ img {
   top: 97%;
   right: 1%;
 }
+
+iframe {
+  width: 0;
+  height: 0;
+}
