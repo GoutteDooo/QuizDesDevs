@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 const sqlite3 = require("sqlite3").verbose();
 const cors = require("cors");
 
 //Autoriser uniquement GitHub Pages
 app.use(
   cors({
-    origin: "https://gouttedooo.github.io/QuizDesDevs/",
+    origin: ["https://gouttedooo.github.io", "http://localhost:3000"],
+    methods: ["GET", "POST"],
   })
 );
 
@@ -168,6 +169,6 @@ app.get("/", (req, res) => {
 });
 
 //Démarre le serveur
-app.listen(PORT, () => {
-  console.log(`serveur lancé sur le port ${PORT}`);
+app.listen(port, () => {
+  console.log(`serveur lancé sur le port ${port}`);
 });

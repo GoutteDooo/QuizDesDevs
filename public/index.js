@@ -468,6 +468,28 @@ settingsBtn.addEventListener("click", () => {
   openSettings();
 });
 
+//jouer son blop quand survole une réponse
+
+/*
+responsesContainer.addEventListener("mouseenter", () => {
+  const children = responsesContainer.children;
+  let count_sound = 0; //Compteur pour que le son ne se joue qu'une seule fois
+  Array.from(children).forEach((child) => {
+    count_sound++;
+    //Une fois que le compteur est à 4, on joue le son
+    if (count_sound === 4) {
+      const audio_blop = new Audio("./assets/sounds/blop-ans.mp3");
+      audio_blop.currentTime = 0.2;
+      audio_blop.play();
+      setTimeout(() => {
+        audio_blop.pause();
+        audio_blop.remove();
+      }, 600);
+    }
+  });
+});
+*/
+
 const displayChangeTheme = async () => {
   //Repérer quel est le thème suivant
   const questionIndex = questionnaireInfo.currentQuestionIndex;

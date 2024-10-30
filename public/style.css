@@ -309,6 +309,16 @@ img {
   }
 }
 
+@keyframes valid {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, 100%);
+  }
+  
+}
+
 .settings-title {
   text-align: center;
   margin: 10px 0;

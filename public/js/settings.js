@@ -42,6 +42,8 @@ const settingsBtn = document.querySelector(".settings-btn");
 
 //sfx
 const audio_cric = new Audio("./assets/sounds/cric.mp3");
+const audio_whoosh = new Audio("../assets/sounds/settings-whoosh.mp3");
+const audio_validate = new Audio("../assets/sounds/settings-ok.mp3");
 
 //Lorsque l'user hover les settings, déclenche le petit cric
 settingsBtn.addEventListener("mouseover", () => {
@@ -55,6 +57,10 @@ settingsBtn.addEventListener("mouseover", () => {
 
 //Quand l'user a cliqué sur la roue crantée au début du quiz, ouvre les settings
 const openSettings = () => {
+  audio_whoosh.currentTime = 0;
+  audio_whoosh.volume = 0.7;
+  audio_whoosh.playbackRate = 9;
+  audio_whoosh.play();
   settings.style.display = "block";
   settings.style.animation = "active 0.4s forwards";
   blur.style.display = "block";
@@ -62,8 +68,15 @@ const openSettings = () => {
 
 //Lorsque l'user clique sur le bouton "valider"
 const saveSettings = () => {
-  settings.style.display = "none";
-  blur.style.display = "none";
+  audio_validate.currentTime = 0;
+  audio_validate.volume = 0.7;
+  audio_validate.playbackRate = 5;
+  audio_validate.play();
+  settings.style.animation = "valid 0.2s forwards";
+  setTimeout(() => {
+    settings.style.display = "none";
+    blur.style.display = "none";
+  }, 200);
 };
 
 /* ------ GERE LES INPUTS ------- */
