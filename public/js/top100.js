@@ -6,8 +6,8 @@ let toggleLB = false;
 
 top100Button.addEventListener("click", () => {
   toggleLB = !toggleLB;
+  playLBSound();
   if (toggleLB) {
-    playLBSound();
     leaderboard.style.display = "block";
   } else {
     leaderboard.style.display = "none";
@@ -15,10 +15,15 @@ top100Button.addEventListener("click", () => {
 });
 
 const playLBSound = () => {
-  const audio_lb = new Audio("../assets/sounds/leaderboard.mp3");
+  const audio_lb = new Audio("./assets/sounds/leaderboard.mp3");
   audio_lb.preload = "auto";
-  audio_lb.currentTime = 3.2;
-  audio_lb.play();
+  if (toggleLB) {
+    audio_lb.currentTime = 3.3;
+    audio_lb.play();
+  } else {
+    audio_lb.currentTime = 9.5;
+    audio_lb.play();
+  }
   setTimeout(() => {
     audio_lb.pause();
     delete audio_lb.audio;

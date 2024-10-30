@@ -115,7 +115,7 @@ export const qlHTML2 = [
 export const ansHTML2 = [
   ["aria-main", 'role="main"', "main-content", "aria-rockstar"],
   ["longdesc", "aria-describedby", "alt", "im_really_long_description"],
-  ["<track>", "<caption>", "<subtitle>", "<you_have_no_idea_what_they_said>"],
+  ["<track>", "<caption>", "<subtitle>", "<itadakimasu>"],
   ['inputmode="numeric"', 'type="number"', 'type="integer"', "noWordsAllowed"],
   [
     "Ce n’est pas possible avec srcset",

@@ -18,7 +18,7 @@ const settingsQptValue = document.getElementById("settings-qpt-value");
 settingsQptValue.value = numbQuestionPerTheme;
 //checkboxes
 const allThemes = document.getElementById("theme-all");
-allThemes.checked = true;
+allThemes.checked = false;
 const htmlTheme = document.getElementById("theme-html");
 htmlTheme.checked = true;
 const cssTheme = document.getElementById("theme-css");
@@ -37,6 +37,8 @@ const css2Theme = document.getElementById("theme-css2");
 css2Theme.checked = false;
 const js2Theme = document.getElementById("theme-js2");
 js2Theme.checked = false;
+const linux2Theme = document.getElementById("theme-linux2");
+linux2Theme.checked = false;
 
 //button
 const buttonValidate = document.getElementById("settings-validate");
@@ -48,8 +50,8 @@ const settingsBtn = document.querySelector(".settings-btn");
 
 //sfx
 const audio_cric = new Audio("./assets/sounds/cric.mp3");
-const audio_whoosh = new Audio("../assets/sounds/settings-whoosh.mp3");
-const audio_validate = new Audio("../assets/sounds/settings-ok.mp3");
+const audio_whoosh = new Audio("./assets/sounds/settings-appear.mp3");
+const audio_validate = new Audio("./assets/sounds/settings-ok.mp3");
 
 //Lorsque l'user hover les settings, déclenche le petit cric
 settingsBtn.addEventListener("mouseover", () => {
@@ -64,8 +66,8 @@ settingsBtn.addEventListener("mouseover", () => {
 //Quand l'user a cliqué sur la roue crantée au début du quiz, ouvre les settings
 const openSettings = () => {
   audio_whoosh.currentTime = 0;
-  audio_whoosh.volume = 0.7;
-  audio_whoosh.playbackRate = 9;
+  audio_whoosh.volume = 1;
+  audio_whoosh.playbackRate = 1;
   audio_whoosh.play();
   settings.style.display = "block";
   settings.style.animation = "active 0.4s forwards";
@@ -108,6 +110,10 @@ allThemes.addEventListener("input", (e) => {
   mdTheme.checked = e.target.checked;
   gitTheme.checked = e.target.checked;
   linuxTheme.checked = e.target.checked;
+  html2Theme.checked = e.target.checked;
+  css2Theme.checked = e.target.checked;
+  js2Theme.checked = e.target.checked;
+  linux2Theme.checked = e.target.checked;
   fillThemesArray(e.target.checked);
 });
 
@@ -147,10 +153,45 @@ linuxTheme.addEventListener("input", (e) => {
     : (themesSelected = themesSelected.filter((ele) => ele !== "LINUX"));
 });
 
+html2Theme.addEventListener("input", (e) => {
+  html2Theme.checked
+    ? themesSelected.push("HTML2")
+    : (themesSelected = themesSelected.filter((ele) => ele !== "HTML2"));
+});
+
+css2Theme.addEventListener("input", (e) => {
+  css2Theme.checked
+    ? themesSelected.push("CSS2")
+    : (themesSelected = themesSelected.filter((ele) => ele !== "CSS2"));
+});
+
+js2Theme.addEventListener("input", (e) => {
+  js2Theme.checked
+    ? themesSelected.push("JS2")
+    : (themesSelected = themesSelected.filter((ele) => ele !== "JS2"));
+});
+
+linux2Theme.addEventListener("input", (e) => {
+  linux2Theme.checked
+    ? themesSelected.push("LINUX2")
+    : (themesSelected = themesSelected.filter((ele) => ele !== "LINUX2"));
+});
+
 //fonction appelée lorsque all themes a été coché
 const fillThemesArray = (allIsChecked) => {
   if (allIsChecked) {
-    themesSelected = ["HTML", "CSS", "JS", "MD", "GIT", "LINUX"];
+    themesSelected = [
+      "HTML",
+      "HTML2",
+      "CSS",
+      "CSS2",
+      "JS",
+      "JS2",
+      "MD",
+      "GIT",
+      "LINUX",
+      "LINUX2",
+    ];
   } else {
     themesSelected = [];
   }

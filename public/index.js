@@ -173,7 +173,7 @@ audio_correct.preload = "auto";
 // Fonction pour changer la carte
 const changeCard = () => {
   // Affiche la question actuelle
-  cardQuestion.innerHTML = questionnaireInfo.getCurrentQuestion().questionText;
+  cardQuestion.innerText = questionnaireInfo.getCurrentQuestion().questionText;
 
   //Affiche le nombre de questions restantes
   questionsLeftContainer.innerText =
@@ -317,9 +317,11 @@ const createButtonRetry = () => {
     timer = questionTime;
 
     retryButton.remove();
-    initializeCard();
-    changeCard();
-    relaunchTimer();
+    window.location.reload();
+    // changeCard();
+    // initializeCard();
+    // changeCard();
+    // relaunchTimer();
   });
 };
 
@@ -556,6 +558,14 @@ responsesContainer.addEventListener("click", () => {
             numbQuestionPerTheme
           );
           break;
+        case "HTML2":
+          questionnaireInfo.fillQuestionnaire(
+            qlHTML2,
+            ansHTML2,
+            cAnsHTML2,
+            numbQuestionPerTheme
+          );
+          break;
         case "CSS":
           questionnaireInfo.fillQuestionnaire(
             qlCSS,
@@ -564,11 +574,27 @@ responsesContainer.addEventListener("click", () => {
             numbQuestionPerTheme
           );
           break;
+        case "CSS2":
+          questionnaireInfo.fillQuestionnaire(
+            qlCSS2,
+            ansCSS2,
+            cAnsCSS2,
+            numbQuestionPerTheme
+          );
+          break;
         case "JS":
           questionnaireInfo.fillQuestionnaire(
             qlJS,
             ansJS,
             cAnsJS,
+            numbQuestionPerTheme
+          );
+          break;
+        case "JS2":
+          questionnaireInfo.fillQuestionnaire(
+            qlJS2,
+            ansJS2,
+            cAnsJS2,
             numbQuestionPerTheme
           );
           break;
@@ -593,6 +619,14 @@ responsesContainer.addEventListener("click", () => {
             qlLinux,
             ansLinux,
             cAnsLinux,
+            numbQuestionPerTheme
+          );
+          break;
+        case "LINUX2":
+          questionnaireInfo.fillQuestionnaire(
+            qlLinux2,
+            ansLinux2,
+            cAnsLinux2,
             numbQuestionPerTheme
           );
           break;

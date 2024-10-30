@@ -319,6 +319,29 @@ img {
   }
 }
 
+.challenge {
+  position: absolute;
+  height: 70px;
+  width: 200px;
+  background: orangered;
+  border: 2px solid black;
+  transform: translate(570px, -70px);
+  border-radius: 25px;
+  box-shadow: 0 10px black;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.challenge:hover {
+  background: orange;
+}
+
+.challenge:active {
+  transition: 0.1s;
+  box-shadow: 0 0 0 0;
+  transform: translate(570px, -60px);
+}
+
 .settings-title {
   text-align: center;
   margin: 10px 0;
@@ -331,10 +354,16 @@ img {
 
 .settings-themes-list {
   display: flex;
+  height: 120px;
 }
 .settings-themes-title {
   font-weight: bold;
   margin: 20px 0;
+}
+.settings-theme {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 #theme-all-input {
@@ -349,7 +378,7 @@ img {
   cursor: pointer;
   border: 2px solid black;
   font-size: 1.2rem;
-  margin: 140px auto 0 auto;
+  margin: 100px auto 0 auto;
   background: none;
   box-shadow: 0 10px black;
 }
