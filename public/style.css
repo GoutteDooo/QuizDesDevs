@@ -44,6 +44,25 @@ img {
   font-size: 1rem;
 }
 
+.music {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  position: absolute;
+  border: 2px solid whitesmoke;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  text-align: center;
+  transform: translate(350px, -100px);
+  cursor: pointer;
+}
+
+.music:hover {
+  color: grey;
+}
+
 .card {
   height: 500px;
   width: 800px;

@@ -42,6 +42,7 @@ let startConfetti = false;
 let audioChronoPreviousState = null; //Variable pour garder l'état précédent du chrono audio
 let questionTime = timer; //temps en ms pour chaque question
 let numbQuestionPerTheme = selectedOptions.numbQuestionPerTheme;
+let musicToggle = false;
 
 class Question {
   constructor(questionText, answers, correctAnswer) {
@@ -145,6 +146,7 @@ const scoreDisplay = document.querySelector(".score strong");
 const recordDisplay = document.querySelector(".record");
 const settingsBtn = document.querySelector(".settings-btn");
 const blurBackground = document.querySelector(".blur-background");
+const music = document.getElementById("music");
 
 //éléments modifiés dynamiquement à la fin du quiz
 var questionsLeftContainer = document.querySelector(".questions-lefts");
@@ -495,6 +497,13 @@ responsesContainer.addEventListener("mouseenter", () => {
   });
 });
 */
+
+music.addEventListener("click", () => {
+  musicToggle = !musicToggle;
+  console.log(music.muted);
+
+  musicToggle ? music.play() : (music.muted = true);
+});
 
 const displayChangeTheme = async () => {
   //Repérer quel est le thème suivant
