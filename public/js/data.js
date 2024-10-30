@@ -99,6 +99,60 @@ export const cAnsHTML = [
   "<!-- Commentaire -->",
 ];
 
+export const qlHTML2 = [
+  "Quel attribut ARIA est utilisé pour définir le rôle principal du contenu d'une page web ?",
+  "Quel attribut permet d’indiquer une description longue pour les images ?",
+  "Quelle balise HTML est recommandée pour le sous-titrage de vidéos ?",
+  "Quel attribut de la balise <input> permet de limiter la saisie à des chiffres ?",
+  "Comment spécifier plusieurs fichiers JavaScript dans l'attribut srcset d’une balise <script> ?",
+  'À quoi sert l’attribut loading="lazy" dans la balise <img> ?',
+  "Quelle balise est utilisée pour regrouper des boutons de radio ?",
+  "Quel attribut de <meta> est utilisé pour le référencement international d’un site ?",
+  "Comment spécifier un favicon en HTML ?",
+  "Quelle balise permet d’ajouter du code pour une PWA (Progressive Web App) ?",
+];
+
+export const ansHTML2 = [
+  ["aria-main", 'role="main"', "main-content", "aria-rockstar"],
+  ["longdesc", "aria-describedby", "alt", "im_really_long_description"],
+  ["<track>", "<caption>", "<subtitle>", "<you_have_no_idea_what_they_said>"],
+  ['inputmode="numeric"', 'type="number"', 'type="integer"', "noWordsAllowed"],
+  [
+    "Ce n’est pas possible avec srcset",
+    'srcset="fichier1.js, fichier2.js"',
+    'scriptset="fichier1.js, fichier2.js"',
+    'srcset="loadAllTheThings.js"',
+  ],
+  [
+    "Charger une image seulement lorsque nécessaire",
+    "Charger une image immédiatement",
+    "Désactiver le chargement de l’image",
+    "À faire la grasse matinée",
+  ],
+  ["<fieldset>", "<group>", "<button-group>", "<radioParty>"],
+  ["hreflang", "language", "region", "speakMultipleLanguages"],
+  [
+    '<link rel="icon" href="favicon.ico">',
+    '<favicon src="favicon.ico">',
+    '<meta icon="favicon.ico">',
+    '<link rel="cool-look">',
+  ],
+  ["<manifest>", '<script type="pwa">', '<meta pwa="true">', "<addMagicHere>"],
+];
+
+export const cAnsHTML2 = [
+  "aria-main",
+  "longdesc",
+  "<track>",
+  'inputmode="numeric"',
+  "Ce n’est pas possible avec srcset",
+  "Charger une image seulement lorsque nécessaire",
+  "<fieldset>",
+  "hreflang",
+  '<link rel="icon" href="favicon.ico">',
+  "<manifest>",
+];
+
 /* ----- CSS ----- */
 export const qlCSS = [
   "Que signifie CSS  ? ",
@@ -287,6 +341,80 @@ export const cAnsCSS = [
   "nth-child",
 ];
 
+export const qlCSS2 = [
+  "Quelle directive SCSS est utilisée pour importer des fichiers partagés ?",
+  "Comment déclarer une variable SCSS pour la couleur principale d’un site ?",
+  "Quelle fonction SCSS ajuste la transparence d’une couleur ?",
+  "Quel est l’ordre correct pour les arguments de margin en CSS shorthand ?",
+  "Comment peut-on imbriquer des sélecteurs en SASS ?",
+  "Quel est le comportement de & en SCSS lorsqu’il est utilisé avec des pseudo-classes ?",
+  "Quelle méthode permet de réutiliser du code CSS avec des paramètres en SASS ?",
+  "Quelle est la syntaxe correcte pour une boucle for en SCSS ?",
+  "Comment modifier une couleur en ajustant uniquement sa luminosité en SCSS ?",
+  "Quelle fonction CSS permet de définir plusieurs fonds d'écran sur un seul élément ?",
+];
+
+export const ansCSS2 = [
+  ["@import", "@include", "@use", "@summonTheCode"],
+  [
+    "$primary-color: #3498db;",
+    "var(--primary-color: #3498db);",
+    "--primary-color: #3498db;",
+    'colorIsLife="#3498db"',
+  ],
+  ["rgba()", "fade-out()", "opacity()", "magicTransparency()"],
+  [
+    "top, right, bottom, left",
+    "left, right, top, bottom",
+    "top, bottom, left, right",
+    "whereverItLooksGood",
+  ],
+  [
+    "En utilisant &",
+    "En utilisant @mixin",
+    "Avec des doubles crochets [[...]]",
+    "Avec intothevoid",
+  ],
+  [
+    "Il fait référence au parent et se concatène avec les pseudo-classes",
+    "Il est ignoré",
+    "Il remplace la pseudo-classe",
+    "Il se transforme en super-héros",
+  ],
+  ["@mixin", "@function", "@reuse", "@code_dance_party"],
+  [
+    "@for $i from 1 through 5",
+    "@loop $i to 5",
+    "for($i=1; $i<=5; $i++)",
+    "letTheLoopBegin",
+  ],
+  [
+    "lighten($color, 20%)",
+    "opacity($color, 0.2)",
+    "rgba($color, 0.8)",
+    "addSunshine($color)",
+  ],
+  [
+    "background-image: url(...), url(...);",
+    "multi-background: url(...);",
+    "backgrounds: urls(...)",
+    "background-party",
+  ],
+];
+
+export const cAnsCSS2 = [
+  "@import",
+  "$primary-color: #3498db;",
+  "rgba()",
+  "top, right, bottom, left",
+  "En utilisant &",
+  "Il fait référence au parent et se concatène avec les pseudo-classes",
+  "@mixin",
+  "@for $i from 1 through 5",
+  "lighten($color, 20%)",
+  "background-image: url(...), url(...);",
+];
+
 /*----- JavaScript ----- */
 export const qlJS = [
   "Comment afficher un message dans la console en JavaScript ?",
@@ -420,6 +548,75 @@ export const cAnsJS = [
   "Math.ceil()",
 ];
 
+export const qlJS2 = [
+  "Comment définir une fonction qui retourne elle-même ?",
+  "Quelle méthode de tableau renvoie un nouveau tableau trié ?",
+  "Que renvoie la méthode typeof pour un tableau ?",
+  "Quelle syntaxe déstructure un objet pour extraire ses propriétés a et b ?",
+  "Comment vérifier si une valeur est NaN en JavaScript ?",
+  "Quelle méthode Promise permet d'attendre que toutes les promesses soient terminées ?",
+  "Comment accéder à tous les arguments d'une fonction dans ES6 ?",
+  "Quelle est la syntaxe correcte pour une fonction fléchée avec retour implicite ?",
+  "Comment changer obj.key1 en obj.key2 tout en conservant la valeur d'origine ?",
+  "Quelle est la sortie de 0.1 + 0.2 === 0.3 ?",
+];
+
+export const ansJS2 = [
+  [
+    "function selfReturning() { return selfReturning; }",
+    "function() { return this; }",
+    "function recursive() { return recursive(); }",
+    "function inception() { return inception(); }",
+  ],
+  [
+    "array.sort()",
+    "array.shuffle()",
+    "array.reverseSort()",
+    "array.magicSort()",
+  ],
+  ["object", "array", "list", "confusion"],
+  [
+    "const {a, b} = obj;",
+    "const a, b = obj;",
+    "const a = obj.a, b = obj.b;",
+    'const awesome = "JS is tricky;"',
+  ],
+  [
+    "isNaN(value)",
+    "value == NaN",
+    "typeof value === 'NaN'",
+    "notANumberButMaybeANinja",
+  ],
+  ["Promise.all", "Promise.race", "Promise.wait", "Promise.weCanDoIt"],
+  ["...args", "arguments", "Array.from(args)", "whatsGoingOnHere"],
+  [
+    "const f = () => value",
+    "const f = () => { return value }",
+    "const f = (value) => return",
+    "function likeAnArrow()",
+  ],
+  [
+    "obj.key2 = obj.key1; delete obj.key1;",
+    "obj.key2 = obj.key1;",
+    "Object.assign(obj, {key2: obj.key1});",
+    "AbraKadabra()",
+  ],
+  ["false", "true", "undefined", "It's complicated..."],
+];
+
+export const cAnsJS2 = [
+  "function selfReturning() { return selfReturning; }",
+  "array.sort()",
+  "object",
+  "const {a, b} = obj;",
+  "isNaN(value)",
+  "Promise.all",
+  "...args",
+  "const f = () => value",
+  "obj.key2 = obj.key1; delete obj.key1;",
+  "false",
+];
+
 /* ----- LINUX ----- */
 export const qlLinux = [
   "Quelle commande permet de lister les fichiers dans un répertoire ?",
@@ -433,6 +630,7 @@ export const qlLinux = [
   "Comment exécuter un script bash ?",
   "Quelle commande est utilisée pour redémarrer le système ?",
   "Quelle commande est utilisée pour afficher les processus actifs ?",
+  "À quoi sert la commande chmod ?",
 ];
 
 export const ansLinux = [
@@ -447,6 +645,12 @@ export const ansLinux = [
   ["./script.sh", "run script.sh", "exec script.sh", "en_avant_le_show"],
   ["reboot", "restart", "shutdown -r", "en_voiture_simone"],
   ["top", "ps", "htop", "espionnage_du_CPU"],
+  [
+    "Modifier les permissions d’un fichier",
+    "Afficher le contenu d’un fichier",
+    "Copier un fichier",
+    "Mettre à chauffer la pizza dans le four.",
+  ],
 ];
 
 export const cAnsLinux = [
@@ -461,6 +665,63 @@ export const cAnsLinux = [
   "./script.sh",
   "reboot",
   "top",
+  "Modifier les permissions d’un fichier",
+];
+//Linux Moyen
+export const qlLinux2 = [
+  "Comment afficher les 10 premières lignes d’un fichier ?",
+  "Quelle commande permet de rechercher un mot dans un fichier ?",
+  "Comment afficher la date et l’heure actuelles ?",
+  "Quelle commande affiche les processus en cours ?",
+  "Quelle commande permet de rechercher un mot dans plusieurs fichiers et sous-dossiers ?",
+  "Comment exécuter une commande avec des privilèges root ?",
+  "Quelle commande affiche l'espace disque disponible pour chaque partition ?",
+  "Comment sauvegarder la sortie d’une commande dans un fichier texte ?",
+  "Quelle commande affiche l'utilisation de la mémoire par les processus ?",
+  "Comment lister les fichiers cachés dans un répertoire ?",
+  "Comment afficher les permissions d’un fichier en détail ?",
+  "Quelle commande affiche uniquement les dix dernières lignes d’un fichier ?",
+  "Quelle commande exécute une commande précédente sans avoir à la retaper ?",
+  "Comment modifier l'utilisateur actif sans quitter la session ?",
+];
+
+export const ansLinux2 = [
+  ["head", "first10", "tail", "Les-Dix-1ere-Stp"],
+  ["grep", "find", "locate", "sherlock-mot(mot)"],
+  ["date", "time", "now", "Je regarde l'heure sur le téléphone."],
+  ["ps", "proc", "run", "¿Qué pasa?"],
+  ["grep -r", "grep", "search -all", "find_my_lost_files"],
+  ["sudo", "root", "admin", "justTrustMe"],
+  ["df -h", "du", "lsblk", "pleaseGiveMeMoreSpace"],
+  [
+    "commande > fichier.txt",
+    "save commande",
+    "commande /to fichier.txt",
+    "justRememberIt.txt",
+  ],
+  ["top", "free", "memcheck", "nosyNeighbor"],
+  ["ls -a", "ls --hidden", "dir -hidden", "peekBehindTheCurtain"],
+  ["ls -l", "chmod", "perm file", "showMeYourSecrets"],
+  ["tail", "bottom", "end", "finalWords"],
+  ["!!", "again", "runLast", "doItAgainSam"],
+  ["su", "change-user", "switch", "I'mSomebodyElseNow"],
+];
+
+export const cAnsLinux2 = [
+  "head",
+  "grep",
+  "date",
+  "ps",
+  "grep -r",
+  "sudo",
+  "df -h",
+  "commande > fichier.txt",
+  "top",
+  "ls -a",
+  "ls -l",
+  "tail",
+  "!!",
+  "su",
 ];
 
 /* ------ Markdown ----- */
@@ -476,6 +737,7 @@ export const qlMD = [
   "Comment souligner du texte en Markdown ?",
   "Comment créer une ligne horizontale en Markdown ?",
   "Comment formater du texte en italique en Markdown ?",
+  "Comment créer une liste à puce en Markdown ?",
 ];
 
 export const ansMD = [
@@ -492,9 +754,15 @@ export const ansMD = [
   ],
   ["> citation", "- citation", '" citation "', "💭un_sage_a_dit_un_jour"],
   ["1. élément", "- élément", "* élément", "📜 belle_liste"],
-  ["Ce n'est pas possible", "__texte__", "<u>texte</u>", "--- texte"],
-  ["--- (dashes)", "___ (underscores)", "***", "-draw_line-"],
+  [
+    "Ce n'est pas possible",
+    "__texte__",
+    "<u>texte</u>",
+    "////////// texte//////////",
+  ],
+  ["--- (dashes)", "___ (underscores)", "***", `¯\_(ツ)_/¯`],
   ["*texte*", "**texte**", "_texte_", "🎩_texte_🎩"],
+  ["- élément", "* élément", "= élément", "Xx_?!|[liste2010]|!?_xX"],
 ];
 
 export const cAnsMD = [
@@ -509,6 +777,7 @@ export const cAnsMD = [
   "Ce n'est pas possible",
   "--- (dashes)",
   "*texte*",
+  "- élément",
 ];
 
 /* ------ Git ----- */
@@ -529,6 +798,9 @@ export const qlGit = [
   "Comment vérifier l’état actuel du dépôt en Git ?",
   "Comment configurer le nom d’utilisateur dans Git ?",
   "Quelle commande permet de visualiser les différences entre deux commits ?",
+  "Comment annuler un commit qui n’a pas encore été envoyé au dépôt distant ?",
+  "Quelle commande permet de télécharger les dernières modifications sans les fusionner ?",
+  "Comment marquer un moment précis dans l’historique d’un dépôt ?",
 ];
 
 export const ansGit = [
@@ -562,6 +834,9 @@ export const ansGit = [
     "git_identité_secrète",
   ],
   ["git diff", "git show", "git compare", "git_keléladiff"],
+  ["git reset", "git undo", "git uncommit", "oopsIDidItAgain"],
+  ["git fetch", "git pull", "git grab", "git telecharge_moi_ca"],
+  ["git tag", "git mark", "git stamp", "git souviens-toi"],
 ];
 
 export const cAnsGit = [
@@ -580,4 +855,7 @@ export const cAnsGit = [
   "git status",
   "git config --global user.name",
   "git diff",
+  "git reset",
+  "git fetch",
+  "git tag",
 ];

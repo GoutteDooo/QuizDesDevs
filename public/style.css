@@ -34,6 +34,7 @@ img {
 }
 
 .record {
+  background: rgba(255, 255, 255, 0.5);
   font-size: 1.5rem;
 }
 .score {
@@ -316,7 +317,6 @@ img {
   100% {
     transform: translate(-50%, 100%);
   }
-  
 }
 
 .settings-title {
@@ -349,7 +349,7 @@ img {
   cursor: pointer;
   border: 2px solid black;
   font-size: 1.2rem;
-  margin: 170px auto 0 auto;
+  margin: 140px auto 0 auto;
   background: none;
   box-shadow: 0 10px black;
 }

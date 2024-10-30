@@ -17,6 +17,18 @@ import {
   qlJS,
   ansJS,
   cAnsJS,
+  qlHTML2,
+  ansHTML2,
+  cAnsHTML2,
+  qlCSS2,
+  ansCSS2,
+  cAnsCSS2,
+  qlJS2,
+  ansJS2,
+  cAnsJS2,
+  qlLinux2,
+  ansLinux2,
+  cAnsLinux2,
 } from "./js/data.js";
 import openSettings from "./js/settings.js";
 import { selectedOptions } from "./js/settings.js";
@@ -116,14 +128,6 @@ class Questionnaire {
     // Sélection des questions aléatoires selon le nombre demandé
     for (let i = 0; i < numberQuestions; i++) {
       const randomIndex = indices[i];
-
-      console.log(
-        "Question ajoutée n°",
-        this.questions.length,
-        ": ",
-        questionList[randomIndex]
-      );
-
       this.addQuestion(
         new Question(
           questionList[randomIndex],

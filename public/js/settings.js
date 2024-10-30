@@ -31,6 +31,12 @@ const gitTheme = document.getElementById("theme-git");
 gitTheme.checked = true;
 const linuxTheme = document.getElementById("theme-linux");
 linuxTheme.checked = true;
+const html2Theme = document.getElementById("theme-html2");
+html2Theme.checked = false;
+const css2Theme = document.getElementById("theme-css2");
+css2Theme.checked = false;
+const js2Theme = document.getElementById("theme-js2");
+js2Theme.checked = false;
 
 //button
 const buttonValidate = document.getElementById("settings-validate");
