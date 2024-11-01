@@ -1,3 +1,7 @@
+/**
+ * Pour l'instant en cours de test
+ */
+
 export const quizHTML = [
   {
     question:

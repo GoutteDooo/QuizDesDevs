@@ -422,9 +422,9 @@ img {
     0,
     0,
     0.2
-  ); /* Une légère opacité pour obscurcir l'arrière-plan */
-  backdrop-filter: blur(5px); /* Effet de flou */
-  z-index: 99; /* Derrière la div settings */
+  );
+  backdrop-filter: blur(5px);
+  z-index: 99;
   display: none;
   transition: 0.5s;
 }
@@ -621,4 +621,45 @@ img {
 iframe {
   width: 0;
   height: 0;
+}
+
+.good-luck {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  z-index: 100;
+  color: var(--bg-text-color);
+  animation: gl 2s forwards;
+}
+
+.good-luck > .gl-letter {
+  animation: glow 1s linear infinite;
+  color: yellow;
+}
+
+.gl-letter:nth-child(even) {
+  animation-delay: 0.1s;
+}
+.gl-letter:nth-child(odd) {
+  animation-delay: 0.3s;
+}
+
+@keyframes gl {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(10);
+  }
+  100% {
+    transform: scale(7);
+  }
+}
+
+@keyframes glow {
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }

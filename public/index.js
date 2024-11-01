@@ -165,6 +165,7 @@ const audio_applause_first = new Audio("./assets/sounds/applause_first.mp3");
 const audio_applause_second = new Audio("./assets/sounds/applause_second.mp3");
 const audio_applause_third = new Audio("./assets/sounds/applause_third.mp3");
 const audio_applause = new Audio("./assets/sounds/applause.mp3");
+const audio_startQuiz = new Audio("./assets/sounds/startQuiz.mp3");
 var audio_chrono = new Audio("./assets/sounds/chrono.mp3");
 audio_chrono.preload = "auto";
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
@@ -402,10 +403,48 @@ const displayTimer = () => {
 };
 
 const startQuiz = () => {
-  scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
-  recordDisplay.innerText = `Record : ${record}`;
-  changeCard();
-  relaunchTimer();
+  startQuizAnimation().then(() => {
+    scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
+    recordDisplay.innerText = `Record : ${record}`;
+    changeCard();
+    relaunchTimer();
+  });
+};
+
+const startQuizAnimation = async () => {
+  console.log(document);
+  audio_startQuiz.currentTime = 0;
+  audio_startQuiz.play();
+  //Ajouter le flou
+  blurBackground.style.display = "block";
+  //Ajouter le texte
+  const glText = document.createElement("div");
+  glText.classList.add("good-luck");
+  glText.textContent = "";
+  const text = "Bonne chance !";
+  for (let i = 0; i < text.length; i++) {
+    const glLetter = document.createElement("div");
+    glLetter.classList.add("gl-letter");
+    //ajouter barre d'espace
+    text[i] === " "
+      ? (glLetter.innerHTML = "&nbsp")
+      : (glLetter.textContent = text[i]);
+
+    console.log("lettre ajoutée : ", glLetter);
+
+    glText.appendChild(glLetter);
+  }
+  console.log("glText : ", glText);
+
+  blurBackground.appendChild(glText);
+
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      blurBackground.style.display = "none";
+      glText.remove();
+      resolve();
+    }, 3000);
+  });
 };
 
 const handleChronoSound = () => {
