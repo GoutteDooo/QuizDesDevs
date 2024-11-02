@@ -55,9 +55,18 @@ class Question {
   }
 
   shuffleAnswers() {
-    console.log(this.answers);
+    console.log("Avant mélange :", this.answers);
 
-    this.answers.sort(() => Math.random() - 0.5);
+    // Extraire les trois premières réponses
+    const firstThreeAnswers = this.answers.slice(0, 3);
+
+    // Mélanger les trois premières réponses
+    firstThreeAnswers.sort(() => Math.random() - 0.5);
+
+    // Remettre les réponses mélangées dans le tableau original
+    this.answers = [...firstThreeAnswers, this.answers[3]];
+
+    console.log("Après mélange :", this.answers);
   }
 }
 
@@ -93,7 +102,7 @@ class Questionnaire {
       // Réinjecter les questions mélangées dans la position originale
       for (let j = 0; j < questionsRange.length; j++) {
         this.questions[start + j] = questionsRange[j];
-        // this.questions[start + j].shuffleAnswers();
+        this.questions[start + j].shuffleAnswers();
       }
     }
   }
@@ -349,14 +358,16 @@ const endQuiz = () => {
   //Si user n'a cliqué que sur les réponses drôles :
   const totalQuestions =
     numbQuestionPerTheme * selectedOptions.themesSelected.length;
+  //Si user n'a pas cliqué sur assez de réponses funny :
+  if (counterFunny > 1 && counterFunny < totalQuestions)
+    appreciation += `<br /> <em style="font-size:0.7rem">(Clique sur plus de réponses fun la prochaine fois)</em>`;
   if (counterFunny === totalQuestions) {
-    appreciation = "TU ES VRAIMENT HILARANT !!";
+    appreciation = `<div class="funny-text">TU ES VRAIMENT HILARANT !!</div>`;
     ratioScore = -1; //Pour calculer le mode hilarant
     audio_laugh.currentTime = 0;
     audio_laugh.volume = 0.65;
     audio_laugh.play();
   }
-
   //animation fin quiz
   if (ratioScore >= 1) {
     startConfetti = true;

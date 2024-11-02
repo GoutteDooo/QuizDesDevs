@@ -24,14 +24,14 @@ export const qlHTML = [
   "Comment commenter une ligne de code HTML ?",
 ];
 export const ansHTML = [
-  ["<title></title>", "<h1></h1>", "<p></p>", '<input type="title" />'],
-  ["<list></list>", "<order></order>", "<ul></ul>", '<input type="list" />'],
-  ["<ol></ol>", "<h5></h5>", "<th></th>", "<img></img>"],
-  ["<picture />", "<pic />", "<img />", "<link img />"],
-  ["class", "src", "href", "img"],
+  ["<h1></h1>", "<title></title>", "<p></p>", '<input type="title" />'],
+  ["<ul></ul>", "<list></list>", "<order></order>", '<input type="list" />'],
+  ["<img></img>", "<ol></ol>", "<h5></h5>", "<th></th>"],
+  ["<img />", "<picture />", "<pic />", "<link img />"],
+  ["src", "class", "href", "img"],
   [
-    "Hyperlink Text Management Language",
     "HyperText Markup Language",
+    "Hyperlink Text Management Language",
     "Hierarchical Tagging Markup Language",
     "How To Meet Ladies",
   ],
@@ -195,12 +195,12 @@ export const qlCSS = [
 
 export const ansCSS = [
   [
+    "Cascading Style Sheets",
     "Central Script System",
     "Code Structure Simplifier",
-    "Cascading Style Sheets",
     "Crazy Spaghetti Syntax",
   ],
-  ["modulate", "resize", "transform", "set-size"],
+  ["transform", "modulate", "resize", "set-size"],
   ["background-color", "color", "font-color", "rainbow-painter"],
   [
     "Modifier la position des éléments sur l'axe Z (avant/arrière)",
@@ -209,8 +209,8 @@ export const ansCSS = [
     "Changer l'altitude d'un élément dans le cloud",
   ],
   [
-    "Ajuster l'espacement entre les éléments",
     "Définir le type d'affichage d'un élément (bloc, inline, etc.)",
+    "Ajuster l'espacement entre les éléments",
     "Modifier la structure d'une balise",
     "Afficher une photo du Mont Saint-Michel",
   ],
@@ -227,14 +227,14 @@ export const ansCSS = [
     "text-align: center;",
     "Utiliser des prières et un peu de magie",
   ],
-  ["border-style", "border-radius", "box-shadow", "arrondis-toi"],
+  ["border-radius", "border-style", "box-shadow", "arrondis-toi"],
   [
+    "box-shadow",
     "shadow",
     "text-shadow",
-    "box-shadow",
     "dire 'ombre' et espérer que ça marche",
   ],
-  ["visibility", "transparency", "opacity", "incognito-mode"],
+  ["opacity", "visibility", "transparency", "incognito-mode"],
   ["em", "px", "rem", "banana"],
   [
     "Placer l'élément par rapport à son conteneur le plus proche avec position: relative;",
@@ -242,7 +242,7 @@ export const ansCSS = [
     "Garder l'élément toujours visible en défilant",
     "Permettre à l'élément d'exister dans une autre dimension",
   ],
-  ["border-spacing", "margin", "padding", "inner-bubble"],
+  ["padding", "border-spacing", "margin", "inner-bubble"],
   [
     "inline > interne > externe > user",
     "interne > externe > inline > user",

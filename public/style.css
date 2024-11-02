@@ -709,3 +709,18 @@ iframe {
   top: 0;
   right: 0;
 }
+
+.funny-text {
+  animation: funnyText 0.25s infinite alternate;
+  color: yellow;
+}
+
+@keyframes funnyText {
+  0% {
+    font-size: 1.2rem;
+  }
+  100% {
+    font-size: 1.5rem;
+    filter: hue-rotate(360deg);
+  }
+}
