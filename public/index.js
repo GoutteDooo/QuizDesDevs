@@ -412,7 +412,6 @@ const startQuiz = () => {
 };
 
 const startQuizAnimation = async () => {
-  console.log(document);
   audio_startQuiz.currentTime = 0;
   audio_startQuiz.play();
   //Ajouter le flou
@@ -421,20 +420,28 @@ const startQuizAnimation = async () => {
   const glText = document.createElement("div");
   glText.classList.add("good-luck");
   glText.textContent = "";
+  //lancer les confettis
+  setTimeout(() => {
+    launchConfettiStart(0.3, 120);
+    audioRocketPlay();
+    setTimeout(() => {
+      audioRocketPlay();
+      launchConfettiStart(0.7, 60);
+    }, 50);
+  }, 1800);
+  //Gérer le texte "bonne chance !""
   const text = "Bonne chance !";
   for (let i = 0; i < text.length; i++) {
     const glLetter = document.createElement("div");
     glLetter.classList.add("gl-letter");
+    glLetter.style.animationDelay = `${i / 10}s`;
     //ajouter barre d'espace
     text[i] === " "
       ? (glLetter.innerHTML = "&nbsp")
       : (glLetter.textContent = text[i]);
 
-    console.log("lettre ajoutée : ", glLetter);
-
     glText.appendChild(glLetter);
   }
-  console.log("glText : ", glText);
 
   blurBackground.appendChild(glText);
 
@@ -443,8 +450,13 @@ const startQuizAnimation = async () => {
       blurBackground.style.display = "none";
       glText.remove();
       resolve();
-    }, 3000);
+    }, 3500);
   });
+};
+
+const audioRocketPlay = () => {
+  const audio_rocket = new Audio("./assets/sounds/rocketStart.mp3");
+  audio_rocket.play();
 };
 
 const handleChronoSound = () => {
@@ -509,6 +521,21 @@ const confettiLoop = () => {
     }, rngTimer);
   }
 };
+
+function launchConfettiStart(xValue, angleValue) {
+  confetti({
+    particleCount: 200,
+    spread: 70,
+    shapes: ["square", "circle"], // Utilisation de formes circulaires
+    gravity: 1,
+    origin: {
+      x: xValue,
+      y: 0.6,
+    },
+    scalar: 1,
+    angle: angleValue,
+  });
+}
 
 //Bouton Settings
 settingsBtn.addEventListener("click", () => {

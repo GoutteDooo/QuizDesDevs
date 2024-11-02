@@ -93,6 +93,7 @@ img {
   height: 300px;
   /* overflow: hidden; */
   text-align: center;
+  user-select: none;
 }
 
 .card-responses-container {
@@ -147,6 +148,7 @@ img {
 
 .card-responses-container > .responses {
   display: grid;
+  justify-content: center;
   grid-template-columns: 50% 50%;
   gap: 10px;
   list-style: none;
@@ -417,12 +419,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(
-    0,
-    0,
-    0,
-    0.2
-  );
+  background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
   z-index: 99;
   display: none;
@@ -632,18 +629,12 @@ iframe {
   z-index: 100;
   color: var(--bg-text-color);
   animation: gl 2s forwards;
+  user-select: none;
 }
 
 .good-luck > .gl-letter {
   animation: glow 1s linear infinite;
-  color: yellow;
-}
-
-.gl-letter:nth-child(even) {
-  animation-delay: 0.1s;
-}
-.gl-letter:nth-child(odd) {
-  animation-delay: 0.3s;
+  color: gold;
 }
 
 @keyframes gl {
