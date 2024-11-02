@@ -52,6 +52,8 @@ const settingsBtn = document.querySelector(".settings-btn");
 const audio_cric = new Audio("./assets/sounds/cric.mp3");
 const audio_whoosh = new Audio("./assets/sounds/settings-appear.mp3");
 const audio_validate = new Audio("./assets/sounds/settings-ok.mp3");
+const audio_button_pressed = new Audio("./assets/sounds/button-pressed.mp3");
+audio_button_pressed.preload = "auto";
 
 //Lorsque l'user hover les settings, déclenche le petit cric
 settingsBtn.addEventListener("mouseover", () => {
@@ -76,6 +78,8 @@ const openSettings = () => {
 
 //Lorsque l'user clique sur le bouton "valider"
 const saveSettings = () => {
+  audio_button_pressed.currentTime = 0;
+  audio_button_pressed.play();
   audio_validate.currentTime = 0;
   audio_validate.volume = 0.7;
   audio_validate.playbackRate = 5;
