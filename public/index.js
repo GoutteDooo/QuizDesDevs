@@ -55,8 +55,6 @@ class Question {
   }
 
   shuffleAnswers() {
-    console.log("Avant mélange :", this.answers);
-
     // Extraire les trois premières réponses
     const firstThreeAnswers = this.answers.slice(0, 3);
 
@@ -65,8 +63,6 @@ class Question {
 
     // Remettre les réponses mélangées dans le tableau original
     this.answers = [...firstThreeAnswers, this.answers[3]];
-
-    console.log("Après mélange :", this.answers);
   }
 }
 
@@ -240,9 +236,6 @@ const checkAnswer = (selectedAnswer, funnyOrNot) => {
     void card.offsetWidth; // Force le reflow pour s'assurer que la suppression est prise en compte
     card.classList.add("correct");
   } else {
-    //jouer le son error
-    audio_error.currentTime = 0.12;
-    audio_error.play();
     card.classList.remove("correct");
     card.classList.remove("wrong");
     card.classList.remove("oh-yeah");
@@ -250,6 +243,9 @@ const checkAnswer = (selectedAnswer, funnyOrNot) => {
     if (funnyOrNot === 3 && counterFunny >= 2) {
       card.classList.add("oh-yeah");
     } else {
+      //jouer le son error
+      audio_error.currentTime = 0.12;
+      audio_error.play();
       card.classList.add("wrong");
     }
     hint.innerText =
@@ -361,7 +357,7 @@ const endQuiz = () => {
   //Si user n'a pas cliqué sur assez de réponses funny :
   if (counterFunny > 1 && counterFunny < totalQuestions)
     appreciation += `<br /> <em style="font-size:0.7rem">(Clique sur plus de réponses fun la prochaine fois)</em>`;
-  if (counterFunny === totalQuestions) {
+  if (counterFunny >= totalQuestions * 0.8) {
     appreciation = `<div class="funny-text">TU ES VRAIMENT HILARANT !!</div>`;
     ratioScore = -1; //Pour calculer le mode hilarant
     audio_laugh.currentTime = 0;
@@ -374,9 +370,9 @@ const endQuiz = () => {
     confettiLoop();
   }
   //Display
-  counterFunny != totalQuestions
-    ? createSubmitScoreForm()
-    : displayFunnyTheme();
+  counterFunny >= totalQuestions * 0.8
+    ? displayFunnyTheme()
+    : createSubmitScoreForm();
   scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
   cardQuestion.innerText = "Quiz terminé !";
   responsesContainer.innerHTML = "";
