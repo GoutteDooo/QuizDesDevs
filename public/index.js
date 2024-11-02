@@ -43,6 +43,8 @@ let audioChronoPreviousState = null; //Variable pour garder l'état précédent 
 let questionTime = timer; //temps en ms pour chaque question
 let numbQuestionPerTheme = selectedOptions.numbQuestionPerTheme;
 let musicToggle = false;
+let themeIn;
+let actualTheme;
 
 class Question {
   constructor(questionText, answers, correctAnswer) {
@@ -177,6 +179,9 @@ audio_correct.preload = "auto";
 const changeCard = () => {
   // Affiche la question actuelle
   cardQuestion.innerText = questionnaireInfo.getCurrentQuestion().questionText;
+
+  //Change le theme (s'il doit)
+  themeIn.textContent = actualTheme;
 
   //Affiche le nombre de questions restantes
   questionsLeftContainer.innerText =
@@ -331,6 +336,7 @@ const createButtonRetry = () => {
 const initializeCard = () => {
   // Réinitialiser le contenu de la carte
   card.innerHTML = `
+  <div class="theme-in"></div>
   <div class="card-question">
     <h3>Question</h3>
   </div>
@@ -344,6 +350,7 @@ const initializeCard = () => {
   </div>
   <div class="timer"></div>
   <div class="hint"></div>`;
+  themeIn = document.querySelector(".theme-in");
   cardQuestion = document.querySelector(".card-question h3");
   responsesContainer = document.querySelector(".responses");
   hint = document.querySelector(".hint");
@@ -406,7 +413,10 @@ const startQuiz = () => {
   startQuizAnimation().then(() => {
     scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
     recordDisplay.innerText = `Record : ${record}`;
-    changeCard();
+    displayChangeTheme().then(() => {
+      initializeCard();
+      changeCard(); // Charge la prochaine question après l'affichage du thème
+    });
     relaunchTimer();
   });
 };
@@ -424,6 +434,7 @@ const startQuizAnimation = async () => {
   setTimeout(() => {
     launchConfettiStart(0.3, 120);
     audioRocketPlay();
+    //Ajouter un décalage pour donner un effet plus naturel
     setTimeout(() => {
       audioRocketPlay();
       launchConfettiStart(0.7, 60);
@@ -526,13 +537,11 @@ function launchConfettiStart(xValue, angleValue) {
   confetti({
     particleCount: 200,
     spread: 70,
-    shapes: ["square", "circle"], // Utilisation de formes circulaires
-    gravity: 1,
+    shapes: ["square"],
     origin: {
       x: xValue,
       y: 0.6,
     },
-    scalar: 1,
     angle: angleValue,
   });
 }
@@ -577,8 +586,7 @@ const displayChangeTheme = async () => {
   const themes = selectedOptions.themesSelected;
   const qpr = numbQuestionPerTheme;
   const indexActualTheme = Math.floor(questionIndex / qpr); //Formule permettant de trouver l'index du theme
-  const actualTheme = themes[indexActualTheme];
-  console.log("nouveau thème : ", actualTheme);
+  actualTheme = themes[indexActualTheme];
   timer = questionTime; //Car le joueur peut perdre un point s'il répond trop tard avant le changement de thème
 
   //AFFICHAGE

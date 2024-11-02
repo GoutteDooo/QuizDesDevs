@@ -2,3 +2,4 @@ node_modules/
 #Même si j'ai mis le node_modules, ça n'ignore pas car essentiel pour gh-pages
 .vscode/
 server/
+notesPourMoi.md

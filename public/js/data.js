@@ -1,6 +1,6 @@
 export const qlHTML = [
   "En HTML, quelle est la balise utilisée pour écrire le titre principal ?",
-  "En HTML, quelle est la balise utilisée pour faire une liste ? <em style='font-size : 0.7rem'>(et pour les plus pointilleux, oui il y en a plusieurs...)</em>",
+  "En HTML, quelle est la balise utilisée pour faire une liste non ordonnée ?",
   "Trouver l'intrus dans cette liste",
   "Quelle balise est utilisée pour les images ?",
   "Citez un attribut HTML lié aux images",
