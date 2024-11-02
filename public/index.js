@@ -32,7 +32,7 @@ import {
 } from "./js/data.js";
 import openSettings from "./js/settings.js";
 import { selectedOptions } from "./js/settings.js";
-import { top100Button } from "./js/top100.js";
+import { top100Button } from "./js/top100.js"; //même si grisé, nécessaire pour pouvoir open le lb
 
 let score = 0;
 let record = score;
@@ -42,9 +42,10 @@ let startConfetti = false;
 let audioChronoPreviousState = null; //Variable pour garder l'état précédent du chrono audio
 let questionTime = timer; //temps en ms pour chaque question
 let numbQuestionPerTheme = selectedOptions.numbQuestionPerTheme;
-let musicToggle = false;
+// let musicToggle = false;
 let themeIn;
 let actualTheme;
+let counterFunny = 0; //Permet de compter les réponses drôles cliquées
 
 class Question {
   constructor(questionText, answers, correctAnswer) {
@@ -92,7 +93,7 @@ class Questionnaire {
       // Réinjecter les questions mélangées dans la position originale
       for (let j = 0; j < questionsRange.length; j++) {
         this.questions[start + j] = questionsRange[j];
-        this.questions[start + j].shuffleAnswers();
+        // this.questions[start + j].shuffleAnswers();
       }
     }
   }
@@ -168,10 +169,14 @@ const audio_applause_second = new Audio("./assets/sounds/applause_second.mp3");
 const audio_applause_third = new Audio("./assets/sounds/applause_third.mp3");
 const audio_applause = new Audio("./assets/sounds/applause.mp3");
 const audio_startQuiz = new Audio("./assets/sounds/startQuiz.mp3");
+const audio_laugh = new Audio("./assets/sounds/laughs.mp3");
+const audio_circus = new Audio("./assets/sounds/circusMusic.mp3");
 var audio_chrono = new Audio("./assets/sounds/chrono.mp3");
 audio_chrono.preload = "auto";
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
 audio_correct.preload = "auto";
+audio_laugh.preload = "auto";
+audio_circus.preload = "auto";
 
 /* ----------------------------------------------------- FIN INIT ------------------------------------------------------------------*/
 
@@ -194,15 +199,20 @@ const changeCard = () => {
   responsesContainer.innerHTML = "";
 
   // Ajoute chaque réponse sous forme de div
-  questionnaireInfo.getCurrentQuestion().answers.forEach((res) => {
+  questionnaireInfo.getCurrentQuestion().answers.forEach((res, index) => {
     const responseDiv = document.createElement("div"); // Crée un élément <div>
     responseDiv.classList.add("response"); // Ajoute une classe pour pouvoir le styliser
     responseDiv.innerText = res; // Texte de la réponse
-    responseDiv.addEventListener("click", () => checkAnswer(res)); // Ajoute un event listener pour vérifier la réponse
+    responseDiv.addEventListener("click", () => {
+      checkFunnyAnswer(index); //checkfunny d'abord pour ensuite lancer endQuiz correctement
+      checkAnswer(res, index); //index servira pour changer couleur si jamais
+    });
     responsesContainer.appendChild(responseDiv); // Ajoute la réponse au conteneur
   });
   //put the time on the timer
   timer = questionTime;
+  // console.log(responsesContainer.children); //PAUSE ICI
+  // checkFunnyAnswer(responsesContainer.children.length -1); //Si l'user a cliqué sur la bonne div
 
   //launch sound
   audio_chrono.volume = 1;
@@ -210,13 +220,14 @@ const changeCard = () => {
 };
 
 // Fonction pour vérifier la réponse et passer à la question suivante
-const checkAnswer = (selectedAnswer) => {
+const checkAnswer = (selectedAnswer, funnyOrNot) => {
   if (selectedAnswer === questionnaireInfo.getCurrentQuestion().correctAnswer) {
     score++; // Augmente le score si la réponse est correcte
     audio_correct.currentTime = 0;
     audio_correct.play();
     card.classList.remove("wrong");
     card.classList.remove("correct");
+    card.classList.remove("oh-yeah");
     void card.offsetWidth; // Force le reflow pour s'assurer que la suppression est prise en compte
     card.classList.add("correct");
   } else {
@@ -225,8 +236,13 @@ const checkAnswer = (selectedAnswer) => {
     audio_error.play();
     card.classList.remove("correct");
     card.classList.remove("wrong");
+    card.classList.remove("oh-yeah");
     void card.offsetWidth; // Force le reflow pour s'assurer que la suppression est prise en compte
-    card.classList.add("wrong");
+    if (funnyOrNot === 3 && counterFunny >= 2) {
+      card.classList.add("oh-yeah");
+    } else {
+      card.classList.add("wrong");
+    }
     hint.innerText =
       "La bonne réponse était : " +
       questionnaireInfo.getCurrentQuestion().correctAnswer;
@@ -253,9 +269,67 @@ const checkAnswer = (selectedAnswer) => {
   }
 };
 
+const checkFunnyAnswer = (isFunnyDivSelected) => {
+  if (isFunnyDivSelected === 3) {
+    counterFunny++;
+    ohYeahSound(counterFunny);
+  }
+};
+
+const ohYeahSound = (counter) => {
+  let timer_end_sound = 0;
+  const audio_oh_yeah = new Audio("./assets/sounds/ohYeah.mp3");
+  switch (counter) {
+    case 1:
+      audio_oh_yeah.currentTime = 0;
+      timer_end_sound = 3000;
+      break;
+    case 3:
+      audio_oh_yeah.currentTime = 3;
+      timer_end_sound = 2000;
+      break;
+    case 5:
+      audio_oh_yeah.currentTime = 7.5;
+      timer_end_sound = 1500;
+      break;
+    case 7:
+      audio_oh_yeah.currentTime = 9;
+      timer_end_sound = 2000;
+      break;
+    case 9:
+      audio_oh_yeah.currentTime = 11;
+      timer_end_sound = 1000;
+      break;
+    case 11:
+      audio_oh_yeah.currentTime = 12;
+      timer_end_sound = 1000;
+      break;
+    case 13:
+      audio_oh_yeah.currentTime = 13;
+      timer_end_sound = 1000;
+      break;
+    case 15:
+      audio_oh_yeah.currentTime = 14;
+      timer_end_sound = 1000;
+      break;
+    default:
+      if (counter > 15) {
+        audio_oh_yeah.currentTime = 19;
+        timer_end_sound = 1000;
+      }
+      break;
+  }
+  if (timer_end_sound != 0) {
+    audio_oh_yeah.play();
+    setTimeout(() => {
+      audio_oh_yeah.pause();
+    }, timer_end_sound);
+  }
+};
+
 // Fonction pour terminer le quiz
 const endQuiz = () => {
-  const ratioScore = score / questionnaireInfo.questions.length;
+  let ratioScore = score / questionnaireInfo.questions.length;
   let appreciation = "";
   hint.innerText = "";
   if (ratioScore <= 0.4) {
@@ -272,13 +346,26 @@ const endQuiz = () => {
     recordDisplay.innerText = "Record : " + record;
   }
 
+  //Si user n'a cliqué que sur les réponses drôles :
+  const totalQuestions =
+    numbQuestionPerTheme * selectedOptions.themesSelected.length;
+  if (counterFunny === totalQuestions) {
+    appreciation = "TU ES VRAIMENT HILARANT !!";
+    ratioScore = -1; //Pour calculer le mode hilarant
+    audio_laugh.currentTime = 0;
+    audio_laugh.volume = 0.65;
+    audio_laugh.play();
+  }
+
   //animation fin quiz
   if (ratioScore >= 1) {
     startConfetti = true;
     confettiLoop();
   }
   //Display
-  createSubmitScoreForm();
+  counterFunny != totalQuestions
+    ? createSubmitScoreForm()
+    : displayFunnyTheme();
   scoreDisplay.innerText = `Score actuel : ${score} / ${questionnaireInfo.questions.length}`;
   cardQuestion.innerText = "Quiz terminé !";
   responsesContainer.innerHTML = "";
@@ -291,7 +378,7 @@ const endQuiz = () => {
     <br />
     <div class="appreciation">${appreciation}</div>`;
   audio_chrono.pause();
-  finishQuizSound.currentTime = 1;
+  finishQuizSound(ratioScore).currentTime = 0;
   finishQuizSound(ratioScore).play();
   createButtonRetry();
 };
@@ -300,6 +387,7 @@ const trophyImg = (ratioS) => {
   if (ratioS >= 1) return "first.png";
   if (ratioS >= 0.9) return "second.png";
   if (ratioS >= 0.6) return "third.png";
+  if (ratioS == -1) return "laugh.gif";
   return "clap.webp";
 };
 
@@ -307,7 +395,30 @@ const finishQuizSound = (ratioS) => {
   if (ratioS >= 1) return audio_applause_first;
   if (ratioS >= 0.9) return audio_applause_second;
   if (ratioS >= 0.6) return audio_applause_third;
+  if (ratioS == -1) return audio_circus;
   return audio_applause;
+};
+
+const displayFunnyTheme = () => {
+  const positions = [
+    { top: "20%", right: "20%" },
+    { top: "70%", right: "20%" },
+    { top: "20%", right: "70%" },
+    { top: "20%", right: "40%" },
+    { top: "70%", right: "70%" },
+  ];
+
+  for (let i = 1; i <= 5; i++) {
+    const gif = document.createElement("img");
+    gif.src = `./assets/gifs/funnyTheme${i}.gif`;
+    gif.classList.add("gif");
+
+    // Applique les positions définies dans l'array `positions`
+    gif.style.top = positions[i - 1].top;
+    gif.style.right = positions[i - 1].right;
+
+    document.body.appendChild(gif);
+  }
 };
 
 const createButtonRetry = () => {
