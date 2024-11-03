@@ -176,6 +176,7 @@ const audio_applause = new Audio("./assets/sounds/applause.mp3");
 const audio_startQuiz = new Audio("./assets/sounds/startQuiz.mp3");
 const audio_laugh = new Audio("./assets/sounds/laughs.mp3");
 const audio_circus = new Audio("./assets/sounds/circusMusic.mp3");
+const audio_theme = new Audio("./assets/sounds/themeSound.mp3");
 var audio_chrono = new Audio("./assets/sounds/chrono.mp3");
 audio_chrono.preload = "auto";
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
@@ -277,51 +278,72 @@ const checkAnswer = (selectedAnswer, funnyOrNot) => {
 const checkFunnyAnswer = (isFunnyDivSelected) => {
   if (isFunnyDivSelected === 3) {
     counterFunny++;
-    ohYeahSound(counterFunny);
+    ohYeahSound();
   }
 };
 
-const ohYeahSound = (counter) => {
+const ohYeahSound = () => {
   let timer_end_sound = 0;
   const audio_oh_yeah = new Audio("./assets/sounds/ohYeah.mp3");
-  switch (counter) {
+  const rngIndex = Math.ceil(Math.random() * 14);
+  switch (rngIndex) {
     case 1:
       audio_oh_yeah.currentTime = 0;
-      timer_end_sound = 3000;
+      timer_end_sound = 3500;
       break;
-    case 3:
-      audio_oh_yeah.currentTime = 3;
+    case 2:
+      audio_oh_yeah.currentTime = 3.5;
       timer_end_sound = 2000;
       break;
-    case 5:
+    case 3:
       audio_oh_yeah.currentTime = 7.5;
       timer_end_sound = 1500;
       break;
-    case 7:
+    case 4:
       audio_oh_yeah.currentTime = 9;
-      timer_end_sound = 2000;
+      timer_end_sound = 2500;
       break;
-    case 9:
-      audio_oh_yeah.currentTime = 11;
+    case 5:
+      audio_oh_yeah.currentTime = 11.5;
       timer_end_sound = 1000;
       break;
+    case 6:
+      audio_oh_yeah.currentTime = 12.5;
+      timer_end_sound = 1000;
+      break;
+    case 7:
+      audio_oh_yeah.currentTime = 13.5;
+      timer_end_sound = 1000;
+      break;
+    case 8:
+      audio_oh_yeah.currentTime = 14.5;
+      timer_end_sound = 1300;
+      break;
+    case 9:
+      audio_oh_yeah.currentTime = 15.8;
+      timer_end_sound = 800;
+      break;
+    case 10:
+      audio_oh_yeah.currentTime = 16.6;
+      timer_end_sound = 1200;
+      break;
     case 11:
-      audio_oh_yeah.currentTime = 12;
+      audio_oh_yeah.currentTime = 17.8;
+      timer_end_sound = 1500;
+      break;
+    case 12:
+      audio_oh_yeah.currentTime = 19.3;
       timer_end_sound = 1000;
       break;
     case 13:
-      audio_oh_yeah.currentTime = 13;
-      timer_end_sound = 1000;
+      audio_oh_yeah.currentTime = 20.5;
+      timer_end_sound = 1400;
       break;
-    case 15:
-      audio_oh_yeah.currentTime = 14;
-      timer_end_sound = 1000;
+    case 14:
+      audio_oh_yeah.currentTime = 21.9;
+      timer_end_sound = 1400;
       break;
     default:
-      if (counter > 15) {
-        audio_oh_yeah.currentTime = 19;
-        timer_end_sound = 1000;
-      }
       break;
   }
   if (timer_end_sound != 0) {
@@ -386,8 +408,22 @@ const endQuiz = () => {
     <div class="appreciation">${appreciation}</div>`;
   audio_chrono.pause();
   finishQuizSound(ratioScore).currentTime = 0;
+  finishQuizSound(ratioScore).volume = 0.4;
   finishQuizSound(ratioScore).play();
+  //Pour un son un peu plus crescendo
+  crescendoSound(finishQuizSound(ratioScore));
   createButtonRetry();
+};
+
+const crescendoSound = (sound) => {
+  if (sound.volume < 0.8) {
+    console.log("volume de la zic :", sound.volume);
+
+    setTimeout(() => {
+      sound.volume += 0.01;
+      crescendoSound(sound);
+    }, 100);
+  }
 };
 
 const trophyImg = (ratioS) => {
@@ -408,17 +444,19 @@ const finishQuizSound = (ratioS) => {
 
 const displayFunnyTheme = () => {
   const positions = [
-    { top: "20%", right: "20%" },
-    { top: "70%", right: "20%" },
-    { top: "20%", right: "70%" },
-    { top: "20%", right: "40%" },
-    { top: "70%", right: "70%" },
+    { top: "15%", right: "10%" },
+    { top: "70%", right: "10%" },
+    { top: "20%", right: "80%" },
+    { top: "40%", right: "45%" },
+    { top: "70%", right: "80%" },
   ];
 
   for (let i = 1; i <= 5; i++) {
     const gif = document.createElement("img");
     gif.src = `./assets/gifs/funnyTheme${i}.gif`;
     gif.classList.add("gif");
+    if (i == 4) gif.style.animation = "gifDance 10s infinite";
+    else gif.style.animation = `gifClassic ${i + 2}s infinite alternate`;
 
     // Applique les positions définies dans l'array `positions`
     gif.style.top = positions[i - 1].top;
@@ -426,6 +464,8 @@ const displayFunnyTheme = () => {
 
     document.body.appendChild(gif);
   }
+  //changer l'animation de la carte
+  card.style.animation = "funnyCard 2s infinite alternate";
 };
 
 const createButtonRetry = () => {
@@ -716,6 +756,12 @@ const displayChangeTheme = async () => {
   // Ajouter la carte dans le DOM
   blurBackground.appendChild(changingThemeCard);
   changingThemeCard.classList.add("changing-theme-card");
+
+  //Jouer le son changement de thème
+  audio_theme.currentTime = 0;
+  audio_theme.playbackRate = 2.5;
+  audio_theme.volume = 0.6;
+  audio_theme.play();
 
   // Attendre avant de changer le texte de la carte
   await new Promise((resolve) => {

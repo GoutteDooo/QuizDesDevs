@@ -65,7 +65,7 @@ img {
 
 .card {
   position: relative;
-  height: 500px;
+  min-height: 500px;
   width: 800px;
   margin: 50px 0 30px 0;
   background: var(--card-color);
@@ -715,6 +715,7 @@ iframe {
   color: yellow;
 }
 
+
 @keyframes funnyText {
   0% {
     font-size: 1.2rem;
@@ -722,5 +723,71 @@ iframe {
   100% {
     font-size: 1.5rem;
     filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes gifDance {
+  0%{
+    transform: translateX(0);
+  }
+  5%,10%{
+    transform: translateX(50px);
+  }
+  15%,20%{
+    transform: translateX(120px);
+  }
+  25%,30%{
+    transform: translateX(200px);
+  }
+  35%,40%{
+    transform: translateX(350px);
+  }
+  45%,50%{
+    transform: translateX(1200px);
+  }
+  55%,60%{
+    transform: translate(1200px,-3000px);
+  }
+  65%,70%{
+    transform: translate(-3000px,0px);
+  }
+  75%,80%{
+    transform: translateX(-500px);
+  }
+  85%,90%{
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes gifClassic {
+  0% {
+    transform: translate(30px,30px);
+  }
+  25% {
+    transform: translate(-30px,-30px);
+  }
+  50% {
+    transform: translate(30px,0px);
+  }
+  75% {
+    transform: translate(0px,30px);
+  }
+  100% {
+    transform: translate(-30px,0px);
+  }
+}
+
+@keyframes funnyCard {
+  0% {
+    filter: hue-rotate(0deg);
+    background: cyan;
+    transform: scale(0.8);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+    transform: scale(1.2);
   }
 }
