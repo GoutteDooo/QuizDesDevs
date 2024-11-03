@@ -482,20 +482,27 @@ img {
   font-size: 3rem;
   animation: change-theme 2s forwards;
   user-select: none;
+  border-radius: 25px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes change-theme {
   0% {
-    transform: translate(-50%, -1000px);
+    transform: translate(-50%, -1000px) scale(0) rotate(-5deg);
+    filter: blur(5px);
   }
   20% {
-    transform: translate(-50%, 0px);
+    transform: translate(-50%, 100px) scale(1.8) rotate(2deg);
+    color: yellow;
+    filter: blur(0px);
   }
-  80% {
-    transform: translate(-50%, 0px);
+  70% {
+    transform: translate(-50%, -100px) scale(1.4) rotate(-2deg);
+    filter: blur(0px);
   }
   100% {
-    transform: translate(-50%, 1000px);
+    transform: translate(-50%, 1000px) scale(0) rotate(5deg);
+    filter: blur(5px);
   }
 }
 
@@ -673,8 +680,7 @@ iframe {
   position: absolute;
   display: flex;
   top: 50%;
-  left: 50%;
-  /* transform: translate(-50%, -50%); */
+  left: 48%;
   z-index: 100;
   color: var(--bg-text-color);
   animation: gl 2s forwards;
@@ -684,17 +690,18 @@ iframe {
 .good-luck > .gl-letter {
   animation: glow 1s linear infinite;
   color: gold;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes gl {
   0% {
     transform: scale(0);
   }
-  70% {
+  90% {
     transform: scale(10);
   }
   100% {
-    transform: scale(7);
+    transform: scale(6);
   }
 }
 

@@ -178,6 +178,7 @@ const audio_laugh = new Audio("./assets/sounds/laughs.mp3");
 const audio_circus = new Audio("./assets/sounds/circusMusic.mp3");
 const audio_theme = new Audio("./assets/sounds/themeSound.mp3");
 var audio_chrono = new Audio("./assets/sounds/chrono.mp3");
+// var audio_chrono = new Audio("./assets/sounds/testChrono.mp3");
 audio_chrono.preload = "auto";
 audio_error.preload = "auto"; // Précharge le son pour réduire le délai
 audio_correct.preload = "auto";
@@ -590,14 +591,14 @@ const startQuizAnimation = async () => {
   glText.textContent = "";
   //lancer les confettis
   setTimeout(() => {
-    launchConfettiStart(0.3, 120);
+    launchConfettiStart(0.35, 120);
     audioRocketPlay();
     //Ajouter un décalage pour donner un effet plus naturel
     setTimeout(() => {
       audioRocketPlay();
-      launchConfettiStart(0.7, 60);
+      launchConfettiStart(0.65, 60);
     }, 50);
-  }, 1800);
+  }, 1900);
   //Gérer le texte "bonne chance !""
   const text = "Bonne chance !";
   for (let i = 0; i < text.length; i++) {
@@ -751,7 +752,7 @@ const displayChangeTheme = async () => {
   blurBackground.style.display = "block";
   blurBackground.style.animation = "fadeInOut 3s forwards";
   const changingThemeCard = document.createElement("div");
-  changingThemeCard.innerText = "Nouveau thème : " + actualTheme;
+  changingThemeCard.innerText = actualTheme;
 
   // Ajouter la carte dans le DOM
   blurBackground.appendChild(changingThemeCard);
