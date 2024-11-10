@@ -352,6 +352,8 @@ export const qlCSS2 = [
   "Quelle est la syntaxe correcte pour une boucle for en SCSS ?",
   "Comment modifier une couleur en ajustant uniquement sa luminosité en SCSS ?",
   "Quelle fonction CSS permet de définir plusieurs fonds d'écran sur un seul élément ?",
+  "Dans le fichier main.scssn on a : @import 'reset.scss'; @import 'base.scss';... Ces deux fichiers ont un sélecteur sur la balise body. Quelle va être la réaction du CSS compilé ?",
+  "Parmi ces réponses, laquelle est la bonne ?",
 ];
 
 export const ansCSS2 = [
@@ -400,6 +402,18 @@ export const ansCSS2 = [
     "backgrounds: urls(...)",
     "background-party",
   ],
+  [
+    "Le CSS ne prendra que le body du base.scss",
+    "Le CSS ne prendra que le body du reset.scss",
+    "Le CSS prendra les deux bodys et en fera un mix.",
+    "Il deviendra trouble comme de l'eau de chaux !",
+  ],
+  [
+    "font-size: $main * 0.8;",
+    "color: #1fe5f4 + 80;",
+    "background: $main + rgb(80,80,80);",
+    "Celle-ci.",
+  ],
 ];
 
 export const cAnsCSS2 = [
@@ -413,6 +427,9 @@ export const cAnsCSS2 = [
   "@for $i from 1 through 5",
   "lighten($color, 20%)",
   "background-image: url(...), url(...);",
+  "Il deviendra trouble comme de l'eau de chaux !",
+  "Celle-ci.",
+  "font-size: $main * 0.8;",
 ];
 
 /*----- JavaScript ----- */
@@ -443,6 +460,7 @@ export const qlJS = [
   "Quel opérateur permet d’ajouter 1 à une variable ?",
   "Quelle méthode convertit une chaîne de caractères en majuscules ?",
   "Comment arrondir un nombre à l'entier supérieur en JavaScript ?",
+  "Si je fais un 'console.log(window.scrollY);' au chargement de la page, qu'est-ce qui va apparaître à l'écran ?",
 ];
 
 export const ansJS = [
@@ -517,6 +535,12 @@ export const ansJS = [
   ["++", "+", "add(1)", "devient_plus_fort()"],
   ["toUpperCase()", "toCaps()", "makeUpper()", "shoutLoud"],
   ["Math.ceil()", "Math.floor()", "Math.roundUp()", "WhyRoundWhenYouCanFly"],
+  [
+    "0",
+    "undefined",
+    "Error: ScrollYInitializationError",
+    "Je préfère aller scroll sur TikTok.",
+  ],
 ];
 
 export const cAnsJS = [
@@ -546,6 +570,7 @@ export const cAnsJS = [
   "++",
   "toUpperCase()",
   "Math.ceil()",
+  "0",
 ];
 
 export const qlJS2 = [
@@ -631,6 +656,11 @@ export const qlLinux = [
   "Quelle commande est utilisée pour redémarrer le système ?",
   "Quelle commande est utilisée pour afficher les processus actifs ?",
   "À quoi sert la commande chmod ?",
+  "Quelle commande utiliser parmi les suivantes pour revenir d'un répertoire en arrière ?",
+  "A quoi sert la commande ssh (secure shell) ?",
+  `Lorsque j'utilise la commande "cd /", que se passe-t-il exactement ?`,
+  "A quoi sert la commande gzip ?",
+  "Lorsque j'utilise la commande 'echo texte', que se passe-t-il ?",
 ];
 
 export const ansLinux = [
@@ -651,6 +681,31 @@ export const ansLinux = [
     "Copier un fichier",
     "Mettre à chauffer la pizza dans le four.",
   ],
+  ["cd ..", "cd /", "cd ./", "marche-arriere"],
+  [
+    "A se connecter sur un serveur distant",
+    "A compresser un fichier",
+    "A crypter un fichier afin de le sécuriser",
+    "A se brosser les dents.",
+  ],
+  [
+    "On retourne au répertoire racine",
+    "On retourne d'un répertoire en arrière",
+    "Le terminal demande dans quel répertoire l'on veut aller",
+    "Tu insères un cd rayé dans le lecteur dvd.",
+  ],
+  [
+    "A compresser un fichier en .gzip",
+    "A décompresser un fichier .zip",
+    "A compresser un fichier en .zip",
+    "A sortir ses bijoux les plus précieux",
+  ],
+  [
+    "le terminal affiche text",
+    "le terminal crée une variable temporaire text et nous demande d'y insérer ce que l'on veut",
+    "Ca effectue une recherche dans les répertoires et sous-répertoires un fichier du nom de text",
+    "le terminal se met à nous parler en ch'ti",
+  ],
 ];
 
 export const cAnsLinux = [
@@ -666,6 +721,11 @@ export const cAnsLinux = [
   "reboot",
   "top",
   "Modifier les permissions d’un fichier",
+  "cd ..",
+  "A se connecter sur un serveur distant",
+  "On retourne au répertoire racine",
+  "A compresser un fichier en .gzip",
+  "le terminal affiche text",
 ];
 //Linux Moyen
 export const qlLinux2 = [
