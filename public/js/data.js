@@ -23,6 +23,7 @@ export const qlHTML = [
   "Quelle balise permet d’insérer un champ de texte pour l’utilisateur ?",
   "Comment commenter une ligne de code HTML ?",
 ];
+
 export const ansHTML = [
   ["<h1></h1>", "<title></title>", "<p></p>", '<input type="title" />'],
   ["<ul></ul>", "<list></list>", "<order></order>", '<input type="list" />'],
@@ -352,7 +353,7 @@ export const qlCSS2 = [
   "Quelle est la syntaxe correcte pour une boucle for en SCSS ?",
   "Comment modifier une couleur en ajustant uniquement sa luminosité en SCSS ?",
   "Quelle fonction CSS permet de définir plusieurs fonds d'écran sur un seul élément ?",
-  "Dans le fichier main.scssn on a : @import 'reset.scss'; @import 'base.scss';... Ces deux fichiers ont un sélecteur sur la balise body. Quelle va être la réaction du CSS compilé ?",
+  `En SCSS, si deux fichiers possèdent le même sélecteur, quelle va être la réaction du CSS compilé ?`,
   "Parmi ces réponses, laquelle est la bonne ?",
 ];
 
@@ -403,15 +404,15 @@ export const ansCSS2 = [
     "background-party",
   ],
   [
-    "Le CSS ne prendra que le body du base.scss",
-    "Le CSS ne prendra que le body du reset.scss",
+    "Il n'y aura que le body du dernier fichier importé",
+    "Il n'y aura que le body du premier fichier importé",
     "Le CSS prendra les deux bodys et en fera un mix.",
     "Il deviendra trouble comme de l'eau de chaux !",
   ],
   [
     "font-size: $main * 0.8;",
-    "color: #1fe5f4 + 80;",
-    "background: $main + rgb(80,80,80);",
+    "color: #000000 + 80;",
+    "background: rgb(0,0,0) + rgb(80,80,80);",
     "Celle-ci.",
   ],
 ];
@@ -428,7 +429,6 @@ export const cAnsCSS2 = [
   "lighten($color, 20%)",
   "background-image: url(...), url(...);",
   "Il deviendra trouble comme de l'eau de chaux !",
-  "Celle-ci.",
   "font-size: $main * 0.8;",
 ];
 
