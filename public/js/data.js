@@ -51,7 +51,7 @@ export const ansHTML = [
     "<table><diner_presque_parfait /></table>",
   ],
   ["<button>", '<input type="button">', "<btn>", "<appuie_sur_moi>"],
-  ["src", "href", "link", "redirection_dans_3_2_1"],
+  ["href", "src", "link", "redirection_dans_3_2_1"],
   [
     "À ajouter le nom de la page dans l'onglet du navigateur",
     "À ajouter un titre à l'article",
@@ -91,7 +91,7 @@ export const cAnsHTML = [
   'target="_blank"',
   "<table><tr><td></td></tr></table>",
   "<button>",
-  "src",
+  "href",
   "À ajouter le nom de la page dans l'onglet du navigateur",
   "<ul>",
   "alt",
