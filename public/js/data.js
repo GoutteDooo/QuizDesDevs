@@ -192,6 +192,10 @@ export const qlCSS = [
   "Quel mot-clé CSS permet de mettre en page un site en grille ?",
   "Comment rendre un texte en italique en CSS ?",
   "Quel sélecteur permet de styliser un élément en fonction de son statut d’enfant dans son parent ?",
+  `Comment activer la pseudo-classe "target" d'un élément ?`,
+  `Comment activer la pseudo-classe "hover" d'un élément ?`,
+  `Comment activer la pseudo-classe "active" d'un élément`,
+  `Si j'utilise la ligne de code suivante : "a::before { content: ♥; }", qu'est-ce que cela produit ?`,
 ];
 
 export const ansCSS = [
@@ -301,6 +305,30 @@ export const ansCSS = [
     "nationality:italic",
   ],
   ["nth-child", "child-of", "sub-item", "theChosenOne"],
+  [
+    `En cliquant sur une ancre dont l'ID de l'élément est relié à la pseudo-classe`,
+    `En cliquant sur l'élément dont la classe est reliée à la pseudo-classe`,
+    `En cliquant sur l'élément dont l'ID est "target"`,
+    "En lançant une balle lors d'un chamboule-tout.",
+  ],
+  [
+    `En le survolant`,
+    `En cliquant au moins une fois dessus`,
+    `En cliquant et en restant appuyé dessus`,
+    `En obtenant un "game hover" lorsqu'on joue à Element`,
+  ],
+  [
+    `En cliquant sur l'élément et en restant appuyé`,
+    `En ayant cliqué plus de deux fois sur l'élément`,
+    `Elle est activée par défaut si l'élément n'est pas en display:none`,
+    `En allumant la lumière du salon`,
+  ],
+  [
+    `Ca crée un "♥" à gauche de chaque élément a`,
+    `Ca change tout les caractères de l'élément en "♥"`,
+    `Ca crée une bulle au survol du lien affichant un "♥"`,
+    "Cela envoie de l'amour tout en étant content :)",
+  ],
 ];
 
 export const cAnsCSS = [
@@ -340,6 +368,10 @@ export const cAnsCSS = [
   "display: grid;",
   "font-style: italic;",
   "nth-child",
+  `En cliquant sur une ancre dont l'ID de l'élément est relié à la pseudo-classe`,
+  `En le survolant`,
+  `En cliquant sur l'élément et en restant appuyé`,
+  `Ca crée un "♥" à gauche de chaque élément a`,
 ];
 
 export const qlCSS2 = [
@@ -861,6 +893,7 @@ export const qlGit = [
   "Comment annuler un commit qui n’a pas encore été envoyé au dépôt distant ?",
   "Quelle commande permet de télécharger les dernières modifications sans les fusionner ?",
   "Comment marquer un moment précis dans l’historique d’un dépôt ?",
+  "Quelle commande git branch permet de renommer ses branches ?",
 ];
 
 export const ansGit = [
@@ -897,6 +930,12 @@ export const ansGit = [
   ["git reset", "git undo", "git uncommit", "oopsIDidItAgain"],
   ["git fetch", "git pull", "git grab", "git telecharge_moi_ca"],
   ["git tag", "git mark", "git stamp", "git souviens-toi"],
+  [
+    "git branch -m old-name new-name",
+    "git branch -r old-name new-name",
+    "git branch --rename old-name new-name",
+    "Je supprime la branche et j'en crée une autre.",
+  ],
 ];
 
 export const cAnsGit = [
@@ -918,4 +957,5 @@ export const cAnsGit = [
   "git reset",
   "git fetch",
   "git tag",
+  "git branch -m old-name new-name",
 ];
