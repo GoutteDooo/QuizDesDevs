@@ -493,6 +493,8 @@ export const qlJS = [
   "Quelle méthode convertit une chaîne de caractères en majuscules ?",
   "Comment arrondir un nombre à l'entier supérieur en JavaScript ?",
   "Si je fais un 'console.log(window.scrollY);' au chargement de la page, qu'est-ce qui va apparaître à l'écran ?",
+  `Que se passe-t-il dans la console avec cette ligne de code : "console.log(new Date())"?`,
+  `Quelle est la principale différence entre innerHTML et innerText ?`,
 ];
 
 export const ansJS = [
@@ -573,6 +575,18 @@ export const ansJS = [
     "Error: ScrollYInitializationError",
     "Je préfère aller scroll sur TikTok.",
   ],
+  [
+    "La console affiche la date actuelle",
+    `La console affiche "New Object type: Date"`,
+    `La console affiche un message d'erreur demandant la date à laquelle l'on veut faire référence`,
+    `Une datte apparaît`,
+  ],
+  [
+    `innerHTML peut écrire du code HTML tandis qu'innerText n'écrit que du texte`,
+    `innerHTML inclu toutes les balises HTML alors qu'innerText n'inclu que des balises de texte`,
+    `innerHTML permet d'écrire dans le body tandis qu'innerText n'écrit que dans une balise même`,
+    `Je pense qu'il y'a innheure ou HTML peut servir de Text.`,
+  ],
 ];
 
 export const cAnsJS = [
@@ -603,6 +617,8 @@ export const cAnsJS = [
   "toUpperCase()",
   "Math.ceil()",
   "0",
+  "La date actuelle est affichée",
+  `innerHTML écrit du code HTML tandis que innerText n'écrit que du texte`,
 ];
 
 export const qlJS2 = [
