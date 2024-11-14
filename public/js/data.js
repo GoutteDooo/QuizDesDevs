@@ -22,6 +22,8 @@ export const qlHTML = [
   "Quelle balise HTML représente du texte important en gras ?",
   "Quelle balise permet d’insérer un champ de texte pour l’utilisateur ?",
   "Comment commenter une ligne de code HTML ?",
+  `Quel autre balise permet de cocher un input précis de type "checkbox" autre que l'input-même ?`,
+  `Si j'écris : "<a href="#nom">lien</a>" et que je clique sur le texte entre les balises, que se passe-t-il ? `,
 ];
 
 export const ansHTML = [
@@ -73,6 +75,13 @@ export const ansHTML = [
     "/* Commentaire */",
     "J'm'en fou. J'ai un raccourci VS Code.",
   ],
+  ["<label>", `<radio>`, `<checkbox>`, `le plot de VLC`],
+  [
+    "Je serais redirigé vers un lien possédant l'id dans l'ancre",
+    "Une nouvelle page web va s'ouvrir",
+    "Je serais redirigé vers une autre page du même site",
+    "La petite barre blanche qui clignote entre les lettres apparaîtra :)",
+  ],
 ];
 export const cAnsHTML = [
   "<h1></h1>",
@@ -98,6 +107,8 @@ export const cAnsHTML = [
   "<strong>",
   '<input type="text">',
   "<!-- Commentaire -->",
+  "<label>",
+  "Je serais redirigé vers un lien possédant l'id dans l'ancre",
 ];
 
 export const qlHTML2 = [
@@ -849,10 +860,10 @@ export const qlMD = [
 ];
 
 export const ansMD = [
-  ["# Titre", "- Titre", "= Titre", "💥 SuperTitre"],
+  ["# Titre", "- Titre", "= Titre", "💥💥💥 SuperTitre"],
   ["[Texte](URL)", '<a href="URL">Texte</a>', "[Texte]: URL", "[clic_magic]"],
   ["* élément", "1. élément", "- élément", "[liste de courses]"],
-  ["**texte**", "*texte*", "_texte_", "💪 strong_text"],
+  ["**texte**", "*texte*", "__texte__", "💪💪💪 strong_text"],
   ["`code`", "<code>", "{code}", "💻 balise_magique"],
   [
     "![alt](URL)",
@@ -860,7 +871,12 @@ export const ansMD = [
     "[alt](URL)",
     "🖼️_picto_fantaisie",
   ],
-  ["> citation", "- citation", '" citation "', "💭un_sage_a_dit_un_jour"],
+  [
+    "> citation",
+    "Ce n'est pas possible",
+    '" citation "',
+    "💭un_sage_a_dit_un_jour",
+  ],
   ["1. élément", "- élément", "* élément", "📜 belle_liste"],
   [
     "Ce n'est pas possible",
@@ -870,7 +886,12 @@ export const ansMD = [
   ],
   ["--- (dashes)", "___ (underscores)", "***", `¯\_(ツ)_/¯`],
   ["*texte*", "**texte**", "_texte_", "🎩_texte_🎩"],
-  ["- élément", "* élément", "= élément", "Xx_?!|[liste2010]|!?_xX"],
+  [
+    "- élément",
+    "* élément",
+    "Ce n'est pas possible",
+    "Xx_?!|[liste2010]|!?_xX",
+  ],
 ];
 
 export const cAnsMD = [
